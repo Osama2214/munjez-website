@@ -128,6 +128,9 @@ textarea{min-height:130px;resize:vertical}
         <input type="hidden" name="_subject" value="Munjez Uninstall Feedback"/>
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" id="nextUrl" name="_next" value=""/>
+        <input type="hidden" id="reasonText" name="selected_reason_text" value=""/>
+        <input type="hidden" id="comeBackText" name="selected_come_back_options" value=""/>
+        <input type="hidden" id="summaryText" name="feedback_summary" value=""/>
         <input type="text" name="_honey" style="display:none"/>
 
         <div class="actions">
@@ -145,12 +148,34 @@ textarea{min-height:130px;resize:vertical}
   var form=document.getElementById('feedbackForm');
   var done=document.getElementById('done');
   var next=document.getElementById('nextUrl');
+  var reason=document.getElementById('reason');
+  var reasonText=document.getElementById('reasonText');
+  var comeBackText=document.getElementById('comeBackText');
+  var summaryText=document.getElementById('summaryText');
+  var details=document.getElementById('details');
+  var email=document.getElementById('email');
   if(next){
     next.value=window.location.origin+window.location.pathname+'?sent=1';
   }
   if(new URLSearchParams(window.location.search).get('sent')==='1'){
     done.classList.add('on');
   }
+
+  form.addEventListener('submit',function(){
+    var selectedReason=reason && reason.options[reason.selectedIndex] ? reason.options[reason.selectedIndex].text : 'Not selected';
+    var checkedOptions=[].slice.call(form.querySelectorAll('input[name="come_back[]"]:checked'))
+      .map(function(input){
+        var label=input.closest('label');
+        return label ? label.textContent.trim() : input.value;
+      });
+    var selectedComeBack=checkedOptions.length ? checkedOptions.join(' | ') : 'None';
+    var detailsValue=details && details.value.trim() ? details.value.trim() : 'N/A';
+    var emailValue=email && email.value.trim() ? email.value.trim() : 'N/A';
+
+    reasonText.value=selectedReason;
+    comeBackText.value=selectedComeBack;
+    summaryText.value='Reason: '+selectedReason+' || Come back options: '+selectedComeBack+' || Details: '+detailsValue+' || User email: '+emailValue;
+  });
 })();
 </script>
 </body>
