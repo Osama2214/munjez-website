@@ -63,6 +63,10 @@ input:focus,textarea:focus{
 .custom-select.open .custom-select-trigger{
   border-color:rgba(124,58,237,.65);box-shadow:0 0 0 3px rgba(124,58,237,.18);
 }
+.custom-select.error .custom-select-trigger{
+  border-color:#ef4444;
+  box-shadow:0 0 0 3px rgba(239,68,68,.2);
+}
 .custom-select-trigger::after{
   content:'';position:absolute;right:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5l5 5 5-5' stroke='%23c4b5fd' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -80,6 +84,10 @@ input:focus,textarea:focus{
 }
 .custom-option:hover{background:rgba(124,58,237,.14)}
 .custom-option.on{background:rgba(124,58,237,.24)}
+.field-error{
+  display:none;margin-top:8px;font-size:12.5px;color:#fca5a5;
+}
+.field-error.on{display:block}
 textarea{min-height:130px;resize:vertical}
 .checks{display:grid;gap:9px}
 .check{
@@ -136,6 +144,7 @@ textarea{min-height:130px;resize:vertical}
               <button type="button" class="custom-option" data-value="other">Other</button>
             </div>
           </div>
+          <p class="field-error" id="reasonError">Please select a reason before sending.</p>
           <input type="hidden" id="reason" name="reason" value="" required/>
         </div>
 
@@ -185,6 +194,7 @@ textarea{min-height:130px;resize:vertical}
   var reasonSelect=document.getElementById('reasonSelect');
   var reasonTrigger=document.getElementById('reasonTrigger');
   var reasonOptions=[].slice.call(document.querySelectorAll('.custom-option'));
+  var reasonError=document.getElementById('reasonError');
   var reasonText=document.getElementById('reasonText');
   var comeBackText=document.getElementById('comeBackText');
   var summaryText=document.getElementById('summaryText');
@@ -210,6 +220,8 @@ textarea{min-height:130px;resize:vertical}
         reasonTrigger.textContent=opt.textContent;
         reasonOptions.forEach(function(o){o.classList.remove('on');});
         opt.classList.add('on');
+        reasonSelect.classList.remove('error');
+        if(reasonError)reasonError.classList.remove('on');
         reasonSelect.classList.remove('open');
         reasonTrigger.setAttribute('aria-expanded','false');
       });
@@ -226,6 +238,8 @@ textarea{min-height:130px;resize:vertical}
   form.addEventListener('submit',function(e){
     if(reason && !reason.value){
       e.preventDefault();
+      if(reasonSelect)reasonSelect.classList.add('error');
+      if(reasonError)reasonError.classList.add('on');
       if(reasonTrigger){
         reasonTrigger.focus();
       }
