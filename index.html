@@ -786,6 +786,31 @@ footer a:hover{color:#c4b5fd}
 })();
 
 // ── COUNTER ANIMATION ──
+// CLEAN SECTION URLS (NO HASH)
+(function(){
+  function cleanUrl(){
+    if(history.replaceState){
+      history.replaceState(null,'',location.pathname+location.search);
+    }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click',function(e){
+      var href=link.getAttribute('href');
+      if(!href)return;
+      if(href==='#'){
+        e.preventDefault();
+        window.scrollTo({top:0,behavior:'smooth'});
+        cleanUrl();
+        return;
+      }
+      var target=document.querySelector(href);
+      if(!target)return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      cleanUrl();
+    });
+  });
+})();
 function animCount(el){
   var target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1400,start=null;
   function step(ts){
@@ -878,4 +903,5 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
 <div id="lb" onclick="lbClose()"><button id="lb-close" onclick="event.stopPropagation();lbClose()">&#10005;</button><img id="lb-img" src="" alt="" onclick="event.stopPropagation();lbClose()"/></div>
 </body>
 </html>
+
 
