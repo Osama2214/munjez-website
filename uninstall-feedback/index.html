@@ -61,6 +61,18 @@ select{
   background-size:18px 18px;
   background-position:right 14px center;
 }
+select:focus{
+  outline:none;
+  border-color:rgba(124,58,237,.65);
+  box-shadow:0 0 0 3px rgba(124,58,237,.18);
+}
+select option{
+  background:#0f172a;
+  color:#e2e8f0;
+}
+select option[value=""]{
+  color:#94a3b8;
+}
 textarea{min-height:130px;resize:vertical}
 .checks{display:grid;gap:9px}
 .check{
