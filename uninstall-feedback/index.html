@@ -207,10 +207,13 @@ textarea{min-height:130px;resize:vertical}
   var details=document.getElementById('details');
   var email=document.getElementById('email');
   if(next){
-    next.value=window.location.origin+window.location.pathname+'?sent=1';
+    var nextUrl=new URL(window.location.href);
+    nextUrl.searchParams.set('sent','1');
+    next.value=nextUrl.toString();
   }
-  if(new URLSearchParams(window.location.search).get('sent')==='1'){
+  if(new URLSearchParams(window.location.search).get('sent')==='1' || sessionStorage.getItem('uninstall_feedback_sent')==='1'){
     done.classList.add('on');
+    sessionStorage.removeItem('uninstall_feedback_sent');
   }
 
   if(reasonSelect && reasonTrigger && reason){
@@ -264,6 +267,7 @@ textarea{min-height:130px;resize:vertical}
     reasonText.value=selectedReason;
     comeBackText.value=selectedComeBack;
     summaryText.value='Reason: '+selectedReason+' || Come back options: '+selectedComeBack+' || Details: '+detailsValue+' || User email: '+emailValue;
+    sessionStorage.setItem('uninstall_feedback_sent','1');
   });
 })();
 </script>
