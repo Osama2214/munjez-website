@@ -384,8 +384,19 @@ nav ul a:hover{color:var(--text)}
 .dl-meta span svg{color:var(--green)}
 
 /* ── FOOTER ── */
-footer{position:relative;z-index:2;background:var(--surface);border-top:1px solid var(--border);padding:32px 40px;text-align:center}
-footer p{font-size:13.5px;color:var(--dim)}
+footer{
+  position:relative;z-index:2;background:var(--surface);
+  border-top:1px solid var(--border);padding:26px 20px;text-align:center;
+}
+.footer-line{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--dim);line-height:1;
+  background:rgba(124,58,237,.06);
+  border:1px solid rgba(124,58,237,.2);
+  border-radius:999px;
+  padding:10px 16px;
+}
+.footer-sep{opacity:.55}
 footer a{color:var(--accent);text-decoration:none;transition:color .2s}
 footer a:hover{color:#c4b5fd}
 
@@ -768,7 +779,11 @@ footer a:hover{color:#c4b5fd}
 </div>
 
 <footer>
-  <p>Made with &hearts; by <a href="https://github.com/Osama2214" target="_blank">Osama2214</a> &nbsp;|&nbsp; <a href="privacy-policy/">Privacy Policy</a></p>
+  <div class="footer-line">
+    <span>Made with &hearts; by <a href="https://github.com/Osama2214" target="_blank">Osama2214</a></span>
+    <span class="footer-sep">|</span>
+    <a href="privacy-policy/">Privacy Policy</a>
+  </div>
 </footer>
 
 <script>
