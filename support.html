@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Support Center | Munjez</title>
+<meta name="description" content="Munjez support center with troubleshooting steps, contact options, and FAQ."/>
+<link rel="icon" type="image/png" href="screenshots/icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070c18;--surface:#0c1223;--card:#101827;--card-h:#141f32;--border:#1a2d4a;
+  --primary:#7c3aed;--primary-h:#6d28d9;--text:#e2e8f0;--muted:#93a3ba;--accent:#a78bfa;
+}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%,rgba(124,58,237,.2),transparent 70%),
+    var(--bg);
+  color:var(--text);line-height:1.7;
+}
+.top{
+  position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);
+  backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8);
+}
+.top-in{
+  max-width:1080px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.logo img{width:30px;height:30px;border-radius:8px}
+.back{
+  text-decoration:none;background:var(--primary);border:1px solid var(--primary);
+  color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:.2s;
+}
+.back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+.wrap{max-width:1080px;margin:0 auto;padding:34px 20px 70px}
+.hero h1{font-size:clamp(36px,5.5vw,56px);line-height:1.04;letter-spacing:-1.4px}
+.hero p{margin-top:10px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;
+  transition:transform .2s,background .2s,border-color .2s;
+}
+.card:hover{transform:translateY(-3px);background:var(--card-h);border-color:rgba(124,58,237,.45)}
+.card h2{font-size:21px;letter-spacing:-.3px}
+.card p{margin-top:8px;font-size:14px;color:var(--muted)}
+.actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+  border-radius:11px;text-decoration:none;font-size:14px;font-weight:600;
+  border:1px solid var(--border);background:rgba(124,58,237,.08);color:var(--text);transition:.2s;
+}
+.btn:hover{border-color:rgba(124,58,237,.55);background:rgba(124,58,237,.18)}
+.list{margin-top:12px;padding-left:18px}
+.list li{margin:7px 0;color:var(--muted);font-size:14px}
+.faq{margin-top:22px}
+.faq h2{font-size:25px;letter-spacing:-.4px}
+.q{margin-top:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.q h3{font-size:15px}
+.q p{margin-top:6px;color:var(--muted);font-size:14px}
+@media(max-width:880px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-in">
+      <a class="logo" href="index.html">
+        <img src="screenshots/icon.png" alt="Munjez"/>
+        <span>Munjez</span>
+      </a>
+      <a class="back" href="index.html#support">Back to support</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Support Center</h1>
+      <p>Need help with Munjez? Use one of the support channels below, then check quick fixes and FAQ.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Contact options</h2>
+        <p>Choose the fastest way based on your request.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues/new">Report a bug</a>
+          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues">View all issues</a>
+          <a class="btn" href="mailto:munjez.support@proton.me">Email support</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Before contacting support</h2>
+        <ul class="list">
+          <li>Install the latest version and test again.</li>
+          <li>Include your Windows version and what happened step by step.</li>
+          <li>Add a screenshot or short video when possible.</li>
+          <li>Mention whether the issue is always reproducible or random.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="faq">
+      <h2>Quick FAQ</h2>
+      <div class="q">
+        <h3>Does Munjez require an internet connection?</h3>
+        <p>No. Munjez is designed to be offline-first and works locally on your device.</p>
+      </div>
+      <div class="q">
+        <h3>How can I suggest a new feature?</h3>
+        <p>Open a GitHub issue and describe the feature, why it helps, and how you expect it to work.</p>
+      </div>
+      <div class="q">
+        <h3>How long does a response usually take?</h3>
+        <p>Response times vary, but tickets with clear reproduction steps and media are handled faster.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
