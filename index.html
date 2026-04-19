@@ -429,7 +429,7 @@ footer a:hover{color:#c4b5fd}
     <li><a href="#support">Support</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
-  <a class="nav-dl" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
+  <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download Free
   </a>
@@ -835,6 +835,42 @@ footer a:hover{color:#c4b5fd}
       cleanUrl();
     });
   });
+})();
+// SMART DOWNLOAD BUTTON (WINDOWS / LINUX)
+(function(){
+  var btn=document.getElementById('nav-smart-download');
+  if(!btn)return;
+
+  var ua=(navigator.userAgent||'').toLowerCase();
+  var isWindows=ua.indexOf('windows')!==-1;
+  var isLinux=(ua.indexOf('linux')!==-1 || ua.indexOf('x11')!==-1) && ua.indexOf('android')===-1;
+  var textNode=btn.lastChild;
+  var icon=btn.querySelector('svg');
+
+  if(isWindows){
+    btn.href=btn.dataset.winUrl||btn.href;
+    if(textNode)textNode.textContent=' Download for Windows';
+    btn.title='Download Windows version';
+    return;
+  }
+
+  if(isLinux){
+    if(btn.dataset.linuxUrl){
+      btn.href=btn.dataset.linuxUrl;
+      if(textNode)textNode.textContent=' Download for Linux';
+      btn.title='Download Linux version';
+    }else{
+      btn.href='#download';
+      if(textNode)textNode.textContent=' Linux Coming Soon';
+      btn.title='Linux release is coming soon';
+      if(icon){icon.style.animation='none';}
+    }
+    return;
+  }
+
+  btn.href='#download';
+  if(textNode)textNode.textContent=' Choose Your Platform';
+  btn.title='Open download section';
 })();
 function animCount(el){
   var target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1400,start=null;
