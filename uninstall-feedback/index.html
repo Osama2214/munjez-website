@@ -95,7 +95,7 @@ textarea{min-height:130px;resize:vertical}
       <form id="feedbackForm">
         <div class="row">
           <label for="reason">Main reason for uninstalling</label>
-          <select id="reason" required>
+          <select id="reason" name="reason" required>
             <option value="">Select a reason</option>
             <option value="bugs">Too many bugs</option>
             <option value="missing-features">Missing features</option>
@@ -109,27 +109,31 @@ textarea{min-height:130px;resize:vertical}
         <div class="row">
           <label>What could make you come back?</label>
           <div class="checks">
-            <label class="check"><input type="checkbox" value="faster-app"/><span>Better performance and lower memory usage</span></label>
-            <label class="check"><input type="checkbox" value="mobile"/><span>Mobile companion app</span></label>
-            <label class="check"><input type="checkbox" value="features"/><span>More productivity features</span></label>
+            <label class="check"><input type="checkbox" name="come_back[]" value="faster-app"/><span>Better performance and lower memory usage</span></label>
+            <label class="check"><input type="checkbox" name="come_back[]" value="mobile"/><span>Mobile companion app</span></label>
+            <label class="check"><input type="checkbox" name="come_back[]" value="features"/><span>More productivity features</span></label>
           </div>
         </div>
 
         <div class="row">
           <label for="details">Additional details</label>
-          <textarea id="details" placeholder="Tell us what happened, what was missing, or what we should improve."></textarea>
+          <textarea id="details" name="details" placeholder="Tell us what happened, what was missing, or what we should improve."></textarea>
         </div>
 
         <div class="row">
           <label for="email">Email (optional)</label>
-          <input id="email" type="email" placeholder="you@example.com"/>
+          <input id="email" name="user_email" type="email" placeholder="you@example.com"/>
         </div>
+
+        <input type="hidden" name="_subject" value="Munjez Uninstall Feedback"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="text" name="_honey" style="display:none"/>
 
         <div class="actions">
           <button class="btn main" type="submit">Send feedback</button>
           <a class="btn alt" href="mailto:munjezsupport@gmail.com">Email directly</a>
         </div>
-        <p class="note">This form opens your email client and prepares the message to: munjezsupport@gmail.com</p>
+        <p class="note">This form sends feedback directly to: munjezsupport@gmail.com</p>
         <p id="done" class="done">Thanks for your feedback. We appreciate your time.</p>
       </form>
     </section>
@@ -139,27 +143,39 @@ textarea{min-height:130px;resize:vertical}
 (function(){
   var form=document.getElementById('feedbackForm');
   var done=document.getElementById('done');
+  var submitBtn=form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var reason=document.getElementById('reason').value;
-    var details=document.getElementById('details').value.trim();
-    var email=document.getElementById('email').value.trim();
-    var selected=[].slice.call(document.querySelectorAll('.check input:checked')).map(function(i){return i.value;});
-
     if(!reason)return;
 
-    var subject='Munjez Uninstall Feedback';
-    var body=[
-      'Reason: '+reason,
-      'Come back if: '+(selected.length?selected.join(', '):'Not specified'),
-      'Details: '+(details||'N/A'),
-      'User email: '+(email||'N/A')
-    ].join('\n');
+    var oldText=submitBtn.textContent;
+    submitBtn.disabled=true;
+    submitBtn.textContent='Sending...';
 
-    var mailto='mailto:munjezsupport@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-    window.location.href=mailto;
-    done.classList.add('on');
+    var formData=new FormData(form);
+    fetch('https://formsubmit.co/ajax/munjezsupport@gmail.com',{
+      method:'POST',
+      body:formData,
+      headers:{'Accept':'application/json'}
+    })
+    .then(function(res){return res.json();})
+    .then(function(data){
+      if(data && (data.success===true || data.success==='true')){
+        form.reset();
+        done.classList.add('on');
+      }else{
+        alert('Could not send feedback right now. Please try Email directly.');
+      }
+    })
+    .catch(function(){
+      alert('Could not send feedback right now. Please try Email directly.');
+    })
+    .finally(function(){
+      submitBtn.disabled=false;
+      submitBtn.textContent=oldText;
+    });
   });
 })();
 </script>
