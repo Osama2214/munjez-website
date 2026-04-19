@@ -355,10 +355,14 @@ nav ul a:hover{color:var(--text)}
 .dl-sec h2{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-3px;margin-bottom:18px;line-height:1}
 .dl-sec h2 span{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .dl-sec>.dl-inner>p{font-size:17px;color:var(--muted);margin-bottom:44px;line-height:1.7}
+.dl-actions{
+  max-width:360px;margin:0 auto;
+  display:grid;gap:12px;
+}
 .dl-btn{
   display:inline-flex;flex-direction:column;align-items:center;gap:5px;
   background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;text-decoration:none;
-  padding:20px 60px;border-radius:16px;font-size:18px;font-weight:700;
+  width:100%;padding:20px 24px;border-radius:16px;font-size:18px;font-weight:700;
   box-shadow:0 0 0 1px rgba(124,58,237,.4),0 8px 40px rgba(124,58,237,.5),0 0 80px rgba(124,58,237,.2);
   transition:transform .2s,box-shadow .2s;
   position:relative;overflow:hidden;
@@ -372,10 +376,10 @@ nav ul a:hover{color:var(--text)}
 .dl-btn small{font-size:12px;font-weight:400;opacity:.65;letter-spacing:.3px}
 .dl-btn.dl-disabled{
   background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.35);
-  box-shadow:none;color:var(--text);cursor:not-allowed;pointer-events:none;
+  box-shadow:none;color:var(--text);cursor:not-allowed;pointer-events:none;opacity:.9;
 }
 .dl-btn.dl-disabled:hover{transform:none;box-shadow:none}
-.dl-meta{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:36px;flex-wrap:wrap}
+.dl-meta{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap}
 .dl-meta span{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
 .dl-meta span svg{color:var(--green)}
 
@@ -735,15 +739,18 @@ footer a:hover{color:#c4b5fd}
     <div class="label" style="justify-content:center">Download</div>
     <h2 class="fu">Ready to get<br><span>things done?</span></h2>
     <p class="fu">Free, fast, and completely offline. No account. No subscription. Just you and your goals.</p>
-    <a class="dl-btn fu" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows
-      <small>Free Â· Windows 10 / 11</small>
-    </a>    <a class="dl-btn dl-disabled fu" href="#" aria-disabled="true">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Linux (Soon)
-      <small>Link will be added when release is ready</small>
-    </a>
+    <div class="dl-actions">
+      <a class="dl-btn fu" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+        <small>Free · Windows 10 / 11</small>
+      </a>
+      <a class="dl-btn dl-disabled fu" href="#" aria-disabled="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Linux (Soon)
+        <small>Link will be added when release is ready</small>
+      </a>
+    </div>
     <div class="dl-meta fu">
       <span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -922,6 +929,9 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
 <div id="lb" onclick="lbClose()"><button id="lb-close" onclick="event.stopPropagation();lbClose()">&#10005;</button><img id="lb-img" src="" alt="" onclick="event.stopPropagation();lbClose()"/></div>
 </body>
 </html>
+
+
+
 
 
 
