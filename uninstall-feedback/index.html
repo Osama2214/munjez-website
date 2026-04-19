@@ -47,32 +47,39 @@ body{
 .row{margin-top:16px}
 .row:first-child{margin-top:0}
 label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
-input,textarea,select{
+input,textarea{
   width:100%;border:1px solid var(--border);background:rgba(12,18,35,.85);color:var(--text);
   border-radius:14px;padding:11px 12px;font:inherit;
 }
-select{
-  appearance:none;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  padding-right:42px;
+input:focus,textarea:focus{
+  outline:none;border-color:rgba(124,58,237,.65);box-shadow:0 0 0 3px rgba(124,58,237,.18);
+}
+.custom-select{position:relative}
+.custom-select-trigger{
+  width:100%;border:1px solid var(--border);background:rgba(12,18,35,.85);color:var(--text);
+  border-radius:14px;padding:11px 42px 11px 12px;font:inherit;text-align:left;cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;
+}
+.custom-select.open .custom-select-trigger{
+  border-color:rgba(124,58,237,.65);box-shadow:0 0 0 3px rgba(124,58,237,.18);
+}
+.custom-select-trigger::after{
+  content:'';position:absolute;right:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5l5 5 5-5' stroke='%23c4b5fd' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-size:18px 18px;
-  background-position:right 14px center;
+  background-repeat:no-repeat;background-size:18px 18px;pointer-events:none;
 }
-select:focus{
-  outline:none;
-  border-color:rgba(124,58,237,.65);
-  box-shadow:0 0 0 3px rgba(124,58,237,.18);
+.custom-select-menu{
+  position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:30;
+  background:#0f172a;border:1px solid rgba(124,58,237,.45);border-radius:14px;
+  box-shadow:0 20px 45px rgba(0,0,0,.45);padding:6px;display:none;
 }
-select option{
-  background:#0f172a;
-  color:#e2e8f0;
+.custom-select.open .custom-select-menu{display:block}
+.custom-option{
+  width:100%;border:0;background:transparent;color:var(--text);font:inherit;text-align:left;
+  padding:10px 12px;border-radius:10px;cursor:pointer;
 }
-select option[value=""]{
-  color:#94a3b8;
-}
+.custom-option:hover{background:rgba(124,58,237,.14)}
+.custom-option.on{background:rgba(124,58,237,.24)}
 textarea{min-height:130px;resize:vertical}
 .checks{display:grid;gap:9px}
 .check{
@@ -117,15 +124,19 @@ textarea{min-height:130px;resize:vertical}
       <form id="feedbackForm" action="https://formsubmit.co/munjezsupport@gmail.com" method="POST">
         <div class="row">
           <label for="reason">Main reason for uninstalling</label>
-          <select id="reason" name="reason" required>
-            <option value="">Select a reason</option>
-            <option value="bugs">Too many bugs</option>
-            <option value="missing-features">Missing features</option>
-            <option value="performance">Performance issues</option>
-            <option value="ui">UI/UX not suitable</option>
-            <option value="switching">Switching to another app</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="custom-select" id="reasonSelect">
+            <button type="button" class="custom-select-trigger" id="reasonTrigger" aria-haspopup="listbox" aria-expanded="false">Select a reason</button>
+            <div class="custom-select-menu" role="listbox" aria-label="Main reason for uninstalling">
+              <button type="button" class="custom-option on" data-value="">Select a reason</button>
+              <button type="button" class="custom-option" data-value="bugs">Too many bugs</button>
+              <button type="button" class="custom-option" data-value="missing-features">Missing features</button>
+              <button type="button" class="custom-option" data-value="performance">Performance issues</button>
+              <button type="button" class="custom-option" data-value="ui">UI/UX not suitable</button>
+              <button type="button" class="custom-option" data-value="switching">Switching to another app</button>
+              <button type="button" class="custom-option" data-value="other">Other</button>
+            </div>
+          </div>
+          <input type="hidden" id="reason" name="reason" value="" required/>
         </div>
 
         <div class="row">
@@ -171,6 +182,9 @@ textarea{min-height:130px;resize:vertical}
   var done=document.getElementById('done');
   var next=document.getElementById('nextUrl');
   var reason=document.getElementById('reason');
+  var reasonSelect=document.getElementById('reasonSelect');
+  var reasonTrigger=document.getElementById('reasonTrigger');
+  var reasonOptions=[].slice.call(document.querySelectorAll('.custom-option'));
   var reasonText=document.getElementById('reasonText');
   var comeBackText=document.getElementById('comeBackText');
   var summaryText=document.getElementById('summaryText');
@@ -183,8 +197,41 @@ textarea{min-height:130px;resize:vertical}
     done.classList.add('on');
   }
 
-  form.addEventListener('submit',function(){
-    var selectedReason=reason && reason.options[reason.selectedIndex] ? reason.options[reason.selectedIndex].text : 'Not selected';
+  if(reasonSelect && reasonTrigger && reason){
+    reasonTrigger.addEventListener('click',function(){
+      var isOpen=reasonSelect.classList.contains('open');
+      reasonSelect.classList.toggle('open',!isOpen);
+      reasonTrigger.setAttribute('aria-expanded',String(!isOpen));
+    });
+
+    reasonOptions.forEach(function(opt){
+      opt.addEventListener('click',function(){
+        reason.value=opt.dataset.value||'';
+        reasonTrigger.textContent=opt.textContent;
+        reasonOptions.forEach(function(o){o.classList.remove('on');});
+        opt.classList.add('on');
+        reasonSelect.classList.remove('open');
+        reasonTrigger.setAttribute('aria-expanded','false');
+      });
+    });
+
+    document.addEventListener('click',function(e){
+      if(!reasonSelect.contains(e.target)){
+        reasonSelect.classList.remove('open');
+        reasonTrigger.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  form.addEventListener('submit',function(e){
+    if(reason && !reason.value){
+      e.preventDefault();
+      if(reasonTrigger){
+        reasonTrigger.focus();
+      }
+      return;
+    }
+    var selectedReason=reasonTrigger ? reasonTrigger.textContent.trim() : 'Not selected';
     var checkedOptions=[].slice.call(form.querySelectorAll('input[name="come_back[]"]:checked'))
       .map(function(input){
         var label=input.closest('label');
