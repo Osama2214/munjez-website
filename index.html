@@ -304,6 +304,34 @@ nav ul a:hover{color:var(--text)}
   display:block;height:16px;flex:1;border-radius:999px;border:1px solid rgba(255,255,255,.16);
 }
 
+@media(min-width:901px){
+  .themes-wrap{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start;
+    align-items:center;
+    gap:22px;
+  }
+  .themes-wrap > .fu:first-child{
+    width:min(100%,760px);
+  }
+  .themes-wrap > .fu:last-child{
+    width:min(100%,1240px);
+  }
+  .theme-grid{
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    grid-template-rows:repeat(2,minmax(78px,auto));
+    grid-auto-flow:column;
+    width:100%;
+    gap:12px;
+    align-content:start;
+  }
+  .theme-card{padding:10px;min-height:78px}
+  .theme-name{font-size:11.5px}
+  .theme-swatches{gap:6px;margin-top:7px}
+  .theme-swatches span{height:14px}
+}
+
 /* SUPPORT */
 .support-wrap{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-top:46px;align-items:start}
 .support-card{
@@ -747,7 +775,6 @@ footer{
           <div class="theme-card active"><div class="theme-head"><span class="theme-name">Dark Theme</span><span class="theme-check">&#10003;</span></div><div class="theme-swatches"><span style="background:#0F172A;border-color:#1E293B"></span><span style="background:#1E293B;border-color:#334155"></span><span style="background:#334155;border-color:#475569"></span><span style="background:#475569;border-color:#64748B"></span></div></div>
           <div class="theme-card"><div class="theme-head"><span class="theme-name">Midnight Theme</span></div><div class="theme-swatches"><span style="background:#08090B;border-color:#3A4356"></span><span style="background:#111317;border-color:#4A546A"></span><span style="background:#2C323C;border-color:#61708B"></span><span style="background:#8D96A3;border-color:#BAC3CE"></span></div></div>
           <div class="theme-card"><div class="theme-head"><span class="theme-name">Ocean Theme</span></div><div class="theme-swatches"><span style="background:#222831;border-color:#556277"></span><span style="background:#393E46;border-color:#687488"></span><span style="background:#00ADB5;border-color:#59D8DF"></span><span style="background:#EEEEEE;border-color:#FFFFFF"></span></div></div>
-          <div class="theme-card"><div class="theme-head"><span class="theme-name">Violet Theme</span></div><div class="theme-swatches"><span style="background:#17153B;border-color:#231F55"></span><span style="background:#2E236C;border-color:#3B2D82"></span><span style="background:#433D8B;border-color:#5651A2"></span><span style="background:#C8ACD6;border-color:#B89BC7"></span></div></div>
           <div class="theme-card"><div class="theme-head"><span class="theme-name">Lilac Theme</span></div><div class="theme-swatches"><span style="background:#2A2438;border-color:#3A324D"></span><span style="background:#352F44;border-color:#463E58"></span><span style="background:#5C5470;border-color:#6C6383"></span><span style="background:#DBD8E3;border-color:#C9C5D4"></span></div></div>
           <div class="theme-card"><div class="theme-head"><span class="theme-name">Iris Theme</span></div><div class="theme-swatches"><span style="background:#6367FF;border-color:#565BEF"></span><span style="background:#8494FF;border-color:#7484EE"></span><span style="background:#C9BEFF;border-color:#B6AAEE"></span><span style="background:#FFDBFD;border-color:#EEC8EC"></span></div></div>
           <div class="theme-card"><div class="theme-head"><span class="theme-name">Coast Theme</span></div><div class="theme-swatches"><span style="background:#81A6C6;border-color:#6F93B3"></span><span style="background:#AACDDC;border-color:#95B8C7"></span><span style="background:#D2C4B4;border-color:#BDAF9F"></span><span style="background:#F3E3D0;border-color:#DDCEBC"></span></div></div>
