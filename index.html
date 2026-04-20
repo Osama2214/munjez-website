@@ -1026,16 +1026,23 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
     return 'screenshots/themes/'+encodeURIComponent(themeName)+'.webp';
   }
   var preloadCache=Object.create(null);
+  var previewSwapToken=0;
   function preloadThemeImage(themeName,priority){
-    if(!themeName)return Promise.resolve();
+    if(!themeName)return Promise.resolve(null);
     var src=themeImagePath(themeName);
     if(preloadCache[src])return preloadCache[src];
     preloadCache[src]=new Promise(function(resolve){
       var img=new Image();
       img.decoding='async';
       try{img.fetchPriority=priority||'auto';}catch(_){}
-      img.onload=function(){resolve();};
-      img.onerror=function(){resolve();};
+      img.onload=function(){
+        if(typeof img.decode==='function'){
+          img.decode().catch(function(){}).then(function(){resolve(img);});
+          return;
+        }
+        resolve(img);
+      };
+      img.onerror=function(){resolve(null);};
       img.src=src;
     });
     return preloadCache[src];
@@ -1043,14 +1050,23 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
 
   function selectCard(card,save){
     var selectedName=getName(card);
+    var selectedSrc=themeImagePath(selectedName);
     cards.forEach(function(c){
       var active=(c===card);
       c.classList.toggle('active',active);
       c.setAttribute('aria-pressed',active?'true':'false');
     });
     if(previewImg && selectedName){
-      previewImg.src=themeImagePath(selectedName);
       previewImg.alt=selectedName+' Preview';
+      var reqId=++previewSwapToken;
+      if(previewImg.getAttribute('src')===selectedSrc){
+        // Already visible; avoid redundant reassign that can cause flicker.
+      }else{
+        preloadThemeImage(selectedName,'high').then(function(loadedImg){
+          if(!loadedImg || reqId!==previewSwapToken)return;
+          previewImg.src=selectedSrc;
+        });
+      }
     }
     if(save){
       try{localStorage.setItem(storageKey,selectedName);}catch(_){}
