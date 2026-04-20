@@ -1026,13 +1026,14 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
     return 'screenshots/themes/'+encodeURIComponent(themeName)+'.webp';
   }
   var preloadCache=Object.create(null);
-  function preloadThemeImage(themeName){
+  function preloadThemeImage(themeName,priority){
     if(!themeName)return Promise.resolve();
     var src=themeImagePath(themeName);
     if(preloadCache[src])return preloadCache[src];
     preloadCache[src]=new Promise(function(resolve){
       var img=new Image();
       img.decoding='async';
+      try{img.fetchPriority=priority||'auto';}catch(_){}
       img.onload=function(){resolve();};
       img.onerror=function(){resolve();};
       img.src=src;
@@ -1056,16 +1057,27 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
     }
   }
 
-  // Warm theme preview images so first click feels instant.
+  // Preload all theme preview images immediately on page open.
   var allThemeNames=cards.map(getName).filter(Boolean);
+  function addPreloadHints(){
+    var head=document.head||document.getElementsByTagName('head')[0];
+    if(!head)return;
+    allThemeNames.forEach(function(name){
+      var href=themeImagePath(name);
+      if(head.querySelector('link[data-theme-preload=\"'+href+'\"]'))return;
+      var link=document.createElement('link');
+      link.rel='preload';
+      link.as='image';
+      link.href=href;
+      link.setAttribute('data-theme-preload',href);
+      head.appendChild(link);
+    });
+  }
   function warmThemeImages(){
-    allThemeNames.forEach(function(name){preloadThemeImage(name);});
+    allThemeNames.forEach(function(name){preloadThemeImage(name,'high');});
   }
-  if(window.requestIdleCallback){
-    window.requestIdleCallback(warmThemeImages,{timeout:1200});
-  }else{
-    setTimeout(warmThemeImages,250);
-  }
+  addPreloadHints();
+  warmThemeImages();
 
   cards.forEach(function(card){
     card.addEventListener('click',function(){selectCard(card,true);});
@@ -1087,7 +1099,7 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
 
   var initial=cards.find(function(c){return c.classList.contains('active');}) || cards[0];
   if(initial){
-    preloadThemeImage(getName(initial));
+    preloadThemeImage(getName(initial),'high');
     selectCard(initial,false);
   }
 })();
