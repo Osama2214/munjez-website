@@ -999,6 +999,11 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
   var cards=Array.prototype.slice.call(document.querySelectorAll('.theme-grid .theme-card'));
   if(!cards.length)return;
   var previewImg=document.getElementById('theme-preview-image');
+  if(previewImg){
+    previewImg.loading='eager';
+    previewImg.decoding='async';
+    try{previewImg.fetchPriority='high';}catch(_){}
+  }
 
   var storageKey='selected_theme_card_name_v1';
 
@@ -1022,6 +1027,20 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
   function themeImagePath(themeName){
     return 'screenshots/themes/'+encodeURIComponent(themeName)+'.png';
   }
+  var preloadCache=Object.create(null);
+  function preloadThemeImage(themeName){
+    if(!themeName)return Promise.resolve();
+    var src=themeImagePath(themeName);
+    if(preloadCache[src])return preloadCache[src];
+    preloadCache[src]=new Promise(function(resolve){
+      var img=new Image();
+      img.decoding='async';
+      img.onload=function(){resolve();};
+      img.onerror=function(){resolve();};
+      img.src=src;
+    });
+    return preloadCache[src];
+  }
 
   function selectCard(card,save){
     var selectedName=getName(card);
@@ -1037,6 +1056,17 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
     if(save){
       try{localStorage.setItem(storageKey,selectedName);}catch(_){}
     }
+  }
+
+  // Warm theme preview images so first click feels instant.
+  var allThemeNames=cards.map(getName).filter(Boolean);
+  function warmThemeImages(){
+    allThemeNames.forEach(function(name){preloadThemeImage(name);});
+  }
+  if(window.requestIdleCallback){
+    window.requestIdleCallback(warmThemeImages,{timeout:1200});
+  }else{
+    setTimeout(warmThemeImages,250);
   }
 
   cards.forEach(function(card){
@@ -1058,7 +1088,10 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
   }catch(_){}
 
   var initial=cards.find(function(c){return c.classList.contains('active');}) || cards[0];
-  if(initial)selectCard(initial,false);
+  if(initial){
+    preloadThemeImage(getName(initial));
+    selectCard(initial,false);
+  }
 })();
 
 // ── TABS ──
