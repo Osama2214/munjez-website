@@ -288,15 +288,21 @@ nav ul a:hover{color:var(--text)}
 .themes-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
 .themes-wrap img{width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .3s}
 .themes-wrap img:hover{transform:scale(1.02)}
-.theme-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chip{
-  display:flex;align-items:center;gap:10px;padding:10px 12px;
-  background:var(--card);border-radius:9px;border:1px solid var(--border);
-  font-size:12.5px;font-weight:600;color:var(--text);
-  transition:border-color .2s,background .2s,transform .2s;cursor:default;
+.theme-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.theme-card{
+  background:rgba(16,24,39,.82);border:1px solid var(--border);border-radius:14px;
+  padding:12px;min-height:86px;transition:border-color .2s,background .2s,transform .2s;cursor:pointer;
 }
-.chip:hover{border-color:var(--border-h);background:var(--card-h);transform:translateY(-2px)}
-.chip-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0}
+.theme-card:hover{border-color:var(--border-h);background:rgba(20,31,50,.86);transform:translateY(-2px)}
+.theme-card.active{border-color:rgba(124,58,237,.55);background:rgba(124,58,237,.18)}
+.theme-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-name{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.2}
+.theme-check{font-size:12px;color:#c4b5fd;font-weight:800;visibility:hidden}
+.theme-card.active .theme-check{visibility:visible}
+.theme-swatches{display:flex;gap:7px;margin-top:8px}
+.theme-swatches span{
+  display:block;height:16px;flex:1;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+}
 
 /* SUPPORT */
 .support-wrap{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-top:46px;align-items:start}
@@ -449,7 +455,7 @@ footer{
   .feat-grid{grid-template-columns:1fr}
   .focus-grid{grid-template-columns:1fr}
   .themes-wrap{grid-template-columns:1fr}
-  .theme-chips{grid-template-columns:repeat(2,1fr)}
+  .theme-grid{grid-template-columns:repeat(2,1fr)}
   .support-wrap{grid-template-columns:1fr}
   .support-actions{grid-template-columns:1fr 1fr;max-width:100%}
 }
@@ -737,16 +743,23 @@ footer{
     <div class="themes-wrap">
       <div class="fu"><img src="screenshots/themes-dark.png" alt="Theme Selection"/></div>
       <div class="fu">
-        <div class="theme-chips">
-          <div class="chip"><span class="chip-dot" style="background:#7c3aed"></span>Purple</div>
-          <div class="chip"><span class="chip-dot" style="background:#3b82f6"></span>Blue</div>
-          <div class="chip"><span class="chip-dot" style="background:#10b981"></span>Green</div>
-          <div class="chip"><span class="chip-dot" style="background:#ef4444"></span>Red</div>
-          <div class="chip"><span class="chip-dot" style="background:#f59e0b"></span>Orange</div>
-          <div class="chip"><span class="chip-dot" style="background:#ec4899"></span>Pink</div>
-          <div class="chip"><span class="chip-dot" style="background:#06b6d4"></span>Cyan</div>
-          <div class="chip"><span class="chip-dot" style="background:#84cc16"></span>Lime</div>
-          <div class="chip"><span class="chip-dot" style="background:#f97316"></span>Amber</div>
+        <div class="theme-grid">
+          <div class="theme-card active"><div class="theme-head"><span class="theme-name">Dark Theme</span><span class="theme-check">&#10003;</span></div><div class="theme-swatches"><span style="background:#0F172A;border-color:#1E293B"></span><span style="background:#1E293B;border-color:#334155"></span><span style="background:#334155;border-color:#475569"></span><span style="background:#475569;border-color:#64748B"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Midnight Theme</span></div><div class="theme-swatches"><span style="background:#08090B;border-color:#3A4356"></span><span style="background:#111317;border-color:#4A546A"></span><span style="background:#2C323C;border-color:#61708B"></span><span style="background:#8D96A3;border-color:#BAC3CE"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Ocean Theme</span></div><div class="theme-swatches"><span style="background:#222831;border-color:#556277"></span><span style="background:#393E46;border-color:#687488"></span><span style="background:#00ADB5;border-color:#59D8DF"></span><span style="background:#EEEEEE;border-color:#FFFFFF"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Violet Theme</span></div><div class="theme-swatches"><span style="background:#17153B;border-color:#231F55"></span><span style="background:#2E236C;border-color:#3B2D82"></span><span style="background:#433D8B;border-color:#5651A2"></span><span style="background:#C8ACD6;border-color:#B89BC7"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Lilac Theme</span></div><div class="theme-swatches"><span style="background:#2A2438;border-color:#3A324D"></span><span style="background:#352F44;border-color:#463E58"></span><span style="background:#5C5470;border-color:#6C6383"></span><span style="background:#DBD8E3;border-color:#C9C5D4"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Iris Theme</span></div><div class="theme-swatches"><span style="background:#6367FF;border-color:#565BEF"></span><span style="background:#8494FF;border-color:#7484EE"></span><span style="background:#C9BEFF;border-color:#B6AAEE"></span><span style="background:#FFDBFD;border-color:#EEC8EC"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Coast Theme</span></div><div class="theme-swatches"><span style="background:#81A6C6;border-color:#6F93B3"></span><span style="background:#AACDDC;border-color:#95B8C7"></span><span style="background:#D2C4B4;border-color:#BDAF9F"></span><span style="background:#F3E3D0;border-color:#DDCEBC"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Light Theme</span></div><div class="theme-swatches" style="flex-direction:row-reverse"><span style="background:#F8FAFC;border-color:#CBD5E1"></span><span style="background:#E2E8F0;border-color:#CBD5E1"></span><span style="background:#CBD5E1;border-color:#94A3B8"></span><span style="background:#B6C2D3;border-color:#90A4BC"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Blush Theme</span></div><div class="theme-swatches" style="flex-direction:row-reverse"><span style="background:#FCF8F8;border-color:#EADDDD"></span><span style="background:#FBEFEF;border-color:#E6D8D8"></span><span style="background:#F9DFDF;border-color:#E6C9C9"></span><span style="background:#F5AFAF;border-color:#E29393"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Rose Theme</span></div><div class="theme-swatches"><span style="background:#E36A6A;border-color:#C85959"></span><span style="background:#FFB2B2;border-color:#F09C9C"></span><span style="background:#FFE6EE;border-color:#EBCFD7"></span><span style="background:#FFF8FB;border-color:#F0D8CF"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Olive Theme</span></div><div class="theme-swatches"><span style="background:#4B5120;border-color:#3F451A"></span><span style="background:#A9B285;border-color:#939B72"></span><span style="background:#D1C9A9;border-color:#BDB38F"></span><span style="background:#E2DDCA;border-color:#CDC7B3"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Earth Theme</span></div><div class="theme-swatches"><span style="background:#A98B76;border-color:#957866"></span><span style="background:#BFA28C;border-color:#A98E7B"></span><span style="background:#E8D8C2;border-color:#D5C2A9"></span><span style="background:#F3E4C9;border-color:#DCCCB1"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Cocoa Theme</span></div><div class="theme-swatches"><span style="background:#4B2E2B;border-color:#5D3A35"></span><span style="background:#8C5A3C;border-color:#774A31"></span><span style="background:#C08552;border-color:#A76F43"></span><span style="background:#FFF8F0;border-color:#E7D7C7"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Mint Theme</span></div><div class="theme-swatches"><span style="background:#091413;border-color:#102322"></span><span style="background:#285A48;border-color:#214B3C"></span><span style="background:#408A71;border-color:#36745F"></span><span style="background:#ECF8F2;border-color:#CFE8DB"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Ember Theme</span></div><div class="theme-swatches"><span style="background:#5E0006;border-color:#4A0005"></span><span style="background:#9B0F06;border-color:#840D05"></span><span style="background:#D53E0F;border-color:#B8360D"></span><span style="background:#EED9B9;border-color:#D8C4A7"></span></div></div>
+          <div class="theme-card"><div class="theme-head"><span class="theme-name">Custom Theme</span></div><div class="theme-swatches"><span style="background:#0B0D12;border-color:#171B23"></span><span style="background:#171B23;border-color:#2A313D"></span><span style="background:#2A313D;border-color:#7E8DA3"></span><span style="background:#7E8DA3;border-color:#2A313D"></span></div></div>
         </div>
       </div>
     </div>
@@ -954,6 +967,64 @@ var obs=new IntersectionObserver(function(entries){
 },{threshold:.1});
 document.querySelectorAll('.fu,[data-count]').forEach(function(el){obs.observe(el)});
 document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
+
+// THEME CARDS SELECT
+(function(){
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.theme-grid .theme-card'));
+  if(!cards.length)return;
+
+  var storageKey='selected_theme_card_name_v1';
+
+  cards.forEach(function(card){
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-pressed',card.classList.contains('active')?'true':'false');
+    var head=card.querySelector('.theme-head');
+    if(head && !head.querySelector('.theme-check')){
+      var chk=document.createElement('span');
+      chk.className='theme-check';
+      chk.innerHTML='&#10003;';
+      head.appendChild(chk);
+    }
+  });
+
+  function getName(card){
+    var n=card.querySelector('.theme-name');
+    return n?n.textContent.trim():'';
+  }
+
+  function selectCard(card,save){
+    cards.forEach(function(c){
+      var active=(c===card);
+      c.classList.toggle('active',active);
+      c.setAttribute('aria-pressed',active?'true':'false');
+    });
+    if(save){
+      try{localStorage.setItem(storageKey,getName(card));}catch(_){}
+    }
+  }
+
+  cards.forEach(function(card){
+    card.addEventListener('click',function(){selectCard(card,true);});
+    card.addEventListener('keydown',function(e){
+      if(e.key==='Enter' || e.key===' '){
+        e.preventDefault();
+        selectCard(card,true);
+      }
+    });
+  });
+
+  try{
+    var saved=localStorage.getItem(storageKey);
+    if(saved){
+      var matched=cards.find(function(c){return getName(c)===saved;});
+      if(matched){selectCard(matched,false);return;}
+    }
+  }catch(_){}
+
+  var initial=cards.find(function(c){return c.classList.contains('active');}) || cards[0];
+  if(initial)selectCard(initial,false);
+})();
 
 // ── TABS ──
 function swTab(btn,id){
