@@ -329,6 +329,27 @@ nav ul a:hover{color:var(--text)}
 .support-more{margin-top:12px}
 .support-more a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:600}
 .support-more a:hover{text-decoration:underline}
+@media(min-width:901px){
+  .focus-card{
+    height:100%;
+  }
+  .focus-card .focus-card-img{
+    flex:0 0 auto;
+    min-height:0;
+    aspect-ratio:1227/985;
+    display:block;
+  }
+  .focus-card .focus-foot{
+    min-height:105px;
+  }
+  .focus-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+  }
+}
+
 
 /* ── DOWNLOAD ── */
 .dl-sec{
