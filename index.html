@@ -285,8 +285,8 @@ nav ul a:hover{color:var(--text)}
 .widget-preview img{width:100%;display:block}
 
 /* ── THEMES ── */
-.themes-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
-.themes-wrap img{width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .3s}
+.themes-wrap{display:grid;grid-template-columns:1.18fr .82fr;gap:40px;align-items:center;margin-top:48px}
+.themes-wrap img{width:100%;max-width:760px;border-radius:14px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.6);transition:transform .3s}
 .themes-wrap img:hover{transform:scale(1.02)}
 .theme-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .theme-card{
@@ -741,7 +741,7 @@ footer{
     <h2 class="ttl fu">Make it yours</h2>
     <p class="desc fu">Switch between beautiful color themes to match your mood and workflow.</p>
     <div class="themes-wrap">
-      <div class="fu"><img src="screenshots/themes-dark.png" alt="Theme Selection"/></div>
+      <div class="fu"><img id="theme-preview-image" src="screenshots/themes/Dark%20Theme.png" alt="Dark Theme Preview"/></div>
       <div class="fu">
         <div class="theme-grid">
           <div class="theme-card active"><div class="theme-head"><span class="theme-name">Dark Theme</span><span class="theme-check">&#10003;</span></div><div class="theme-swatches"><span style="background:#0F172A;border-color:#1E293B"></span><span style="background:#1E293B;border-color:#334155"></span><span style="background:#334155;border-color:#475569"></span><span style="background:#475569;border-color:#64748B"></span></div></div>
@@ -971,6 +971,7 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
 (function(){
   var cards=Array.prototype.slice.call(document.querySelectorAll('.theme-grid .theme-card'));
   if(!cards.length)return;
+  var previewImg=document.getElementById('theme-preview-image');
 
   var storageKey='selected_theme_card_name_v1';
 
@@ -991,15 +992,23 @@ document.querySelectorAll('.stat').forEach(function(el){obs.observe(el)});
     var n=card.querySelector('.theme-name');
     return n?n.textContent.trim():'';
   }
+  function themeImagePath(themeName){
+    return 'screenshots/themes/'+encodeURIComponent(themeName)+'.png';
+  }
 
   function selectCard(card,save){
+    var selectedName=getName(card);
     cards.forEach(function(c){
       var active=(c===card);
       c.classList.toggle('active',active);
       c.setAttribute('aria-pressed',active?'true':'false');
     });
+    if(previewImg && selectedName){
+      previewImg.src=themeImagePath(selectedName);
+      previewImg.alt=selectedName+' Preview';
+    }
     if(save){
-      try{localStorage.setItem(storageKey,getName(card));}catch(_){}
+      try{localStorage.setItem(storageKey,selectedName);}catch(_){}
     }
   }
 
