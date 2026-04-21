@@ -524,7 +524,7 @@ footer{
     <li><a href="#support">Support</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
-  <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="">
+  <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="https://github.com/Osama2214/munjez-releases/releases/latest">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download Free
   </a>
@@ -549,9 +549,9 @@ footer{
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download for Windows 10 / 11
     </a>
-    <a class="btn-main btn-disabled" href="#" aria-disabled="true">
+    <a class="btn-main" id="hero-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Linux (Soon)
+      Download for Linux
     </a>
   </div>
   <p class="hero-note">Free forever</p>
@@ -845,9 +845,10 @@ footer{
         Download for Windows
         <small>Free &middot; Windows 10 / 11</small>
       </a>
-      <a class="dl-btn dl-disabled fu" href="#" aria-disabled="true">
+      <a class="dl-btn fu" id="section-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download for Linux (Soon)
+        Download for Linux
+        <small>AppImage &middot; DEB &middot; RPM</small>
       </a>
     </div>
     <div class="dl-meta fu">
@@ -991,6 +992,55 @@ footer{
 })();
 // SMART DOWNLOAD BUTTON (WINDOWS / LINUX)
 (function(){
+  var linuxManifestUrl='https://github.com/Osama2214/munjez-releases/releases/latest/download/latest-linux.json';
+  var linuxReleaseFallback='https://github.com/Osama2214/munjez-releases/releases/latest';
+  var navBtn=document.getElementById('nav-smart-download');
+  var heroLinuxBtn=document.getElementById('hero-linux-download');
+  var sectionLinuxBtn=document.getElementById('section-linux-download');
+
+  function pickLinuxUrlFromManifest(data){
+    if(!data || typeof data!=='object' || !data.platforms || typeof data.platforms!=='object'){
+      return '';
+    }
+    var keys=Object.keys(data.platforms);
+    if(!keys.length)return '';
+    var preferred=['linux-x86_64','linux-x86_64-gnu','linux-amd64'];
+    for(var i=0;i<preferred.length;i++){
+      var k=preferred[i];
+      if(data.platforms[k] && data.platforms[k].url)return data.platforms[k].url;
+    }
+    for(var j=0;j<keys.length;j++){
+      var key=keys[j];
+      if(key.indexOf('linux')===0 && data.platforms[key] && data.platforms[key].url){
+        return data.platforms[key].url;
+      }
+    }
+    return '';
+  }
+
+  function applyLinuxUrl(url){
+    var finalUrl=url||linuxReleaseFallback;
+    if(navBtn){
+      navBtn.dataset.linuxUrl=finalUrl;
+    }
+    [heroLinuxBtn,sectionLinuxBtn].forEach(function(el){
+      if(!el)return;
+      el.href=finalUrl;
+      el.removeAttribute('aria-disabled');
+      el.classList.remove('btn-disabled');
+      el.classList.remove('dl-disabled');
+    });
+  }
+
+  applyLinuxUrl(linuxReleaseFallback);
+  fetch(linuxManifestUrl,{cache:'no-store'})
+    .then(function(res){return res.ok?res.json():null;})
+    .then(function(json){
+      var resolved=pickLinuxUrlFromManifest(json);
+      if(resolved)applyLinuxUrl(resolved);
+    })
+    .catch(function(){});
+
   var btn=document.getElementById('nav-smart-download');
   if(!btn)return;
 
