@@ -155,6 +155,42 @@ main{flex:1}
       </div>
     </div>
   </div>
+
+  <div class="scenario" id="sc3">
+    <div class="scenario-hd" onclick="toggle('sc3')">
+      <div class="scenario-hd-left">
+        <span class="scenario-badge">Scenario 3</span>
+        <span class="scenario-name">Browser blocked the download</span>
+      </div>
+      <svg class="scenario-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="scenario-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-label">In <strong>Chrome</strong>: open the downloads bar → click <strong>⋮</strong> next to the file → <strong>Keep</strong></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-label">A second prompt appears — click <strong>Keep anyway</strong></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-label">In <strong>Edge</strong>: click <strong>...</strong> → <strong>Keep</strong> → <strong>Show more</strong> → <strong>Keep anyway</strong></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><div class="step-label">Run the installer — Windows may then show a SmartScreen warning, follow <strong>Scenario 1</strong> above</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <script>
