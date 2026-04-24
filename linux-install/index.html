@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Installing on Linux | Munjez</title>
+<meta name="description" content="Install Munjez on Linux — choose your package format (.deb, .rpm, or .AppImage) and follow the setup commands."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Installing Munjez on Linux"/>
+<meta property="og:description" content="Install Munjez on Linux — choose your package format (.deb, .rpm, or .AppImage) and follow the setup commands."/>
+<meta property="og:image" content="../screenshots/task/task-01.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Installing Munjez on Linux"/>
+<meta name="twitter:description" content="Install Munjez on Linux — choose your package format (.deb, .rpm, or .AppImage) and follow the setup commands."/>
+<meta name="twitter:image" content="../screenshots/task/task-01.png"/>
+<link rel="icon" type="image/png" href="../screenshots/icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070c18;--surface:#0c1223;--card:#101827;--card-h:#141f32;--border:#1a2d4a;
+  --primary:#7c3aed;--primary-h:#6d28d9;--text:#e2e8f0;--muted:#93a3ba;--accent:#a78bfa;
+  --green:#10b981;--orange:#f59e0b;
+}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(124,58,237,.2),transparent 70%),var(--bg);
+  color:var(--text);line-height:1.7;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+main{flex:1}
+.top{position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
+.top-in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.logo img{width:30px;height:30px;border-radius:8px}
+.back{text-decoration:none;background:var(--primary);border:1px solid var(--primary);color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:.2s}
+.back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 20px 80px}
+
+/* hero */
+.dl-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green);padding:7px 18px;border-radius:100px;font-size:13px;font-weight:700;margin-bottom:22px}
+.dl-badge svg{animation:bounce-dl 1.2s ease infinite}
+@keyframes bounce-dl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.hero{text-align:center;padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:36px}
+.hero h1{font-size:clamp(26px,4.5vw,44px);line-height:1.1;letter-spacing:-1.4px;margin-bottom:12px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 24px}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;text-decoration:none;padding:12px 28px;border-radius:11px;font-size:14px;font-weight:700;transition:background .2s;cursor:pointer;border:none}
+.dl-btn:hover{background:var(--primary-h)}
+
+/* hint */
+.hint{display:flex;flex-direction:column;gap:7px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:12px 16px;margin-bottom:28px}
+.hint-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.hint-num{width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.25);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint-row span{color:var(--accent);font-family:'Courier New',monospace;font-size:11.5px;background:rgba(124,58,237,.15);padding:1px 6px;border-radius:4px;white-space:nowrap}
+
+/* install section */
+.section-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.code-block{background:#060b17;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:28px}
+.cmd-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0}
+.cmd-row+.cmd-row{border-top:1px solid rgba(26,45,74,.5);margin-top:4px;padding-top:9px}
+.cmd-row code{font-family:'Courier New',monospace;font-size:13px;color:#c4b5fd;flex:1;min-width:0;word-break:break-all}
+.copy-btn{background:none;border:none;cursor:pointer;color:var(--muted);padding:4px 6px;border-radius:4px;transition:color .2s;flex-shrink:0;display:flex;align-items:center}
+.copy-btn:hover{color:var(--accent)}
+.copy-btn.copied{color:var(--green)}
+
+/* trouble items */
+.trouble-list{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.trouble-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.trouble-issue{display:flex;align-items:center;gap:8px;padding:11px 14px;font-size:13px;font-weight:600;color:var(--text);border-bottom:1px solid var(--border);background:var(--surface)}
+.trouble-issue svg{color:var(--orange);flex-shrink:0}
+.trouble-cmds{padding:12px 14px;background:#060b17}
+.trouble-cmds .cmd-row code{font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="../">
+      <img src="../screenshots/icon.png" alt="Munjez"/>
+      <span>Munjez</span>
+    </a>
+    <a class="back" href="../">Back to home</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div class="dl-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Your download has started!
+      </div>
+      <h1>Installing <span>Munjez</span> on Linux — <span id="fmt-label"></span></h1>
+      <p>If your browser didn't start the download, click the button below.</p>
+      <button class="dl-btn" id="dl-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download again
+      </button>
+    </section>
+
+    <div class="hint">
+      <div class="hint-row"><div class="hint-num">1</div>Download the file using the button above</div>
+      <div class="hint-row"><div class="hint-num">2</div>Right-click the download folder → <span>Open Terminal Here</span></div>
+      <div class="hint-row"><div class="hint-num">3</div>Run the installation command below</div>
+    </div>
+
+    <div class="section-title">Installation</div>
+    <div class="code-block" id="install-cmds"></div>
+
+    <div class="section-title">Troubleshooting</div>
+    <div class="trouble-list" id="trouble-list"></div>
+  </div>
+</main>
+
+<script>
+var RELEASE_BASE='https://github.com/Osama2214/munjez-releases/releases';
+var API_URL='https://api.github.com/repos/Osama2214/munjez-releases/releases/latest';
+
+var FORMAT_DATA={
+  deb:{
+    label:'.deb',
+    filename:function(v){return'Munjez_'+v+'_amd64.deb'},
+    install:function(v){return['sudo apt install ./Munjez_'+v+'_amd64.deb']},
+    trouble:[
+      {issue:'Missing dependencies after install',cmds:function(v){return['sudo apt -f install']}},
+      {issue:'Package configuration is broken',cmds:function(v){return['sudo dpkg --configure -a']}},
+      {issue:'Need to reinstall cleanly',cmds:function(v){return['sudo dpkg -r munjez','sudo apt install ./Munjez_'+v+'_amd64.deb']}},
+      {issue:'Permission denied when running',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
+    ]
+  },
+  rpm:{
+    label:'.rpm',
+    filename:function(v){return'Munjez-'+v+'-1.x86_64.rpm'},
+    install:function(v){return['sudo dnf install ./Munjez-'+v+'-1.x86_64.rpm']},
+    trouble:[
+      {issue:'Dependencies conflict',cmds:function(v){return['sudo dnf --allowerasing install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Need to reinstall cleanly',cmds:function(v){return['sudo rpm -e munjez','sudo dnf install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Old version still installed (openSUSE)',cmds:function(v){return['sudo zypper install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Permission denied when running',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
+    ]
+  },
+  appimage:{
+    label:'.AppImage',
+    filename:function(v){return'Munjez_'+v+'_amd64.AppImage'},
+    install:function(v){return['chmod +x Munjez_'+v+'_amd64.AppImage','./Munjez_'+v+'_amd64.AppImage']},
+    trouble:[
+      {issue:'FUSE not installed (Ubuntu / Debian)',cmds:function(v){return['sudo apt install libfuse2']}},
+      {issue:'FUSE not installed (Fedora / RHEL)',cmds:function(v){return['sudo dnf install fuse']}},
+      {issue:'Bypass FUSE entirely',cmds:function(v){return['./Munjez_'+v+'_amd64.AppImage --appimage-extract-and-run']}},
+      {issue:'File not executable',cmds:function(v){return['chmod +x Munjez_'+v+'_amd64.AppImage']}}
+    ]
+  }
+};
+
+function warnIcon(){
+  return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+}
+function copyIcon(){
+  return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+}
+
+function makeCmdRow(cmd){
+  var row=document.createElement('div');
+  row.className='cmd-row';
+  var code=document.createElement('code');
+  code.textContent=cmd;
+  var btn=document.createElement('button');
+  btn.className='copy-btn';
+  btn.innerHTML=copyIcon();
+  btn.onclick=function(){
+    navigator.clipboard&&navigator.clipboard.writeText(cmd).then(function(){
+      btn.classList.add('copied');btn.innerHTML='✓';
+      setTimeout(function(){btn.classList.remove('copied');btn.innerHTML=copyIcon();},1500);
+    });
+  };
+  row.appendChild(code);row.appendChild(btn);
+  return row;
+}
+
+function renderInstall(cmds){
+  var el=document.getElementById('install-cmds');
+  el.innerHTML='';
+  cmds.forEach(function(c){el.appendChild(makeCmdRow(c));});
+}
+
+function renderTrouble(items, ver){
+  var list=document.getElementById('trouble-list');
+  list.innerHTML='';
+  items.forEach(function(item){
+    var card=document.createElement('div');
+    card.className='trouble-item';
+    var hd=document.createElement('div');
+    hd.className='trouble-issue';
+    hd.innerHTML=warnIcon()+' '+item.issue;
+    var body=document.createElement('div');
+    body.className='trouble-cmds';
+    item.cmds(ver).forEach(function(c){body.appendChild(makeCmdRow(c));});
+    card.appendChild(hd);card.appendChild(body);
+    list.appendChild(card);
+  });
+}
+
+function init(ver){
+  var params=new URLSearchParams(window.location.search);
+  var fmt=(params.get('format')||'deb').toLowerCase();
+  var data=FORMAT_DATA[fmt]||FORMAT_DATA.deb;
+  var filename=data.filename(ver);
+  var tag='v'+ver;
+  var url=RELEASE_BASE+'/download/'+tag+'/'+filename;
+
+  document.getElementById('fmt-label').textContent=data.label;
+  document.getElementById('dl-btn').onclick=function(){window.location.href=url;};
+  renderInstall(data.install(ver));
+  renderTrouble(data.trouble, ver);
+
+  var a=document.createElement('a');
+  a.href=url;a.style.display='none';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+fetch(API_URL,{cache:'no-store'})
+  .then(function(r){return r.ok?r.json():null;})
+  .then(function(json){
+    var ver=json&&json.tag_name?json.tag_name.replace(/^v/,''):'latest';
+    init(ver);
+  })
+  .catch(function(){init('latest');});
+</script>
+</body>
+</html>
