@@ -1,0 +1,17 @@
+{
+  "name": "Munjez",
+  "short_name": "Munjez",
+  "description": "Free desktop app for task management, focus sessions, habit tracking, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070c18",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "/screenshots/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
