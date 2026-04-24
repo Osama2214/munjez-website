@@ -125,10 +125,11 @@ nav ul a:hover{color:var(--text)}
   justify-content:center;flex-wrap:wrap;
   animation:fade-up .9s ease both;animation-delay:.7s;
 }
+.cta-row .btn-main{white-space:nowrap}
 .btn-main{
   display:inline-flex;align-items:center;gap:10px;
   background:var(--primary);color:#fff;text-decoration:none;
-  padding:15px 38px;border-radius:12px;font-size:15px;font-weight:700;
+  padding:15px 28px;border-radius:12px;font-size:15px;font-weight:700;
   box-shadow:0 0 48px var(--primary-glow);
   transition:background .2s,transform .2s,box-shadow .2s;
   position:relative;overflow:hidden;
@@ -477,6 +478,128 @@ footer{
 .fu{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .fu.vis{opacity:1;transform:none}
 
+/* ── LINUX MODAL ── */
+#linux-modal{
+  position:fixed;inset:0;z-index:500;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(7,12,24,.8);backdrop-filter:blur(12px);
+}
+#linux-modal.open{display:flex}
+.lm-box{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:36px 32px;width:min(520px,92vw);
+  box-shadow:0 24px 64px rgba(0,0,0,.6);
+  transform:translateY(16px);transition:transform .25s ease;
+}
+#linux-modal.open .lm-box{transform:none}
+.lm-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.lm-title{font-size:20px;font-weight:800;color:var(--text)}
+.lm-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;padding:4px 8px;border-radius:6px;transition:color .2s,background .2s}
+.lm-close:hover{color:var(--text);background:var(--card-h)}
+.lm-ver{font-size:12px;color:var(--muted);margin-bottom:24px}
+.lm-ver span{color:var(--accent);font-weight:600}
+.lm-cards{display:flex;flex-direction:column;gap:10px}
+.lm-card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:16px 18px;transition:border-color .2s,background .2s;
+  text-decoration:none;color:var(--text);cursor:pointer;
+}
+.lm-card:hover{border-color:var(--border-h);background:var(--card-h)}
+.lm-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.lm-info{flex:1;min-width:0}
+.lm-name{font-size:15px;font-weight:700;color:var(--text)}
+.lm-desc{font-size:12.5px;color:var(--muted);margin-top:2px}
+.lm-dl-icon{color:var(--accent);flex-shrink:0}
+.lm-fallback{margin-top:16px;text-align:center;font-size:12.5px;color:var(--muted)}
+.lm-fallback a{color:var(--accent);text-decoration:none}
+.lm-fallback a:hover{text-decoration:underline}
+.lm-screen-2{display:none}
+.lm-screen-2.active{display:block}
+.lm-screen-1.hidden{display:none}
+.lm-back{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;font-weight:500;padding:0;margin-bottom:14px;transition:color .2s}
+.lm-back:hover{color:var(--text)}
+.lm-dl-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:13px;border-radius:12px;
+  background:var(--primary);color:#fff;text-decoration:none;
+  font-size:14px;font-weight:700;margin-bottom:20px;
+  transition:background .2s;
+}
+.lm-dl-btn:hover{background:var(--primary-h)}
+.lm-section-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.lm-code-block{background:#060b17;border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px}
+.lm-cmd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.lm-cmd:last-child{margin-bottom:0}
+.lm-cmd code{font-family:'Courier New',monospace;font-size:12.5px;color:#c4b5fd;flex:1;min-width:0;word-break:break-all}
+.lm-copy{background:none;border:none;cursor:pointer;color:var(--muted);padding:2px 4px;border-radius:4px;transition:color .2s;font-size:11px;flex-shrink:0}
+.lm-copy:hover{color:var(--accent)}
+.lm-hint{display:flex;flex-direction:column;gap:7px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:12px 14px;margin-bottom:18px}
+.lm-hint-row{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted)}
+.lm-hint-num{width:20px;height:20px;border-radius:50%;background:rgba(124,58,237,.25);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm-hint-row span{color:var(--accent);font-family:'Courier New',monospace;font-size:11.5px;background:rgba(124,58,237,.15);padding:1px 6px;border-radius:4px;white-space:nowrap}
+.lm-copy.copied{color:var(--green)}
+
+/* ── WINDOWS MODAL ── */
+#win-modal{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;background:rgba(7,12,24,.8);backdrop-filter:blur(12px)}
+#win-modal.open{display:flex}
+.wm-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;width:min(560px,94vw);max-height:88vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.6);transform:translateY(16px);transition:transform .25s ease}
+#win-modal.open .wm-box{transform:none}
+.wm-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.wm-title{font-size:20px;font-weight:800;color:var(--text)}
+.wm-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;padding:4px 8px;border-radius:6px;transition:color .2s,background .2s}
+.wm-close:hover{color:var(--text);background:var(--card-h)}
+.wm-dl-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border-radius:12px;background:#0078d4;color:#fff;text-decoration:none;font-size:14px;font-weight:700;margin-bottom:20px;transition:background .2s}
+.wm-dl-btn:hover{background:#106ebe}
+.wm-warn-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--orange);margin-bottom:14px}
+.wm-scenarios{display:flex;flex-direction:column;gap:10px}
+.wm-scenario{border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.wm-scenario-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;background:var(--surface);transition:background .2s;gap:12px}
+.wm-scenario-hd:hover{background:var(--card-h)}
+.wm-scenario-hd-left{display:flex;align-items:center;gap:10px;min-width:0}
+.wm-scenario-badge{background:rgba(245,158,11,.15);color:var(--orange);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.wm-scenario-name{font-size:13.5px;font-weight:600;color:var(--text)}
+.wm-scenario-arrow{color:var(--muted);transition:transform .2s;flex-shrink:0}
+.wm-scenario.open .wm-scenario-arrow{transform:rotate(180deg)}
+.wm-scenario-body{display:none;padding:16px}
+.wm-scenario.open .wm-scenario-body{display:block}
+.wm-steps{display:flex;flex-direction:column;gap:16px}
+.wm-step{display:flex;gap:12px;align-items:flex-start}
+.wm-step-num{width:24px;height:24px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.wm-step-content{flex:1;min-width:0}
+.wm-step-label{font-size:13px;color:var(--text);font-weight:500;margin-bottom:10px}
+.wm-step-label strong{color:var(--accent)}
+.wm-img{width:100%;max-width:340px;border-radius:8px;border:1px solid var(--border);display:block}
+/* SmartScreen "Run anyway" mockup */
+.ss-mock{background:#2d2d2d;border-radius:6px;padding:20px;font-family:'Segoe UI',system-ui,sans-serif;border:1px solid #444;max-width:340px}
+.ss-mock-title{color:#fff;font-size:15px;font-weight:600;margin-bottom:10px}
+.ss-mock-body{color:#bbb;font-size:12px;margin-bottom:14px;line-height:1.5}
+.ss-mock-row{display:flex;gap:8px;margin-bottom:5px}
+.ss-mock-lbl{color:#888;font-size:11.5px;min-width:75px;flex-shrink:0}
+.ss-mock-val{color:#ddd;font-size:11.5px}
+.ss-mock-btns{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+.ss-mock-run{background:#0078d4;color:#fff;border:none;padding:7px 16px;border-radius:3px;font-size:12px;font-weight:600;cursor:default;outline:2px solid #5eb3ff;outline-offset:1px}
+.ss-mock-dont{background:transparent;color:#bbb;border:1px solid #666;padding:7px 16px;border-radius:3px;font-size:12px;cursor:default}
+/* Properties/Unblock mockup */
+.prop-mock{background:#f0f0f0;border-radius:6px;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif;border:1px solid #aaa;max-width:310px;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+.prop-mock-bar{background:#e8e8e8;padding:7px 10px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #ccc}
+.prop-mock-bar-title{flex:1;font-size:11.5px;color:#333}
+.prop-mock-body{padding:14px 16px}
+.prop-mock-filename{font-size:12px;color:#222;font-weight:600;margin-bottom:10px;word-break:break-all}
+.prop-mock-sep{border:none;border-top:1px solid #bbb;margin:10px 0}
+.prop-mock-meta{font-size:11px;color:#555;margin-bottom:4px}
+.prop-mock-security{background:#fff;border:1px solid #ccc;border-radius:3px;padding:10px;margin-top:10px}
+.prop-mock-sec-text{font-size:11px;color:#444;margin-bottom:8px;line-height:1.5}
+.prop-mock-unblock{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#222}
+.prop-mock-unblock input{width:13px;height:13px;accent-color:#0078d4;cursor:default}
+.prop-mock-btns{display:flex;justify-content:flex-end;gap:6px;padding:8px 10px;background:#e8e8e8;border-top:1px solid #ccc}
+.prop-mock-btn{background:#e1e1e1;border:1px solid #999;padding:4px 14px;border-radius:3px;font-size:12px;color:#222;cursor:default}
+.prop-mock-btn-ok{background:#0078d4;color:#fff;border-color:#0078d4;font-weight:600}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:0 20px}
@@ -547,14 +670,13 @@ footer{
   <div class="cta-row">
     <a class="btn-main" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows 10 / 11
+      Download for Windows
     </a>
     <a class="btn-main" id="hero-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download for Linux
     </a>
   </div>
-  <p class="hero-note">Free forever</p>
 </section>
 
 <!-- FEATURES -->
@@ -843,7 +965,7 @@ footer{
       <a class="dl-btn fu" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download for Windows
-        <small>Free &middot; Windows 10 / 11</small>
+        <small>Windows 10 / 11</small>
       </a>
       <a class="dl-btn fu" id="section-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -990,54 +1112,162 @@ footer{
     });
   });
 })();
-// SMART DOWNLOAD BUTTON (WINDOWS / LINUX)
+// intercept hero + section Windows buttons → go to install guide
+['.btn-main[href*="Munjez_Installer"]','.dl-btn[href*="Munjez_Installer"]'].forEach(function(sel){
+  document.querySelectorAll(sel).forEach(function(el){
+    el.addEventListener('click',function(e){e.preventDefault();window.location.href='windows-install/';});
+  });
+});
+// SMART DOWNLOAD BUTTON (WINDOWS / LINUX) + LINUX MODAL
 (function(){
-  var linuxManifestUrl='https://github.com/Osama2214/munjez-releases/releases/latest/download/latest-linux.json';
-  var linuxReleaseFallback='https://github.com/Osama2214/munjez-releases/releases/latest';
+  var RELEASE_BASE='https://github.com/Osama2214/munjez-releases/releases';
+  var linuxManifestUrl=RELEASE_BASE+'/latest/download/latest-linux.json';
+  var linuxReleaseFallback=RELEASE_BASE+'/latest';
   var navBtn=document.getElementById('nav-smart-download');
   var heroLinuxBtn=document.getElementById('hero-linux-download');
   var sectionLinuxBtn=document.getElementById('section-linux-download');
 
-  function pickLinuxUrlFromManifest(data){
-    if(!data || typeof data!=='object' || !data.platforms || typeof data.platforms!=='object'){
-      return '';
-    }
-    var keys=Object.keys(data.platforms);
-    if(!keys.length)return '';
-    var preferred=['linux-x86_64','linux-x86_64-gnu','linux-amd64'];
-    for(var i=0;i<preferred.length;i++){
-      var k=preferred[i];
-      if(data.platforms[k] && data.platforms[k].url)return data.platforms[k].url;
-    }
-    for(var j=0;j<keys.length;j++){
-      var key=keys[j];
-      if(key.indexOf('linux')===0 && data.platforms[key] && data.platforms[key].url){
-        return data.platforms[key].url;
-      }
-    }
-    return '';
+  var resolvedVersion=null;
+
+  function buildUrls(ver){
+    var tag='v'+ver;
+    return {
+      deb:  RELEASE_BASE+'/download/'+tag+'/Munjez_'+ver+'_amd64.deb',
+      rpm:  RELEASE_BASE+'/download/'+tag+'/Munjez-'+ver+'-1.x86_64.rpm',
+      img:  RELEASE_BASE+'/download/'+tag+'/Munjez_'+ver+'_amd64.AppImage'
+    };
   }
 
-  function applyLinuxUrl(url){
-    var finalUrl=url||linuxReleaseFallback;
-    if(navBtn){
-      navBtn.dataset.linuxUrl=finalUrl;
+  var cardUrls={deb:'#',rpm:'#',appimage:'#'};
+
+  var FORMAT_DATA={
+    deb:{
+      label:'.deb',
+      install:[
+        'sudo apt install ./Munjez_VERSION_amd64.deb'
+      ],
+      trouble:[
+        'sudo apt --fix-broken install',
+        'sudo dpkg --configure -a'
+      ]
+    },
+    rpm:{
+      label:'.rpm',
+      install:[
+        'sudo dnf install ./Munjez-VERSION-1.x86_64.rpm'
+      ],
+      trouble:[
+        'sudo rpm -e munjez',
+        'sudo dnf install ./Munjez-VERSION-1.x86_64.rpm'
+      ]
+    },
+    appimage:{
+      label:'.AppImage',
+      install:[
+        'chmod +x Munjez_VERSION_amd64.AppImage',
+        './Munjez_VERSION_amd64.AppImage'
+      ],
+      trouble:[
+        'sudo apt install libfuse2',
+        './Munjez_VERSION_amd64.AppImage --appimage-extract-and-run'
+      ]
     }
-    [heroLinuxBtn,sectionLinuxBtn].forEach(function(el){
-      if(!el)return;
-      el.href=finalUrl;
-      el.removeAttribute('aria-disabled');
-      el.classList.remove('btn-disabled');
-      el.classList.remove('dl-disabled');
+  };
+
+  function buildCmdRow(cmd){
+    var div=document.createElement('div');
+    div.className='lm-cmd';
+    var code=document.createElement('code');
+    code.textContent=cmd;
+    var btn=document.createElement('button');
+    btn.className='lm-copy';
+    btn.title='Copy';
+    btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+    btn.onclick=function(){
+      navigator.clipboard&&navigator.clipboard.writeText(cmd).then(function(){
+        btn.classList.add('copied');
+        btn.innerHTML='✓';
+        setTimeout(function(){btn.classList.remove('copied');btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';},1500);
+      });
+    };
+    div.appendChild(code);
+    div.appendChild(btn);
+    return div;
+  }
+
+  function fillCmds(containerId,cmds,ver){
+    var el=document.getElementById(containerId);
+    if(!el)return;
+    el.innerHTML='';
+    cmds.forEach(function(cmd){
+      var resolved=ver?cmd.replace(/VERSION/g,ver):cmd;
+      el.appendChild(buildCmdRow(resolved));
     });
   }
 
-  applyLinuxUrl(linuxReleaseFallback);
-  fetch(linuxManifestUrl,{cache:'no-store'})
+  window.linuxSelectFormat=function(fmt){
+    var data=FORMAT_DATA[fmt];
+    if(!data)return;
+    var ver=resolvedVersion||'VERSION';
+    document.getElementById('lm-title').textContent='Install '+data.label;
+    document.getElementById('lm-dl-name').textContent=data.label;
+    document.getElementById('lm-dl-btn').href=cardUrls[fmt]||'#';
+    fillCmds('lm-install-cmds',data.install,ver);
+    fillCmds('lm-trouble-cmds',data.trouble,ver);
+    document.getElementById('lm-screen-1').classList.add('hidden');
+    document.getElementById('lm-screen-2').classList.add('active');
+  };
+
+  window.linuxShowScreen1=function(){
+    document.getElementById('lm-title').textContent='Download for Linux';
+    document.getElementById('lm-screen-2').classList.remove('active');
+    document.getElementById('lm-screen-1').classList.remove('hidden');
+  };
+
+  function populateModal(ver){
+    var verEl=document.getElementById('lm-version');
+    if(verEl)verEl.textContent='v'+ver;
+    var urls=buildUrls(ver);
+    cardUrls.deb=urls.deb;
+    cardUrls.rpm=urls.rpm;
+    cardUrls.appimage=urls.img;
+  }
+
+  function linuxModalOpen(){
+    var modal=document.getElementById('linux-modal');
+    if(modal)modal.classList.add('open');
+    document.body.style.overflow='hidden';
+    linuxShowScreen1();
+    if(resolvedVersion)populateModal(resolvedVersion);
+  }
+
+  window.linuxModalClose=function(){
+    var modal=document.getElementById('linux-modal');
+    if(modal)modal.classList.remove('open');
+    document.body.style.overflow='';
+    setTimeout(linuxShowScreen1,300);
+  };
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')window.linuxModalClose();
+  });
+
+  function interceptLinuxBtn(el){
+    if(!el)return;
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      linuxModalOpen();
+    });
+  }
+  interceptLinuxBtn(heroLinuxBtn);
+  interceptLinuxBtn(sectionLinuxBtn);
+
+  fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases/latest',{cache:'no-store'})
     .then(function(res){return res.ok?res.json():null;})
     .then(function(json){
-      var resolved=pickLinuxUrlFromManifest(json);
-      if(resolved)applyLinuxUrl(resolved);
+      if(!json||!json.tag_name)return;
+      resolvedVersion=json.tag_name.replace(/^v/,'');
+      populateModal(resolvedVersion);
     })
     .catch(function(){});
 
@@ -1046,28 +1276,24 @@ footer{
 
   var ua=(navigator.userAgent||'').toLowerCase();
   var isWindows=ua.indexOf('windows')!==-1;
-  var isLinux=(ua.indexOf('linux')!==-1 || ua.indexOf('x11')!==-1) && ua.indexOf('android')===-1;
+  var isLinux=(ua.indexOf('linux')!==-1||ua.indexOf('x11')!==-1)&&ua.indexOf('android')===-1;
   var textNode=btn.lastChild;
-  var icon=btn.querySelector('svg');
 
   if(isWindows){
-    btn.href=btn.dataset.winUrl||btn.href;
+    btn.href='windows-install/';
     if(textNode)textNode.textContent=' Download for Windows';
     btn.title='Download Windows version';
     return;
   }
 
   if(isLinux){
-    if(btn.dataset.linuxUrl){
-      btn.href=btn.dataset.linuxUrl;
-      if(textNode)textNode.textContent=' Download for Linux';
-      btn.title='Download Linux version';
-    }else{
-      btn.href='#download';
-      if(textNode)textNode.textContent=' Linux Coming Soon';
-      btn.title='Linux release is coming soon';
-      if(icon){icon.style.animation='none';}
-    }
+    btn.href='#';
+    if(textNode)textNode.textContent=' Download for Linux';
+    btn.title='Download Linux version';
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      linuxModalOpen();
+    });
     return;
   }
 
@@ -1293,6 +1519,187 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose()});
 function lbClose(){document.getElementById('lb').classList.remove('on');}
 </script>
 <div id="lb" onclick="lbClose()"><button id="lb-close" onclick="event.stopPropagation();lbClose()">&#10005;</button><img id="lb-img" src="" alt="" onclick="event.stopPropagation();lbClose()"/></div>
+
+<!-- LINUX DOWNLOAD MODAL -->
+<div id="linux-modal" onclick="if(event.target===this)linuxModalClose()">
+  <div class="lm-box">
+    <div class="lm-head">
+      <div class="lm-title" id="lm-title">Download for Linux</div>
+      <button class="lm-close" onclick="linuxModalClose()">&#10005;</button>
+    </div>
+
+    <!-- Screen 1: format selection -->
+    <div class="lm-screen-1" id="lm-screen-1">
+      <div class="lm-ver">Latest version: <span id="lm-version">—</span></div>
+      <div class="lm-cards">
+        <div class="lm-card" id="lm-deb" onclick="linuxSelectFormat('deb')">
+          <div class="lm-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="lm-info">
+            <div class="lm-name">.deb — Ubuntu / Debian</div>
+            <div class="lm-desc">Recommended for Ubuntu, Debian, Linux Mint</div>
+          </div>
+          <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="lm-card" id="lm-rpm" onclick="linuxSelectFormat('rpm')">
+          <div class="lm-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="lm-info">
+            <div class="lm-name">.rpm — Fedora / RHEL</div>
+            <div class="lm-desc">Recommended for Fedora, openSUSE, RHEL</div>
+          </div>
+          <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="lm-card" id="lm-appimage" onclick="linuxSelectFormat('appimage')">
+          <div class="lm-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="lm-info">
+            <div class="lm-name">.AppImage — Universal</div>
+            <div class="lm-desc">Works on any Linux distro, no install needed</div>
+          </div>
+          <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <div class="lm-fallback">Not sure which to pick? <a href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener">Browse all releases</a></div>
+    </div>
+
+    <!-- Screen 2: install commands -->
+    <div class="lm-screen-2" id="lm-screen-2">
+      <button class="lm-back" onclick="linuxShowScreen1()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+      </button>
+      <a class="lm-dl-btn" id="lm-dl-btn" href="#" onclick="event.preventDefault();window.location.href=this.href">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download <span id="lm-dl-name"></span>
+      </a>
+      <div class="lm-hint">
+        <div class="lm-hint-row"><div class="lm-hint-num">1</div>Download the file using the button above</div>
+        <div class="lm-hint-row"><div class="lm-hint-num">2</div>Right-click the download folder → <span>Open Terminal Here</span></div>
+        <div class="lm-hint-row"><div class="lm-hint-num">3</div>Run the installation command below</div>
+      </div>
+      <div class="lm-section-title">Installation</div>
+      <div class="lm-code-block" id="lm-install-cmds"></div>
+      <div class="lm-section-title" style="margin-top:14px">Troubleshooting</div>
+      <div class="lm-code-block" id="lm-trouble-cmds"></div>
+    </div>
+  </div>
+</div>
+<!-- win modal removed -->
+<div id="win-modal" style="display:none">
+  <div class="wm-box">
+    <div class="wm-head">
+      <div class="wm-title">Download for Windows</div>
+      <button class="wm-close" onclick="winModalClose()">&#10005;</button>
+    </div>
+    <a class="wm-dl-btn" id="wm-dl-btn" href="windows-install/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Munjez for Windows
+    </a>
+    <div class="wm-warn-label">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Windows may show a security warning — here's how to handle it
+    </div>
+    <div class="wm-scenarios">
+
+      <!-- Scenario 1: SmartScreen -->
+      <div class="wm-scenario" id="wm-sc1">
+        <div class="wm-scenario-hd" onclick="wmToggle('wm-sc1')">
+          <div class="wm-scenario-hd-left">
+            <span class="wm-scenario-badge">Scenario 1</span>
+            <span class="wm-scenario-name">SmartScreen warning appears</span>
+          </div>
+          <svg class="wm-scenario-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="wm-scenario-body">
+          <div class="wm-steps">
+            <div class="wm-step">
+              <div class="wm-step-num">1</div>
+              <div class="wm-step-content">
+                <div class="wm-step-label">Click <strong>More info</strong></div>
+                <img class="wm-img" src="warning/SmartScreen.png" alt="SmartScreen warning — click More info"/>
+              </div>
+            </div>
+            <div class="wm-step">
+              <div class="wm-step-num">2</div>
+              <div class="wm-step-content">
+                <div class="wm-step-label">Click <strong>Run anyway</strong></div>
+                <div class="ss-mock">
+                  <div class="ss-mock-title">Windows protected your PC</div>
+                  <div class="ss-mock-body">Microsoft Defender SmartScreen prevented an unrecognized app from starting.</div>
+                  <div class="ss-mock-row"><span class="ss-mock-lbl">App:</span><span class="ss-mock-val">Munjez_Installer.exe</span></div>
+                  <div class="ss-mock-row"><span class="ss-mock-lbl">Publisher:</span><span class="ss-mock-val">Unknown publisher</span></div>
+                  <div class="ss-mock-btns">
+                    <button class="ss-mock-dont">Don't run</button>
+                    <button class="ss-mock-run">Run anyway</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario 2: File blocked -->
+      <div class="wm-scenario" id="wm-sc2">
+        <div class="wm-scenario-hd" onclick="wmToggle('wm-sc2')">
+          <div class="wm-scenario-hd-left">
+            <span class="wm-scenario-badge">Scenario 2</span>
+            <span class="wm-scenario-name">File blocked — can't run at all</span>
+          </div>
+          <svg class="wm-scenario-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="wm-scenario-body">
+          <div class="wm-steps">
+            <div class="wm-step">
+              <div class="wm-step-num">1</div>
+              <div class="wm-step-content">
+                <div class="wm-step-label">Right-click <strong>Munjez_Installer.exe</strong> → <strong>Properties</strong></div>
+              </div>
+            </div>
+            <div class="wm-step">
+              <div class="wm-step-num">2</div>
+              <div class="wm-step-content">
+                <div class="wm-step-label">Check <strong>Unblock</strong> at the bottom → click <strong>OK</strong></div>
+                <div class="prop-mock">
+                  <div class="prop-mock-bar">
+                    <img src="screenshots/icon.png" width="14" height="14" style="border-radius:2px;flex-shrink:0" alt=""/>
+                    <span class="prop-mock-bar-title">Munjez_Installer.exe Properties</span>
+                  </div>
+                  <div class="prop-mock-body">
+                    <div class="prop-mock-filename">Munjez_Installer.exe</div>
+                    <hr class="prop-mock-sep"/>
+                    <div class="prop-mock-meta">Type: Application (.exe)</div>
+                    <div class="prop-mock-meta">Size: ~5.2 MB</div>
+                    <div class="prop-mock-security">
+                      <div class="prop-mock-sec-text">⚠ This file came from another computer and might be blocked to help protect this computer.</div>
+                      <label class="prop-mock-unblock"><input type="checkbox" checked disabled/> Unblock</label>
+                    </div>
+                  </div>
+                  <div class="prop-mock-btns">
+                    <button class="prop-mock-btn prop-mock-btn-ok">OK</button>
+                    <button class="prop-mock-btn">Cancel</button>
+                    <button class="prop-mock-btn">Apply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wm-step">
+              <div class="wm-step-num">3</div>
+              <div class="wm-step-content">
+                <div class="wm-step-label">Run the installer again</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
