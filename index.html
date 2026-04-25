@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Munjez</title>
-<meta name="description" content="Munjez is a free Windows desktop app for task management, focus sessions, habit tracking, and more."/>
+<title>Munjez — Free Desktop App for Tasks, Focus & Habits</title>
+<meta name="description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, and more. Download free today."/>
 <meta name="author" content="Osama"/>
 <meta name="theme-color" content="#7c3aed"/>
 <meta name="application-name" content="Munjez"/>
-<link rel="icon" type="image/png" href="screenshots/icon.png"/>
+<link rel="icon" type="image/webp" href="screenshots/icon.webp"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="canonical" href="https://munjez-website.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://munjez-website.vercel.app/"/>
+<meta property="og:title" content="Munjez — Free Desktop App for Tasks, Focus &amp; Habits"/>
+<meta property="og:description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, and more. Download free today."/>
+<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
+<meta property="og:site_name" content="Munjez"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Munjez — Free Desktop App for Tasks, Focus &amp; Habits"/>
+<meta name="twitter:description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, and more. Download free today."/>
+<meta name="twitter:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,7 +45,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/></noscript>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -245,8 +256,8 @@ nav ul a:hover{color:var(--text)}
 .fi.k{background:rgba(236,72,153,.12);color:#f472b6}
 .fi.fi-img{background:none;border:none;padding:0;overflow:hidden;border-radius:13px}
 .fi.fi-img img{width:50px;height:50px;object-fit:cover;border-radius:13px;display:block}
-.habits-ic{display:block;width:24px;height:24px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.png');mask-image:url('screenshots/habits-icon-mask.png');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
-.tab-habits-ic{display:block;width:13px;height:13px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.png');mask-image:url('screenshots/habits-icon-mask.png');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.habits-ic{display:block;width:24px;height:24px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.tab-habits-ic{display:block;width:13px;height:13px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .feat-card h3{font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-.3px}
 .feat-card p{font-size:14px;color:var(--muted);line-height:1.7}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
@@ -664,7 +675,7 @@ footer{
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <img src="screenshots/icon.png" alt="Munjez" style="width:30px;height:30px;border-radius:8px"/>
+    <img src="screenshots/icon.webp" alt="Munjez" style="width:30px;height:30px;border-radius:8px"/>
     <span>Munjez</span>
   </a>
   <ul>
@@ -793,15 +804,15 @@ footer{
         <div class="car-row">
           <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
           <div class="car-imgs">
-            <img class="car-img on" src="screenshots/task/task-01.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-02.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-03.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-04.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-05.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-06.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-07.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-08.png" alt=""/>
-            <img class="car-img" src="screenshots/task/task-09.png" alt=""/>
+            <img class="car-img on" src="screenshots/task/task-01.webp" alt="Munjez task manager — main task list view"/>
+            <img class="car-img" src="screenshots/task/task-02.webp" alt="Munjez task manager — task details and due dates"/>
+            <img class="car-img" src="screenshots/task/task-03.webp" alt="Munjez task manager — subtasks and priorities"/>
+            <img class="car-img" src="screenshots/task/task-04.webp" alt="Munjez task manager — organizing tasks by project"/>
+            <img class="car-img" src="screenshots/task/task-05.webp" alt="Munjez task manager — task filters and sorting"/>
+            <img class="car-img" src="screenshots/task/task-06.webp" alt="Munjez task manager — completed tasks view"/>
+            <img class="car-img" src="screenshots/task/task-07.webp" alt="Munjez task manager — task search and quick add"/>
+            <img class="car-img" src="screenshots/task/task-08.webp" alt="Munjez task manager — today's tasks overview"/>
+            <img class="car-img" src="screenshots/task/task-09.webp" alt="Munjez task manager — productivity dashboard"/>
           </div>
           <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
         </div>
@@ -824,10 +835,10 @@ footer{
         <div class="car-row">
           <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
           <div class="car-imgs">
-            <img class="car-img on" src="screenshots/calender/calendar-month.webp" alt=""/>
-            <img class="car-img" src="screenshots/calender/calendar-week.webp" alt=""/>
-            <img class="car-img" src="screenshots/calender/calendar-year.webp" alt=""/>
-            <img class="car-img" src="screenshots/calender/calendar-01.png" alt=""/>
+            <img class="car-img on" src="screenshots/calender/calendar-month.webp" alt="Munjez calendar — monthly view"/>
+            <img class="car-img" src="screenshots/calender/calendar-week.webp" alt="Munjez calendar — weekly view"/>
+            <img class="car-img" src="screenshots/calender/calendar-year.webp" alt="Munjez calendar — yearly overview"/>
+            <img class="car-img" src="screenshots/calender/calendar-01.webp" alt="Munjez calendar — task and event planning"/>
           </div>
           <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
         </div>
@@ -845,11 +856,11 @@ footer{
         <div class="car-row">
           <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
           <div class="car-imgs">
-            <img class="car-img on" src="screenshots/habit/habit-01_2_11zon.webp" alt=""/>
-            <img class="car-img" src="screenshots/habit/habit-02.webp" alt=""/>
-            <img class="car-img" src="screenshots/habit/habit-03.webp" alt=""/>
-            <img class="car-img" src="screenshots/habit/habit-04.png" alt=""/>
-            <img class="car-img" src="screenshots/habit/habit-05.webp" alt=""/>
+            <img class="car-img on" src="screenshots/habit/habit-01_2_11zon.webp" alt="Munjez habit tracker — daily habit overview"/>
+            <img class="car-img" src="screenshots/habit/habit-02.webp" alt="Munjez habit tracker — streak tracking"/>
+            <img class="car-img" src="screenshots/habit/habit-03.webp" alt="Munjez habit tracker — habit completion calendar"/>
+            <img class="car-img" src="screenshots/habit/habit-04.webp" alt="Munjez habit tracker — adding a new habit"/>
+            <img class="car-img" src="screenshots/habit/habit-05.webp" alt="Munjez habit tracker — progress statistics"/>
           </div>
           <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
         </div>
@@ -868,11 +879,11 @@ footer{
         <div class="car-row">
           <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
           <div class="car-imgs">
-            <img class="car-img on" src="screenshots/focus/focus-01.webp" alt=""/>
-            <img class="car-img" src="screenshots/focus/focus-02.webp" alt=""/>
-            <img class="car-img" src="screenshots/focus/focus-03.webp" alt=""/>
-            <img class="car-img" src="screenshots/focus/focus-04.webp" alt=""/>
-            <img class="car-img" src="screenshots/focus/focus-05.webp" alt=""/>
+            <img class="car-img on" src="screenshots/focus/focus-01.webp" alt="Munjez focus mode — Pomodoro timer running"/>
+            <img class="car-img" src="screenshots/focus/focus-02.webp" alt="Munjez focus mode — short break session"/>
+            <img class="car-img" src="screenshots/focus/focus-03.webp" alt="Munjez focus mode — long break session"/>
+            <img class="car-img" src="screenshots/focus/focus-04.webp" alt="Munjez focus mode — session settings"/>
+            <img class="car-img" src="screenshots/focus/focus-05.webp" alt="Munjez focus mode — daily focus summary"/>
           </div>
           <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
         </div>
@@ -891,9 +902,9 @@ footer{
         <div class="car-row">
           <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
           <div class="car-imgs">
-            <img class="car-img on" src="screenshots/stopwatch/stopwatch-01.webp" alt=""/>
-            <img class="car-img" src="screenshots/stopwatch/stopwatch-02.webp" alt=""/>
-            <img class="car-img" src="screenshots/stopwatch/stopwatch-03.webp" alt=""/>
+            <img class="car-img on" src="screenshots/stopwatch/stopwatch-01.webp" alt="Munjez stopwatch — timer running with lap tracking"/>
+            <img class="car-img" src="screenshots/stopwatch/stopwatch-02.webp" alt="Munjez stopwatch — lap splits view"/>
+            <img class="car-img" src="screenshots/stopwatch/stopwatch-03.webp" alt="Munjez stopwatch — countdown timer mode"/>
           </div>
           <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
         </div>
@@ -1280,7 +1291,7 @@ footer{
   interceptLinuxBtn(heroLinuxBtn);
   interceptLinuxBtn(sectionLinuxBtn);
 
-  fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases/latest',{cache:'no-store'})
+  fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases/latest',{cache:'default'})
     .then(function(res){return res.ok?res.json():null;})
     .then(function(json){
       if(!json||!json.tag_name)return;
