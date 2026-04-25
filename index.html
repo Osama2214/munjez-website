@@ -141,11 +141,11 @@ nav ul a:hover{color:var(--text)}
 }
 .grad{
   background:linear-gradient(140deg,#c4b5fd 0%,#8b5cf6 35%,#6366f1 70%,#a78bfa 100%);
-  background-size:200% 200%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:grad-shift 4s ease infinite;
+  will-change:filter;
 }
-@keyframes grad-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes grad-shift{0%,100%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(20deg)}}
 
 .hero-sub{
   font-size:clamp(17px,2.2vw,24px);color:var(--muted);font-weight:400;margin-top:12px;
@@ -929,7 +929,7 @@ footer{
     <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-green.webp" alt="Short Break"/></div><div class="focus-foot"><h4><span class="dot" style="background:var(--green)"></span>Short Break</h4><p>Quick reset — step away from the screen</p></div></div>
     <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-orange.webp" alt="Long Break"/></div><div class="focus-foot"><h4><span class="dot" style="background:var(--orange)"></span>Long Break</h4><p>You've earned it — recharge fully</p></div></div>
   </div>
-  <div class="widget-preview fu"><img src="screenshots/focus-widget.webp" alt="Flip Clock Widget"/></div>
+  <div class="widget-preview fu"><img src="screenshots/focus-widget.webp" alt="Flip Clock Widget" width="1916" height="1072"/></div>
 </section>
 
 <!-- THEMES -->
@@ -939,7 +939,7 @@ footer{
     <h2 class="ttl fu">Make it yours</h2>
     <p class="desc fu">Switch between beautiful color themes to match your mood and workflow.</p>
     <div class="themes-wrap">
-      <div class="fu"><img id="theme-preview-image" src="screenshots/themes/Dark%20Theme.webp" alt="Dark Theme Preview"/></div>
+      <div class="fu"><img id="theme-preview-image" src="screenshots/themes/Dark%20Theme.webp" alt="Dark Theme Preview" width="1920" height="1020"/></div>
       <div class="fu">
         <div class="theme-grid">
           <div class="theme-card active"><div class="theme-head"><span class="theme-name">Dark Theme</span><span class="theme-check">&#10003;</span></div><div class="theme-swatches"><span style="background:#0b1020;border-color:#27324d"></span><span style="background:#121a30;border-color:#27324d"></span><span style="background:#1a2440;border-color:#27324d"></span><span style="background:#7c3aed;border-color:#8b5cf6"></span></div></div>
