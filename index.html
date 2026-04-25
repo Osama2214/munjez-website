@@ -1081,7 +1081,6 @@ footer{
   var animId=null;
   var isVisible=true;
   var dpr=Math.min(window.devicePixelRatio||1,1.5);
-  var maxPts=(innerWidth<900?40:80);
   function resize(){
     W=innerWidth;H=innerHeight;
     c.width=Math.floor(W*dpr);
@@ -1089,8 +1088,9 @@ footer{
     ctx.setTransform(dpr,0,0,dpr,0,0);
   }
   resize();
+  var maxPts=(W<900?40:80);
   window.addEventListener('resize',resize,{passive:true});
-  for(var i=0;i<maxPts;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5});
+  for(var i=0;i<maxPts;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5});
   function draw(){
     if(!isVisible)return;
     ctx.clearRect(0,0,W,H);
