@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Munjez — Free Desktop App for Tasks, Focus & Habits</title>
 <meta name="description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, and more. Download free today."/>
@@ -83,17 +84,25 @@ nav{
   transition:border-color .3s;
 }
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
-nav ul{list-style:none;display:flex;gap:28px}
+nav ul{list-style:none;display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%)}
 nav ul a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
 nav ul a:hover{color:var(--text)}
 .nav-dl{
   display:inline-flex;align-items:center;gap:7px;
   background:var(--primary);color:#fff;text-decoration:none;
-  padding:8px 20px;border-radius:8px;font-size:13.5px;font-weight:600;
+  height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;
   transition:background .2s,transform .15s,box-shadow .2s;
   box-shadow:0 0 20px rgba(124,58,237,.3);
 }
 .nav-dl:hover{background:var(--primary-h);transform:translateY(-1px);box-shadow:0 0 32px rgba(124,58,237,.5)}
+#lang-toggle{
+  background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;
+  height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;
+  white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;
+  min-width:42px;line-height:1;
+}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
 
 /* ── HERO ── */
 .hero{
@@ -165,12 +174,12 @@ nav ul a:hover{color:var(--text)}
 }
 .cta-row .btn-main{white-space:nowrap}
 .btn-main{
-  display:inline-flex;align-items:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
   background:var(--primary);color:#fff;text-decoration:none;
   padding:15px 28px;border-radius:12px;font-size:15px;font-weight:700;
   box-shadow:0 0 48px var(--primary-glow);
   transition:background .2s,transform .2s,box-shadow .2s;
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;min-width:220px;
 }
 .btn-main::before{
   content:'';position:absolute;inset:0;
@@ -257,7 +266,7 @@ nav ul a:hover{color:var(--text)}
 .fi.fi-img{background:none;border:none;padding:0;overflow:hidden;border-radius:13px}
 .fi.fi-img img{width:50px;height:50px;object-fit:cover;border-radius:13px;display:block}
 .habits-ic{display:block;width:24px;height:24px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
-.tab-habits-ic{display:block;width:13px;height:13px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.tab-habits-ic{display:block;width:15px;height:15px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .feat-card h3{font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-.3px}
 .feat-card p{font-size:14px;color:var(--muted);line-height:1.7}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
@@ -452,6 +461,7 @@ nav ul a:hover{color:var(--text)}
 }
 .dl-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
 .dl-sec h2{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-3px;margin-bottom:18px;line-height:1}
+[dir="rtl"] .dl-sec h2{line-height:1.25;letter-spacing:0}
 .dl-sec h2 span{background:linear-gradient(135deg,#a78bfa,#7c3aed);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .dl-sec>.dl-inner>p{font-size:17px;color:var(--muted);margin-bottom:44px;line-height:1.7}
 .dl-actions{
@@ -485,10 +495,11 @@ nav ul a:hover{color:var(--text)}
 /* FOOTER */
 footer{
   position:relative;z-index:2;background:var(--surface);
-  border-top:1px solid var(--border);padding:22px 28px;
+  border-top:1px solid var(--border);padding:0 48px;height:62px;
+  display:flex;align-items:center;
 }
 .footer-wrap{
-  max-width:1200px;margin:0 auto;
+  width:100%;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .footer-brand{
@@ -641,9 +652,11 @@ footer{
 .prop-mock-btn-ok{background:#0078d4;color:#fff;border-color:#0078d4;font-weight:600}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav ul{display:none}
+}
 @media(max-width:900px){
   nav{padding:0 20px}
-  nav ul{display:none}
   .sec{padding:60px 20px}
   .stat{padding:16px 20px}
   .feat-grid{grid-template-columns:1fr}
@@ -655,6 +668,7 @@ footer{
 }
 @media(max-width:620px){
   .support-actions{grid-template-columns:1fr}
+  footer{height:auto;padding:18px 20px}
   .footer-wrap{flex-direction:column;align-items:center;text-align:center;gap:10px}
   .footer-nav{gap:14px}
 }
@@ -681,16 +695,19 @@ footer{
     <span>Munjez</span>
   </a>
   <ul>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#themes">Themes</a></li>
-    <li><a href="#support">Support</a></li>
-    <li><a href="#download">Download</a></li>
+    <li><a href="#features" data-i18n="nav-features">Features</a></li>
+    <li><a href="#screenshots" data-i18n="nav-screenshots">Screenshots</a></li>
+    <li><a href="#themes" data-i18n="nav-themes">Themes</a></li>
+    <li><a href="#support" data-i18n="nav-support">Support</a></li>
+    <li><a href="#download" data-i18n="nav-download">Download</a></li>
   </ul>
-  <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="https://github.com/Osama2214/munjez-releases/releases/latest">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download Free
-  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button id="lang-toggle" type="button">AR</button>
+    <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="https://github.com/Osama2214/munjez-releases/releases/latest">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-i18n="nav-dl"></span>
+    </a>
+  </div>
 </nav>
 
 <main>
@@ -701,72 +718,72 @@ footer{
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
 
-  <div class="badge"><span class="badge-dot"></span> Free Desktop App for Windows</div>
+  <div class="badge"><span class="badge-dot"></span> <span data-i18n="hero-badge">Free Desktop App for Windows &amp; Linux</span></div>
   <h1><span class="grad">Munjez</span></h1>
-  <p class="hero-sub">Your Ultimate Productivity App</p>
-  <p class="hero-tagline">
+  <p class="hero-sub" data-i18n="hero-sub">Your Ultimate Productivity App</p>
+  <p class="hero-tagline" data-i18n="hero-tagline">
     Tasks, habits, focus sessions — all in one <strong>beautiful, offline-first</strong> desktop app.
     Built for people who want to get things done.
   </p>
   <div class="cta-row">
     <a class="btn-main" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows
+      <span data-i18n="hero-win">Download for Windows</span>
     </a>
     <a class="btn-main" id="hero-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Linux
+      <span data-i18n="hero-linux">Download for Linux</span>
     </a>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="sec" id="features">
-  <div class="label">Features</div>
-  <h2 class="ttl">Everything you need<br>to stay productive</h2>
-  <p class="desc">A complete productivity suite packed into one fast, beautiful desktop app.</p>
+  <div class="label" data-i18n="feat-label">Features</div>
+  <h2 class="ttl" data-i18n="feat-title">Everything you need<br>to stay productive</h2>
+  <p class="desc" data-i18n="feat-desc">A complete productivity suite packed into one fast, beautiful desktop app.</p>
   <div class="feat-grid">
 
     <div class="feat-card fu">
       <div class="fi p"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-      <h3>Smart Task Management</h3>
-      <p>Organize tasks into folders with priorities and due dates. Set recurring tasks, attach voice notes, files, and images — every detail covered.</p>
-      <div class="tags"><span class="tag">Folders</span><span class="tag">Priorities</span><span class="tag">Recurring Tasks</span><span class="tag">Voice Notes</span><span class="tag">Recycle Bin</span></div>
+      <h3 data-i18n="feat-tasks-title">Smart Task Management</h3>
+      <p data-i18n="feat-tasks-desc">Organize tasks into folders with priorities and due dates. Set recurring tasks, attach voice notes, files, and images — every detail covered.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-folders">Folders</span><span class="tag" data-i18n="tag-priorities">Priorities</span><span class="tag" data-i18n="tag-recurring">Recurring Tasks</span><span class="tag" data-i18n="tag-voice-notes">Voice Notes</span><span class="tag" data-i18n="tag-recycle-bin">Recycle Bin</span></div>
     </div>
 
     <div class="feat-card fu">
       <div class="fi b"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <h3>Calendar Integration</h3>
-      <p>View your tasks in Year, Month, Week, and Day views. Full Hijri calendar support with drag-and-drop task scheduling across dates.</p>
-      <div class="tags"><span class="tag">4 Views</span><span class="tag">Hijri Calendar</span><span class="tag">Drag &amp; Drop</span></div>
+      <h3 data-i18n="feat-cal-title">Calendar Integration</h3>
+      <p data-i18n="feat-cal-desc">View your tasks in Year, Month, Week, and Day views. Full Hijri calendar support with drag-and-drop task scheduling across dates.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-4views">4 Views</span><span class="tag" data-i18n="tag-hijri">Hijri Calendar</span><span class="tag" data-i18n="tag-drag-drop">Drag &amp; Drop</span></div>
     </div>
 
     <div class="feat-card fu">
       <div class="fi r"><svg width="22" height="22" viewBox="-1.07 -1.07 55.82 55.82" fill="currentColor" stroke="currentColor" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><path d="M42.819,10.169l-0.004-0.003c-0.017-0.012-0.038-0.018-0.055-0.029c0.044-0.601-0.221-1.181-0.751-1.52c-2.574-1.65-7.554-4.059-12.487-2.083V2.786C29.522,1.25,28.409,0,27.041,0h-2.223c-1.369,0-2.482,1.25-2.482,2.786v4.105c-2.224-0.396-7.069-0.788-11.725,1.993c-0.706,0.42-0.996,1.255-0.705,2.028c0.029,0.079,0.083,0.138,0.122,0.209c-0.102,0.027-0.208,0.05-0.309,0.077c-0.236,0.063-0.462,0.18-0.658,0.341c-5.508,4.583-8.667,11.117-8.667,17.925c0,13.352,11.863,24.214,26.446,24.214s26.446-10.862,26.446-24.214C53.286,21.826,49.471,14.793,42.819,10.169z M22.332,8.928c0.491,0.103,0.997-0.021,1.387-0.34c0.393-0.319,0.617-0.794,0.617-1.301V2.786c0-0.442,0.26-0.786,0.482-0.786h2.223c0.223,0,0.481,0.344,0.481,0.786v4.249c0,0.57,0.286,1.095,0.766,1.403c0.481,0.31,1.08,0.353,1.602,0.113c3.655-1.671,7.521-0.249,9.994,1.124c-2.332-0.03-4.23,0.155-5.684,0.513c-0.658,0.161-1.147,0.697-1.246,1.366c-0.101,0.685,0.222,1.354,0.821,1.708c1.454,0.855,2.406,1.815,3.038,2.758c0.455,0.679,0.748,1.349,0.92,1.964c-2.191-1.794-4.648-2.453-6.332-2.689c-0.561-0.079-1.037-0.11-1.388-0.122c-0.46-0.015-0.896,0.154-1.226,0.478c-0.327,0.321-0.511,0.77-0.504,1.231c0.08,5.136-1.695,8.581-2.727,10.14c-0.985-2.088-1.289-6.58-1.234-10.271c0.014-0.852-0.621-1.577-1.479-1.688c-0.257-0.033-0.517-0.049-0.778-0.049c-0.05,0-0.101,0.009-0.15,0.011c-0.136,0.003-0.273,0.018-0.41,0.029c-0.206,0.017-0.412,0.037-0.619,0.072c-0.134,0.022-0.268,0.051-0.402,0.08c-0.213,0.046-0.425,0.098-0.637,0.159c-0.129,0.037-0.257,0.077-0.385,0.12c-0.219,0.073-0.436,0.152-0.653,0.239c-0.122,0.049-0.243,0.097-0.364,0.15c-0.222,0.097-0.442,0.2-0.66,0.309c-0.114,0.056-0.228,0.111-0.341,0.17c-0.225,0.118-0.445,0.243-0.665,0.371c-0.103,0.06-0.206,0.116-0.308,0.178c-0.239,0.145-0.471,0.295-0.701,0.447c-0.075,0.05-0.153,0.097-0.227,0.147c-0.303,0.205-0.598,0.414-0.883,0.625c0.358-0.649,0.74-1.227,1.129-1.747c0.021-0.028,0.041-0.06,0.061-0.087c0.409-0.539,0.824-1.01,1.228-1.419c0.002-0.002,0.004-0.004,0.006-0.006c0.533-0.54,1.038-0.961,1.483-1.295c0.064-0.048,0.132-0.103,0.193-0.147c0.036-0.026,0.065-0.044,0.1-0.069c0.123-0.087,0.245-0.172,0.353-0.243c0.524-0.343,0.812-0.943,0.747-1.568c-0.063-0.626-0.466-1.158-1.051-1.389c-0.051-0.02-0.114-0.03-0.167-0.049c-0.22-0.078-0.455-0.147-0.703-0.208c-0.152-0.038-0.306-0.074-0.468-0.104c-0.023-0.004-0.043-0.011-0.067-0.015c-0.015-0.003-0.029,0.001-0.044-0.001c-1.141-0.2-2.487-0.23-4.056-0.062C17.176,8.148,20.805,8.612,22.332,8.928z M26.839,51.679c-13.479,0-24.446-9.965-24.446-22.214c0-6.195,2.881-12.153,7.899-16.349c2.157-0.574,4.478-1.034,6.829-1.368c0.079,0.014,0.166,0.022,0.242,0.038c0.063,0.013,0.128,0.025,0.188,0.039c-0.09,0.065-0.19,0.147-0.285,0.219c-0.104,0.08-0.203,0.152-0.312,0.24c-0.095,0.077-0.196,0.169-0.294,0.252c-0.121,0.103-0.238,0.198-0.363,0.311c-0.118,0.107-0.24,0.231-0.361,0.348c-0.111,0.107-0.219,0.205-0.332,0.32c-0.202,0.206-0.406,0.433-0.61,0.666c-0.034,0.039-0.067,0.071-0.101,0.11c-0.958,1.114-1.92,2.535-2.699,4.312c-0.313,0.717-0.104,1.517,0.521,1.989c0.624,0.472,1.481,0.454,2.084-0.042c1.709-1.407,4.902-3.703,7.521-3.53c-0.026,2.813,0.123,8.915,1.795,11.519c0.3,0.467,0.811,0.756,1.363,0.772c0.017,0,0.033,0,0.05,0c0.534,0,1.037-0.255,1.354-0.69c1.037-1.425,3.413-5.356,3.405-11.434c1.461,0.096,4.432,0.587,6.794,2.894c0.516,0.503,1.266,0.622,1.907,0.301c0.648-0.322,1.009-0.995,0.918-1.716c-0.058-0.455-0.161-0.955-0.324-1.479c-0.007-0.023-0.011-0.044-0.018-0.068c-0.154-0.483-0.374-0.988-0.652-1.499c-0.038-0.071-0.066-0.14-0.107-0.211c-0.125-0.217-0.278-0.435-0.43-0.652c-0.053-0.076-0.094-0.152-0.15-0.228c-0.13-0.174-0.288-0.347-0.437-0.52c-0.102-0.119-0.189-0.239-0.3-0.357c-0.13-0.138-0.29-0.273-0.434-0.409c-0.158-0.15-0.302-0.302-0.477-0.45c-0.151-0.127-0.334-0.249-0.499-0.374c-0.199-0.151-0.383-0.305-0.603-0.452c0.5-0.086,1.124-0.164,1.884-0.219c0.03-0.002,0.061-0.004,0.092-0.006c0.15-0.01,0.307-0.019,0.467-0.027c0.086-0.004,0.173-0.008,0.262-0.012c0.124-0.005,0.249-0.01,0.379-0.014c0.158-0.005,0.321-0.008,0.488-0.01c0.077-0.001,0.153-0.003,0.232-0.004c0.305-0.003,0.628-0.001,0.963,0.004l0.359,0.032c0.296,0.04,0.593,0.075,0.89,0.111l0.248,0.029c6.068,4.245,9.547,10.66,9.547,17.611C51.286,41.714,40.319,51.679,26.839,51.679z"/></svg></div>
-      <h3>Focus Mode (Pomodoro)</h3>
-      <p>Stay productive with timed focus sessions and breaks. Color-coded phases keep you in the right mindset — red for focus, green for short breaks, orange for long breaks.</p>
-      <div class="tags"><span class="tag">Pomodoro Timer</span><span class="tag">Color Phases</span><span class="tag">Flip Clock Widget</span></div>
+      <h3 data-i18n="feat-focus-title">Focus Mode (Pomodoro)</h3>
+      <p data-i18n="feat-focus-desc">Stay productive with timed focus sessions and breaks. Color-coded phases keep you in the right mindset — red for focus, green for short breaks, orange for long breaks.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-pomodoro">Pomodoro Timer</span><span class="tag" data-i18n="tag-color-phases">Color Phases</span><span class="tag" data-i18n="tag-flip-clock">Flip Clock Widget</span></div>
     </div>
 
     <div class="feat-card fu">
       <div class="fi g"><span class="habits-ic"></span></div>
-      <h3>Habit Tracker</h3>
-      <p>Build and maintain daily habits with visual streak tracking. Log each habit every day and watch your consistency grow over time.</p>
-      <div class="tags"><span class="tag">Daily Streaks</span><span class="tag">Streak Calendar</span><span class="tag">Color Tags</span></div>
+      <h3 data-i18n="feat-habits-title">Habit Tracker</h3>
+      <p data-i18n="feat-habits-desc">Build and maintain daily habits with visual streak tracking. Log each habit every day and watch your consistency grow over time.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-daily-streaks">Daily Streaks</span><span class="tag" data-i18n="tag-streak-cal">Streak Calendar</span><span class="tag" data-i18n="tag-color-tags">Color Tags</span></div>
     </div>
 
     <div class="feat-card fu">
       <div class="fi o"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14 15"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="4"/></svg></div>
-      <h3>Stopwatch</h3>
-      <p>Time anything with precision. Record laps, track splits, and stay on top of your sessions with a clean, distraction-free interface.</p>
-      <div class="tags"><span class="tag">Lap Times</span><span class="tag">Milliseconds</span></div>
+      <h3 data-i18n="feat-stopwatch-title">Stopwatch</h3>
+      <p data-i18n="feat-stopwatch-desc">Time anything with precision. Record laps, track splits, and stay on top of your sessions with a clean, distraction-free interface.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-lap-times">Lap Times</span><span class="tag" data-i18n="tag-milliseconds">Milliseconds</span></div>
     </div>
 
     <div class="feat-card fu">
       <div class="fi k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></div>
-      <h3>White Noise &amp; Sounds</h3>
-      <p>Block out distractions with a library of ambient sounds. Mix rain, café, nature, and more to create your perfect focus environment.</p>
-      <div class="tags"><span class="tag">Rain</span><span class="tag">Café Noise</span><span class="tag">Nature Sounds</span><span class="tag">Volume Mix</span></div>
+      <h3 data-i18n="feat-sounds-title">White Noise &amp; Sounds</h3>
+      <p data-i18n="feat-sounds-desc">Block out distractions with a library of ambient sounds. Mix rain, café, nature, and more to create your perfect focus environment.</p>
+      <div class="tags"><span class="tag" data-i18n="tag-rain">Rain</span><span class="tag" data-i18n="tag-cafe-noise">Café Noise</span><span class="tag" data-i18n="tag-nature">Nature Sounds</span><span class="tag" data-i18n="tag-volume-mix">Volume Mix</span></div>
     </div>
 
   </div>
@@ -775,30 +792,30 @@ footer{
 <!-- SCREENSHOTS -->
 <div class="sec-alt">
   <div class="sec" id="screenshots">
-    <div class="label">Screenshots</div>
-    <h2 class="ttl fu">See it in action</h2>
-    <p class="desc fu">Explore every feature through real screenshots of the app.</p>
+    <div class="label" data-i18n="ss-label">Screenshots</div>
+    <h2 class="ttl fu" data-i18n="ss-title">See it in action</h2>
+    <p class="desc fu" data-i18n="ss-desc">Explore every feature through real screenshots of the app.</p>
 
     <div class="tabs-row">
       <button class="tab on" onclick="swTab(this,'tasks')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        Tasks
+        <span data-i18n="tab-tasks">Tasks</span>
       </button>
       <button class="tab" onclick="swTab(this,'cal')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Calendar
+        <span data-i18n="tab-cal">Calendar</span>
       </button>
       <button class="tab" onclick="swTab(this,'habits')">
         <span class="tab-habits-ic"></span>
-        Habits
+        <span data-i18n="tab-habits">Habits</span>
       </button>
       <button class="tab" onclick="swTab(this,'focus')">
         <svg width="13" height="13" viewBox="-1.07 -1.07 55.82 55.82" fill="currentColor" stroke="currentColor" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><path d="M42.819,10.169l-0.004-0.003c-0.017-0.012-0.038-0.018-0.055-0.029c0.044-0.601-0.221-1.181-0.751-1.52c-2.574-1.65-7.554-4.059-12.487-2.083V2.786C29.522,1.25,28.409,0,27.041,0h-2.223c-1.369,0-2.482,1.25-2.482,2.786v4.105c-2.224-0.396-7.069-0.788-11.725,1.993c-0.706,0.42-0.996,1.255-0.705,2.028c0.029,0.079,0.083,0.138,0.122,0.209c-0.102,0.027-0.208,0.05-0.309,0.077c-0.236,0.063-0.462,0.18-0.658,0.341c-5.508,4.583-8.667,11.117-8.667,17.925c0,13.352,11.863,24.214,26.446,24.214s26.446-10.862,26.446-24.214C53.286,21.826,49.471,14.793,42.819,10.169z M22.332,8.928c0.491,0.103,0.997-0.021,1.387-0.34c0.393-0.319,0.617-0.794,0.617-1.301V2.786c0-0.442,0.26-0.786,0.482-0.786h2.223c0.223,0,0.481,0.344,0.481,0.786v4.249c0,0.57,0.286,1.095,0.766,1.403c0.481,0.31,1.08,0.353,1.602,0.113c3.655-1.671,7.521-0.249,9.994,1.124c-2.332-0.03-4.23,0.155-5.684,0.513c-0.658,0.161-1.147,0.697-1.246,1.366c-0.101,0.685,0.222,1.354,0.821,1.708c1.454,0.855,2.406,1.815,3.038,2.758c0.455,0.679,0.748,1.349,0.92,1.964c-2.191-1.794-4.648-2.453-6.332-2.689c-0.561-0.079-1.037-0.11-1.388-0.122c-0.46-0.015-0.896,0.154-1.226,0.478c-0.327,0.321-0.511,0.77-0.504,1.231c0.08,5.136-1.695,8.581-2.727,10.14c-0.985-2.088-1.289-6.58-1.234-10.271c0.014-0.852-0.621-1.577-1.479-1.688c-0.257-0.033-0.517-0.049-0.778-0.049c-0.05,0-0.101,0.009-0.15,0.011c-0.136,0.003-0.273,0.018-0.41,0.029c-0.206,0.017-0.412,0.037-0.619,0.072c-0.134,0.022-0.268,0.051-0.402,0.08c-0.213,0.046-0.425,0.098-0.637,0.159c-0.129,0.037-0.257,0.077-0.385,0.12c-0.219,0.073-0.436,0.152-0.653,0.239c-0.122,0.049-0.243,0.097-0.364,0.15c-0.222,0.097-0.442,0.2-0.66,0.309c-0.114,0.056-0.228,0.111-0.341,0.17c-0.225,0.118-0.445,0.243-0.665,0.371c-0.103,0.06-0.206,0.116-0.308,0.178c-0.239,0.145-0.471,0.295-0.701,0.447c-0.075,0.05-0.153,0.097-0.227,0.147c-0.303,0.205-0.598,0.414-0.883,0.625c0.358-0.649,0.74-1.227,1.129-1.747c0.021-0.028,0.041-0.06,0.061-0.087c0.409-0.539,0.824-1.01,1.228-1.419c0.002-0.002,0.004-0.004,0.006-0.006c0.533-0.54,1.038-0.961,1.483-1.295c0.064-0.048,0.132-0.103,0.193-0.147c0.036-0.026,0.065-0.044,0.1-0.069c0.123-0.087,0.245-0.172,0.353-0.243c0.524-0.343,0.812-0.943,0.747-1.568c-0.063-0.626-0.466-1.158-1.051-1.389c-0.051-0.02-0.114-0.03-0.167-0.049c-0.22-0.078-0.455-0.147-0.703-0.208c-0.152-0.038-0.306-0.074-0.468-0.104c-0.023-0.004-0.043-0.011-0.067-0.015c-0.015-0.003-0.029,0.001-0.044-0.001c-1.141-0.2-2.487-0.23-4.056-0.062C17.176,8.148,20.805,8.612,22.332,8.928z M26.839,51.679c-13.479,0-24.446-9.965-24.446-22.214c0-6.195,2.881-12.153,7.899-16.349c2.157-0.574,4.478-1.034,6.829-1.368c0.079,0.014,0.166,0.022,0.242,0.038c0.063,0.013,0.128,0.025,0.188,0.039c-0.09,0.065-0.19,0.147-0.285,0.219c-0.104,0.08-0.203,0.152-0.312,0.24c-0.095,0.077-0.196,0.169-0.294,0.252c-0.121,0.103-0.238,0.198-0.363,0.311c-0.118,0.107-0.24,0.231-0.361,0.348c-0.111,0.107-0.219,0.205-0.332,0.32c-0.202,0.206-0.406,0.433-0.61,0.666c-0.034,0.039-0.067,0.071-0.101,0.11c-0.958,1.114-1.92,2.535-2.699,4.312c-0.313,0.717-0.104,1.517,0.521,1.989c0.624,0.472,1.481,0.454,2.084-0.042c1.709-1.407,4.902-3.703,7.521-3.53c-0.026,2.813,0.123,8.915,1.795,11.519c0.3,0.467,0.811,0.756,1.363,0.772c0.017,0,0.033,0,0.05,0c0.534,0,1.037-0.255,1.354-0.69c1.037-1.425,3.413-5.356,3.405-11.434c1.461,0.096,4.432,0.587,6.794,2.894c0.516,0.503,1.266,0.622,1.907,0.301c0.648-0.322,1.009-0.995,0.918-1.716c-0.058-0.455-0.161-0.955-0.324-1.479c-0.007-0.023-0.011-0.044-0.018-0.068c-0.154-0.483-0.374-0.988-0.652-1.499c-0.038-0.071-0.066-0.14-0.107-0.211c-0.125-0.217-0.278-0.435-0.43-0.652c-0.053-0.076-0.094-0.152-0.15-0.228c-0.13-0.174-0.288-0.347-0.437-0.52c-0.102-0.119-0.189-0.239-0.3-0.357c-0.13-0.138-0.29-0.273-0.434-0.409c-0.158-0.15-0.302-0.302-0.477-0.45c-0.151-0.127-0.334-0.249-0.499-0.374c-0.199-0.151-0.383-0.305-0.603-0.452c0.5-0.086,1.124-0.164,1.884-0.219c0.03-0.002,0.061-0.004,0.092-0.006c0.15-0.01,0.307-0.019,0.467-0.027c0.086-0.004,0.173-0.008,0.262-0.012c0.124-0.005,0.249-0.01,0.379-0.014c0.158-0.005,0.321-0.008,0.488-0.01c0.077-0.001,0.153-0.003,0.232-0.004c0.305-0.003,0.628-0.001,0.963,0.004l0.359,0.032c0.296,0.04,0.593,0.075,0.89,0.111l0.248,0.029c6.068,4.245,9.547,10.66,9.547,17.611C51.286,41.714,40.319,51.679,26.839,51.679z"/></svg>
-        Focus
+        <span data-i18n="tab-focus">Focus</span>
       </button>
       <button class="tab" onclick="swTab(this,'stopwatch')">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14 15"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
-        Stopwatch
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14 15"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
+        <span data-i18n="tab-stopwatch">Stopwatch</span>
       </button>
     </div>
 
@@ -924,13 +941,13 @@ footer{
 
 <!-- FOCUS -->
 <section class="sec">
-  <div class="label">Focus Mode</div>
-  <h2 class="ttl fu">Every phase has<br>its own energy</h2>
-  <p class="desc fu">Color-coded Pomodoro sessions that put you in the right mindset for every moment of your work day.</p>
+  <div class="label" data-i18n="focus-label">Focus Mode</div>
+  <h2 class="ttl fu" data-i18n="focus-title">Every phase has<br>its own energy</h2>
+  <p class="desc fu" data-i18n="focus-desc">Color-coded Pomodoro sessions that put you in the right mindset for every moment of your work day.</p>
   <div class="focus-grid">
-    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-red.webp" alt="Focus Time"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--red)"></span>Focus Time</h3><p>Deep work mode — stay locked in</p></div></div>
-    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-green.webp" alt="Short Break"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--green)"></span>Short Break</h3><p>Quick reset — step away from the screen</p></div></div>
-    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-orange.webp" alt="Long Break"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--orange)"></span>Long Break</h3><p>You've earned it — recharge fully</p></div></div>
+    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-red.webp" alt="Focus Time"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--red)"></span><span data-i18n="focus-time">Focus Time</span></h3><p data-i18n="focus-time-desc">Deep work mode — stay locked in</p></div></div>
+    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-green.webp" alt="Short Break"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--green)"></span><span data-i18n="short-break">Short Break</span></h3><p data-i18n="short-break-desc">Quick reset — step away from the screen</p></div></div>
+    <div class="focus-card fu"><div class="focus-card-img"><img src="screenshots/focus-orange.webp" alt="Long Break"/></div><div class="focus-foot"><h3><span class="dot" style="background:var(--orange)"></span><span data-i18n="long-break">Long Break</span></h3><p data-i18n="long-break-desc">You've earned it — recharge fully</p></div></div>
   </div>
   <div class="widget-preview fu"><img src="screenshots/focus-widget.webp" alt="Flip Clock Widget"/></div>
 </section>
@@ -938,9 +955,9 @@ footer{
 <!-- THEMES -->
 <div class="sec-alt">
   <div class="sec" id="themes">
-    <div class="label">Themes</div>
-    <h2 class="ttl fu">Make it yours</h2>
-    <p class="desc fu">Switch between beautiful color themes to match your mood and workflow.</p>
+    <div class="label" data-i18n="themes-label">Themes</div>
+    <h2 class="ttl fu" data-i18n="themes-title">Make it yours</h2>
+    <p class="desc fu" data-i18n="themes-desc">Switch between beautiful color themes to match your mood and workflow.</p>
     <div class="themes-wrap">
       <div class="fu"><img id="theme-preview-image" src="screenshots/themes/Dark%20Theme.webp" alt="Dark Theme Preview"/></div>
       <div class="fu">
@@ -968,28 +985,28 @@ footer{
 <!-- SUPPORT -->
 <div class="sec-alt">
   <section class="sec" id="support">
-    <div class="label">Support</div>
-    <h2 class="ttl fu">Need help?<br>We've got you</h2>
-    <p class="desc fu">Report issues, ask for features, or reach out for help getting Munjez running smoothly.</p>
+    <div class="label" data-i18n="sup-label">Support</div>
+    <h2 class="ttl fu" data-i18n="sup-title">Need help?<br>We've got you</h2>
+    <p class="desc fu" data-i18n="sup-desc">Report issues, ask for features, or reach out for help getting Munjez running smoothly.</p>
 
     <div class="support-wrap">
       <div class="support-card fu">
-        <h3>Get help from the Munjez team</h3>
-        <p>If you hit a bug or have a feature suggestion that can make Munjez better, open a ticket on GitHub and include a screenshot when possible. We review issues regularly and prioritize fixes based on impact.</p>
+        <h3 data-i18n="sup-main-title">Get help from the Munjez team</h3>
+        <p data-i18n="sup-main-desc">If you hit a bug or have a feature suggestion that can make Munjez better, open a ticket on GitHub and include a screenshot when possible. We review issues regularly and prioritize fixes based on impact.</p>
         <div class="support-actions">
-          <a class="support-btn pri" href="https://github.com/Osama2214/munjez-releases/issues/new" target="_blank" rel="noopener noreferrer">Report a bug</a>
-          <a class="support-btn sub" href="https://github.com/Osama2214/munjez-releases/issues" target="_blank" rel="noopener noreferrer">View all issues</a>
-          <a class="support-btn sub" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer">Email support</a>
+          <a class="support-btn pri" href="https://github.com/Osama2214/munjez-releases/issues/new" target="_blank" rel="noopener noreferrer" data-i18n="sup-btn-bug">Report a bug</a>
+          <a class="support-btn sub" href="https://github.com/Osama2214/munjez-releases/issues" target="_blank" rel="noopener noreferrer" data-i18n="sup-btn-issues">View all issues</a>
+          <a class="support-btn sub" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer" data-i18n="sup-btn-email">Email support</a>
         </div>
-        <p class="support-more"><a href="support/" target="_blank" rel="noopener noreferrer">Open full Support Center</a></p>
+        <p class="support-more"><a href="support/" target="_blank" rel="noopener noreferrer" data-i18n="sup-more">Open full Support Center</a></p>
       </div>
 
       <div class="support-card fu">
-        <h3>Before opening a ticket</h3>
+        <h3 data-i18n="sup-tips-title">Before opening a ticket</h3>
         <ul class="support-list">
-          <li><span class="support-dot"></span><span><strong>Update first:</strong> install the latest release and retry the issue.</span></li>
-          <li><span class="support-dot"></span><span><strong>Share context:</strong> include your Windows version and what you were doing.</span></li>
-          <li><span class="support-dot"></span><span><strong>Add media:</strong> attach a screenshot or short clip for faster troubleshooting.</span></li>
+          <li><span class="support-dot"></span><span data-i18n="sup-tip1"><strong>Update first:</strong> install the latest release and retry the issue.</span></li>
+          <li><span class="support-dot"></span><span data-i18n="sup-tip2"><strong>Share context:</strong> include your Windows version and what you were doing.</span></li>
+          <li><span class="support-dot"></span><span data-i18n="sup-tip3"><strong>Add media:</strong> attach a screenshot or short clip for faster troubleshooting.</span></li>
         </ul>
       </div>
     </div>
@@ -999,33 +1016,32 @@ footer{
 <!-- DOWNLOAD -->
 <div class="dl-sec" id="download">
   <div class="dl-inner">
-    <div class="label" style="justify-content:center">Download</div>
-    <h2 class="fu">Ready to get<br><span>things done?</span></h2>
-    <p class="fu">Free, fast, and completely offline. No account. No subscription. Just you and your goals.</p>
+    <h2 class="fu" data-i18n="dl-title">Ready to get<br><span>things done?</span></h2>
+    <p class="fu" data-i18n="dl-desc">Free, fast, and completely offline. No account. No subscription. Just you and your goals.</p>
     <div class="dl-actions">
       <a class="dl-btn fu" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download for Windows
-        <small>Windows 10 / 11</small>
+        <span data-i18n="dl-win">Download for Windows</span>
+        <small data-i18n="dl-win-sub">Windows 10 / 11</small>
       </a>
       <a class="dl-btn fu" id="section-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download for Linux
-        <small>AppImage &middot; DEB &middot; RPM</small>
+        <span data-i18n="dl-linux">Download for Linux</span>
+        <small data-i18n="dl-linux-sub">AppImage · DEB · RPM</small>
       </a>
     </div>
     <div class="dl-meta fu">
       <span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        No account needed
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="dl-no-account">No account needed</span>
       </span>
       <span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Works offline
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="dl-offline">Works offline</span>
       </span>
       <span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Free forever
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="dl-free">Free forever</span>
       </span>
     </div>
   </div>
@@ -1037,13 +1053,31 @@ footer{
   <div class="footer-wrap">
     <p class="footer-brand">Made with <span class="footer-heart">&hearts;</span> by <a href="https://github.com/Osama2214" target="_blank">Osama</a></p>
     <div class="footer-nav">
-      <a class="footer-link" href="privacy-policy/">Privacy Policy</a>
-      <a class="footer-link" href="support/">Support Center</a>
+      <a class="footer-link" href="privacy-policy/" data-i18n="footer-privacy">Privacy Policy</a>
+      <a class="footer-link" href="support/" data-i18n="footer-support">Support Center</a>
     </div>
   </div>
 </footer>
 
+<script src="lang.js"></script>
 <script>
+// ── NAV BUTTON LANGUAGE SYNC ──
+// Fires a 'langchange' event whenever the page direction or lang attribute changes,
+// so the smart-download button (set once at load time) stays in sync.
+(function(){
+  var html=document.documentElement;
+  var lastLang=html.getAttribute('lang');
+  var lastDir=html.getAttribute('dir');
+  var obs=new MutationObserver(function(){
+    var newLang=html.getAttribute('lang');
+    var newDir=html.getAttribute('dir');
+    if(newLang!==lastLang||newDir!==lastDir){
+      lastLang=newLang;lastDir=newDir;
+      document.dispatchEvent(new Event('langchange'));
+    }
+  });
+  obs.observe(html,{attributes:true,attributeFilter:['lang','dir']});
+})();
 // ── ACCESSIBILITY ──
 (function(){
   document.querySelectorAll('.car-dots').forEach(function(dots){
@@ -1265,7 +1299,7 @@ footer{
   };
 
   window.linuxShowScreen1=function(){
-    document.getElementById('lm-title').textContent='Download for Linux';
+    document.getElementById('lm-title').textContent=(window.LANG)?window.LANG.t('lm-title'):'Download for Linux';
     document.getElementById('lm-screen-2').classList.remove('active');
     document.getElementById('lm-screen-1').classList.remove('hidden');
   };
@@ -1323,29 +1357,51 @@ footer{
   var ua=(navigator.userAgent||'').toLowerCase();
   var isWindows=ua.indexOf('windows')!==-1;
   var isLinux=(ua.indexOf('linux')!==-1||ua.indexOf('x11')!==-1)&&ua.indexOf('android')===-1;
-  var textNode=btn.lastChild;
+  // Helper: set the nav-dl span text (used by lang.js via data-i18n) and store
+  // the platform key so the MutationObserver-driven langchange event can update it.
+  var navSpan=btn.querySelector('[data-i18n="nav-dl"]');
 
+  function setNavText(winText, linuxText, otherText){
+    // Store translations on the span so langchange can update later
+    if(navSpan){
+      navSpan.dataset.navWin   = winText;
+      navSpan.dataset.navLinux = linuxText;
+      navSpan.dataset.navOther = otherText;
+    }
+    document.addEventListener('langchange',function(){
+      if(!navSpan)return;
+      var ar=window.LANG&&window.LANG.lang()==='ar';
+      if(isWindows)      navSpan.textContent=ar?navSpan.dataset.navWin  :'Download for Windows';
+      else if(isLinux)   navSpan.textContent=ar?navSpan.dataset.navLinux:'Download for Linux';
+      else               navSpan.textContent=ar?navSpan.dataset.navOther:'Choose Your Platform';
+    });
+  }
+
+  var isAr=window.LANG&&window.LANG.lang()==='ar';
   if(isWindows){
     btn.href='windows-install/';
-    if(textNode)textNode.textContent=' Download for Windows';
     btn.title='Download Windows version';
+    if(navSpan) navSpan.textContent=isAr?'تنزيل لـ Windows':'Download for Windows';
+    setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
     return;
   }
 
   if(isLinux){
     btn.href='#';
-    if(textNode)textNode.textContent=' Download for Linux';
     btn.title='Download Linux version';
+    if(navSpan) navSpan.textContent=isAr?'تنزيل لـ Linux':'Download for Linux';
     btn.addEventListener('click',function(e){
       e.preventDefault();
       linuxModalOpen();
     });
+    setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
     return;
   }
 
   btn.href='#download';
-  if(textNode)textNode.textContent=' Choose Your Platform';
   btn.title='Open download section';
+  if(navSpan) navSpan.textContent=isAr?'اختر منصتك':'Choose Your Platform';
+  setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
 })();
 function animCount(el){
   var target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1400,start=null;
@@ -1510,8 +1566,9 @@ function swTab(btn,id){
 }
 // ── CAROUSEL ──
 function carNav(btn,dir){
+  var rtl=document.documentElement.dir==='rtl';
   var car=btn.closest('.carousel');
-  carGo(null,parseInt(car.dataset.idx)+dir,car);
+  carGo(null,parseInt(car.dataset.idx)+(rtl?-dir:dir),car);
 }
 function carSetClasses(imgs,cur){
   var len=imgs.length;
@@ -1570,21 +1627,21 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
 <div id="linux-modal" onclick="if(event.target===this)linuxModalClose()">
   <div class="lm-box">
     <div class="lm-head">
-      <div class="lm-title" id="lm-title">Download for Linux</div>
+      <div class="lm-title" id="lm-title" data-i18n="lm-title">Download for Linux</div>
       <button class="lm-close" onclick="linuxModalClose()">&#10005;</button>
     </div>
 
     <!-- Screen 1: format selection -->
     <div class="lm-screen-1" id="lm-screen-1">
-      <div class="lm-ver">Latest version: <span id="lm-version">—</span></div>
+      <div class="lm-ver"><span data-i18n="lm-ver-label">Latest version:</span> <span id="lm-version">—</span></div>
       <div class="lm-cards">
         <div class="lm-card" id="lm-deb" onclick="linuxSelectFormat('deb')">
           <div class="lm-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <div class="lm-info">
-            <div class="lm-name">.deb — Ubuntu / Debian</div>
-            <div class="lm-desc">Recommended for Ubuntu, Debian, Linux Mint</div>
+            <div class="lm-name" data-i18n="lm-deb-name">.deb — Ubuntu / Debian</div>
+            <div class="lm-desc" data-i18n="lm-deb-desc">Recommended for Ubuntu, Debian, Linux Mint</div>
           </div>
           <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
@@ -1593,8 +1650,8 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <div class="lm-info">
-            <div class="lm-name">.rpm — Fedora / RHEL</div>
-            <div class="lm-desc">Recommended for Fedora, openSUSE, RHEL</div>
+            <div class="lm-name" data-i18n="lm-rpm-name">.rpm — Fedora / RHEL</div>
+            <div class="lm-desc" data-i18n="lm-rpm-desc">Recommended for Fedora, openSUSE, RHEL</div>
           </div>
           <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
@@ -1603,48 +1660,36 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <div class="lm-info">
-            <div class="lm-name">.AppImage — Universal</div>
-            <div class="lm-desc">Works on any Linux distro, no install needed</div>
+            <div class="lm-name" data-i18n="lm-img-name">.AppImage — Universal</div>
+            <div class="lm-desc" data-i18n="lm-img-desc">Works on any Linux distro, no install needed</div>
           </div>
           <svg class="lm-dl-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
-      <div class="lm-fallback">Not sure which to pick? <a href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener">Browse all releases</a></div>
+      <div class="lm-fallback"><span data-i18n="lm-fallback-q">Not sure which to pick?</span> <a href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener" data-i18n="lm-fallback-a">Browse all releases</a></div>
     </div>
 
     <!-- Screen 2: install commands -->
     <div class="lm-screen-2" id="lm-screen-2">
       <button class="lm-back" onclick="linuxShowScreen1()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        Back
+        <span data-i18n="lm-back">Back</span>
       </button>
       <a class="lm-dl-btn" id="lm-dl-btn" href="#" onclick="event.preventDefault();window.location.href=this.href">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download <span id="lm-dl-name"></span>
+        <span data-i18n="lm-dl">Download</span> <span id="lm-dl-name"></span>
       </a>
       <div class="lm-hint">
-        <div class="lm-hint-row"><div class="lm-hint-num">1</div>Download the file using the button above</div>
-        <div class="lm-hint-row"><div class="lm-hint-num">2</div>Right-click the download folder → <span>Open Terminal Here</span></div>
-        <div class="lm-hint-row"><div class="lm-hint-num">3</div>Run the installation command below</div>
+        <div class="lm-hint-row"><div class="lm-hint-num">1</div><span data-i18n="lx-hint1">Download the file using the button above</span></div>
+        <div class="lm-hint-row"><div class="lm-hint-num">2</div><span data-i18n="lx-hint2">Right-click the download folder → <span>Open Terminal Here</span></span></div>
+        <div class="lm-hint-row"><div class="lm-hint-num">3</div><span data-i18n="lx-hint3">Run the installation command below</span></div>
       </div>
-      <div class="lm-section-title">Installation</div>
+      <div class="lm-section-title" data-i18n="lx-install">Installation</div>
       <div class="lm-code-block" id="lm-install-cmds"></div>
-      <div class="lm-section-title" style="margin-top:14px">Troubleshooting</div>
+      <div class="lm-section-title" style="margin-top:14px" data-i18n="lx-trouble">Troubleshooting</div>
       <div class="lm-code-block" id="lm-trouble-cmds"></div>
     </div>
   </div>
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

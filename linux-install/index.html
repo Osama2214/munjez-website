@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Installing on Linux | Munjez</title>
 <meta name="description" content="Install Munjez on Linux — choose your package format (.deb, .rpm, or .AppImage) and follow the setup commands."/>
@@ -34,11 +35,13 @@ body{
 }
 main{flex:1}
 .top{position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
-.top-in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.top-in{height:62px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
 .logo img{width:30px;height:30px;border-radius:8px}
-.back{text-decoration:none;background:var(--primary);border:1px solid var(--primary);color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:.2s}
+.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;transition:.2s;white-space:nowrap}
 .back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
 .wrap{max-width:1080px;margin:0 auto;padding:48px 20px 80px}
 
 /* hero */
@@ -75,6 +78,10 @@ main{flex:1}
 .trouble-issue svg{color:var(--orange);flex-shrink:0}
 .trouble-cmds{padding:12px 14px;background:#060b17}
 .trouble-cmds .cmd-row code{font-size:12.5px}
+.support-box{margin-top:32px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.support-box p{color:var(--muted);font-size:14px;max-width:420px}
+.support-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--primary);color:var(--accent);text-decoration:none;padding:11px 26px;border-radius:11px;font-size:14px;font-weight:700;transition:background .2s,color .2s}
+.support-btn:hover{background:var(--primary);color:#fff}
 </style>
 </head>
 <body>
@@ -85,7 +92,10 @@ main{flex:1}
       <img src="../screenshots/icon.webp" alt="Munjez"/>
       <span>Munjez</span>
     </a>
-    <a class="back" href="../">Back to home</a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="lang-toggle" type="button">AR</button>
+      <a class="back" href="../" data-i18n="back">Back to home</a>
+    </div>
   </div>
 </header>
 
@@ -94,27 +104,35 @@ main{flex:1}
     <section class="hero">
       <div class="dl-badge">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Your download has started!
+        <span data-i18n="lx-dl-started">Your download has started!</span>
       </div>
-      <h1>Installing <span>Munjez</span> on Linux — <span id="fmt-label"></span></h1>
-      <p>If your browser didn't start the download, click the button below.</p>
+      <h1><span data-i18n="lx-title-pre">Installing</span> <span>Munjez</span> <span data-i18n="lx-title-mid">on Linux —</span> <span id="fmt-label"></span></h1>
+      <p data-i18n="lx-hero-desc">If your browser didn't start the download, click the button below.</p>
       <button class="dl-btn" id="dl-btn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download again
+        <span data-i18n="lx-dl-btn">Download again</span>
       </button>
     </section>
 
     <div class="hint">
-      <div class="hint-row"><div class="hint-num">1</div>Download the file using the button above</div>
-      <div class="hint-row"><div class="hint-num">2</div>Right-click the download folder → <span>Open Terminal Here</span></div>
-      <div class="hint-row"><div class="hint-num">3</div>Run the installation command below</div>
+      <div class="hint-row"><div class="hint-num">1</div><span data-i18n="lx-hint1">Download the file using the button above</span></div>
+      <div class="hint-row"><div class="hint-num">2</div><span data-i18n="lx-hint2">Right-click the download folder → <span>Open Terminal Here</span></span></div>
+      <div class="hint-row"><div class="hint-num">3</div><span data-i18n="lx-hint3">Run the installation command below</span></div>
     </div>
 
-    <div class="section-title">Installation</div>
+    <div class="section-title" data-i18n="lx-install">Installation</div>
     <div class="code-block" id="install-cmds"></div>
 
-    <div class="section-title">Troubleshooting</div>
+    <div class="section-title" data-i18n="lx-trouble">Troubleshooting</div>
     <div class="trouble-list" id="trouble-list"></div>
+
+    <div class="support-box">
+      <p data-i18n="support-cta">Still having trouble? Our support team is here to help.</p>
+      <a class="support-btn" href="../support/">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span data-i18n="contact-support">Contact Support</span>
+      </a>
+    </div>
   </div>
 </main>
 
@@ -128,10 +146,10 @@ var FORMAT_DATA={
     filename:function(v){return'Munjez_'+v+'_amd64.deb'},
     install:function(v){return['sudo apt install ./Munjez_'+v+'_amd64.deb']},
     trouble:[
-      {issue:'Missing dependencies after install',cmds:function(v){return['sudo apt -f install']}},
-      {issue:'Package configuration is broken',cmds:function(v){return['sudo dpkg --configure -a']}},
-      {issue:'Need to reinstall cleanly',cmds:function(v){return['sudo dpkg -r munjez','sudo apt install ./Munjez_'+v+'_amd64.deb']}},
-      {issue:'Permission denied when running',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
+      {issue:'Missing dependencies after install',issueAr:'تبعيات مفقودة بعد التثبيت',cmds:function(v){return['sudo apt -f install']}},
+      {issue:'Package configuration is broken',issueAr:'إعداد الحزمة معطوب',cmds:function(v){return['sudo dpkg --configure -a']}},
+      {issue:'Need to reinstall cleanly',issueAr:'إعادة التثبيت من جديد',cmds:function(v){return['sudo dpkg -r munjez','sudo apt install ./Munjez_'+v+'_amd64.deb']}},
+      {issue:'Permission denied when running',issueAr:'رُفض الإذن عند التشغيل',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
     ]
   },
   rpm:{
@@ -139,10 +157,10 @@ var FORMAT_DATA={
     filename:function(v){return'Munjez-'+v+'-1.x86_64.rpm'},
     install:function(v){return['sudo dnf install ./Munjez-'+v+'-1.x86_64.rpm']},
     trouble:[
-      {issue:'Dependencies conflict',cmds:function(v){return['sudo dnf --allowerasing install ./Munjez-'+v+'-1.x86_64.rpm']}},
-      {issue:'Need to reinstall cleanly',cmds:function(v){return['sudo rpm -e munjez','sudo dnf install ./Munjez-'+v+'-1.x86_64.rpm']}},
-      {issue:'Old version still installed (openSUSE)',cmds:function(v){return['sudo zypper install ./Munjez-'+v+'-1.x86_64.rpm']}},
-      {issue:'Permission denied when running',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
+      {issue:'Dependencies conflict',issueAr:'تعارض في التبعيات',cmds:function(v){return['sudo dnf --allowerasing install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Need to reinstall cleanly',issueAr:'إعادة التثبيت من جديد',cmds:function(v){return['sudo rpm -e munjez','sudo dnf install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Old version still installed (openSUSE)',issueAr:'إصدار قديم لا يزال مثبتاً (openSUSE)',cmds:function(v){return['sudo zypper install ./Munjez-'+v+'-1.x86_64.rpm']}},
+      {issue:'Permission denied when running',issueAr:'رُفض الإذن عند التشغيل',cmds:function(v){return['chmod +x /usr/bin/munjez']}}
     ]
   },
   appimage:{
@@ -150,10 +168,10 @@ var FORMAT_DATA={
     filename:function(v){return'Munjez_'+v+'_amd64.AppImage'},
     install:function(v){return['chmod +x Munjez_'+v+'_amd64.AppImage','./Munjez_'+v+'_amd64.AppImage']},
     trouble:[
-      {issue:'FUSE not installed (Ubuntu / Debian)',cmds:function(v){return['sudo apt install libfuse2']}},
-      {issue:'FUSE not installed (Fedora / RHEL)',cmds:function(v){return['sudo dnf install fuse']}},
-      {issue:'Bypass FUSE entirely',cmds:function(v){return['./Munjez_'+v+'_amd64.AppImage --appimage-extract-and-run']}},
-      {issue:'File not executable',cmds:function(v){return['chmod +x Munjez_'+v+'_amd64.AppImage']}}
+      {issue:'FUSE not installed (Ubuntu / Debian)',issueAr:'FUSE غير مثبت (Ubuntu / Debian)',cmds:function(v){return['sudo apt install libfuse2']}},
+      {issue:'FUSE not installed (Fedora / RHEL)',issueAr:'FUSE غير مثبت (Fedora / RHEL)',cmds:function(v){return['sudo dnf install fuse']}},
+      {issue:'Bypass FUSE entirely',issueAr:'تجاوز FUSE بالكامل',cmds:function(v){return['./Munjez_'+v+'_amd64.AppImage --appimage-extract-and-run']}},
+      {issue:'File not executable',issueAr:'الملف غير قابل للتنفيذ',cmds:function(v){return['chmod +x Munjez_'+v+'_amd64.AppImage']}}
     ]
   }
 };
@@ -197,7 +215,8 @@ function renderTrouble(items, ver){
     card.className='trouble-item';
     var hd=document.createElement('div');
     hd.className='trouble-issue';
-    hd.innerHTML=warnIcon()+' '+item.issue;
+    var isAr=window.LANG&&window.LANG.lang()==='ar';
+    hd.innerHTML=warnIcon()+' '+(isAr&&item.issueAr?item.issueAr:item.issue);
     var body=document.createElement('div');
     body.className='trouble-cmds';
     item.cmds(ver).forEach(function(c){body.appendChild(makeCmdRow(c));});
@@ -223,6 +242,9 @@ function init(ver){
   a.href=url;a.style.display='none';
   document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
+
+// lang
+var s=document.createElement('script');s.src='../lang.js';document.head.appendChild(s);
 
 fetch(API_URL,{cache:'no-store'})
   .then(function(r){return r.ok?r.json():null;})
