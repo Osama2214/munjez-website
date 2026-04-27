@@ -699,7 +699,7 @@ footer{
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <img src="screenshots/icon.webp" alt="" style="width:30px;height:30px;border-radius:8px" aria-hidden="true"/>
+    <img src="screenshots/icon.webp" alt="" width="30" height="30" style="border-radius:8px" aria-hidden="true" fetchpriority="low" decoding="async"/>
     <span>Munjez</span>
   </a>
   <ul>
@@ -1321,12 +1321,25 @@ footer{
     cardUrls.appimage=urls.img;
   }
 
+  var versionFetching=false;
   function linuxModalOpen(){
     var modal=document.getElementById('linux-modal');
     if(modal)modal.classList.add('open');
     document.body.style.overflow='hidden';
     linuxShowScreen1();
-    if(resolvedVersion)populateModal(resolvedVersion);
+    if(resolvedVersion){
+      populateModal(resolvedVersion);
+    } else if(!versionFetching){
+      versionFetching=true;
+      fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases/latest',{cache:'default'})
+        .then(function(res){return res.ok?res.json():null;})
+        .then(function(json){
+          if(!json||!json.tag_name)return;
+          resolvedVersion=json.tag_name.replace(/^v/,'');
+          populateModal(resolvedVersion);
+        })
+        .catch(function(){});
+    }
   }
 
   window.linuxModalClose=function(){
@@ -1349,15 +1362,6 @@ footer{
   }
   interceptLinuxBtn(heroLinuxBtn);
   interceptLinuxBtn(sectionLinuxBtn);
-
-  fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases/latest',{cache:'default'})
-    .then(function(res){return res.ok?res.json():null;})
-    .then(function(json){
-      if(!json||!json.tag_name)return;
-      resolvedVersion=json.tag_name.replace(/^v/,'');
-      populateModal(resolvedVersion);
-    })
-    .catch(function(){});
 
   var btn=document.getElementById('nav-smart-download');
   if(!btn)return;
