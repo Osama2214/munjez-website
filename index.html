@@ -491,6 +491,23 @@ nav ul a:hover{color:var(--text)}
 .dl-meta{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap}
 .dl-meta span{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
 .dl-meta span svg{color:var(--green)}
+.dl-count-wrap{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:24px;padding:8px 16px;
+  background:rgba(124,58,237,.07);
+  border:1px solid rgba(124,58,237,.2);
+  border-radius:10px;
+}
+.dl-count-body{display:flex;align-items:baseline;gap:6px}
+#dl-count-num{
+  font-weight:800;font-size:16px;letter-spacing:-.3px;line-height:1;
+  color:#fff;
+}
+.dl-count-label-text{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0;text-transform:none}
+.dl-count-dot{
+  width:6px;height:6px;border-radius:50%;background:#10b981;
+  animation:blink 2.2s infinite;flex-shrink:0;margin-bottom:1px;
+}
 
 /* FOOTER */
 footer{
@@ -742,6 +759,15 @@ footer{
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span data-i18n="hero-linux">Download for Linux</span>
     </a>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:20px">
+    <div class="dl-count-wrap fu" id="dl-count-wrap" style="display:none">
+      <span class="dl-count-dot"></span>
+      <div class="dl-count-body">
+        <span class="dl-count-label-text" data-i18n="dl-count-label">downloads so far</span>
+        <span id="dl-count-num">0</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1632,6 +1658,70 @@ document.querySelectorAll('.car-img').forEach(function(img){
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose()});
 function lbClose(){document.getElementById('lb').classList.remove('on');}
+
+// ── DOWNLOAD COUNT ──
+(function(){
+  var CACHE_KEY='munjez_dl_count';
+  var CACHE_TTL=10800000; // 3 hours
+  var DL_OFFSET=400;
+  var wrap=document.getElementById('dl-count-wrap');
+  var numEl=document.getElementById('dl-count-num');
+  if(!wrap||!numEl)return;
+
+  function showCount(n){
+    numEl.textContent=n.toLocaleString();
+    wrap.style.display='flex';
+  }
+
+  function animateTo(target){
+    var start=0,dur=1200,t0=null;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1);
+      var ease=1-Math.pow(1-p,3);
+      numEl.textContent=Math.round(start+(target-start)*ease).toLocaleString();
+      if(p<1)requestAnimationFrame(step);
+    }
+    wrap.style.display='flex';
+    requestAnimationFrame(step);
+  }
+
+  // Check cache first
+  try{
+    var cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null');
+    if(cached&&Date.now()-cached.ts<CACHE_TTL){
+      showCount(cached.count);
+      return;
+    }
+  }catch(_){}
+
+  // Fetch after page is idle
+  var fetchFn=function(){
+    fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases?per_page=100',{cache:'default'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(releases){
+        if(!releases)return;
+        var total=0;
+        releases.forEach(function(rel){
+          (rel.assets||[]).forEach(function(a){
+            if(/\.(exe|deb|rpm|AppImage)$/i.test(a.name))total+=a.download_count||0;
+          });
+        });
+        if(total>0){
+          var final=total+DL_OFFSET;
+          try{localStorage.setItem(CACHE_KEY,JSON.stringify({count:final,ts:Date.now()}));}catch(_){}
+          animateTo(final);
+        }
+      })
+      .catch(function(){});
+  };
+
+  if('requestIdleCallback' in window){
+    requestIdleCallback(fetchFn,{timeout:3000});
+  } else {
+    setTimeout(fetchFn,2000);
+  }
+})();
 </script>
 <div id="lb" onclick="lbClose()"><button id="lb-close" onclick="event.stopPropagation();lbClose()">&#10005;</button><img id="lb-img" src="" alt="" onclick="event.stopPropagation();lbClose()"/></div>
 

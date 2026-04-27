@@ -93,6 +93,7 @@
       'dl-no-account': 'No account needed',
       'dl-offline': 'Works offline',
       'dl-free': 'Free forever',
+      'dl-count-label': 'downloads so far',
       /* ── Footer ── */
       'footer-privacy': 'Privacy Policy',
       'footer-support': 'Support Center',
@@ -295,6 +296,7 @@
       'dl-no-account': 'لا حاجة لحساب',
       'dl-offline': 'يعمل بلا إنترنت',
       'dl-free': 'مجاني للأبد',
+      'dl-count-label': 'تنزيل حتى الآن',
       /* ── Footer ── */
       'footer-privacy': 'سياسة الخصوصية',
       'footer-support': 'مركز الدعم',
