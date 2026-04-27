@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Support Center | Munjez</title>
 <meta name="description" content="Get help with Munjez — troubleshooting steps, FAQ, and contact options for the free desktop productivity app."/>
@@ -33,21 +34,14 @@ body{
     var(--bg);
   color:var(--text);line-height:1.7;
 }
-.top{
-  position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);
-  backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8);
-}
-.top-in{
-  max-width:1080px;margin:0 auto;padding:14px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.top{position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
+.top-in{height:62px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
 .logo img{width:30px;height:30px;border-radius:8px}
-.back{
-  text-decoration:none;background:var(--primary);border:1px solid var(--primary);
-  color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:.2s;
-}
+.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;transition:.2s;white-space:nowrap}
 .back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
 .wrap{max-width:1080px;margin:0 auto;padding:34px 20px 70px}
 .hero h1{font-size:clamp(36px,5.5vw,56px);line-height:1.04;letter-spacing:-1.4px}
 .hero p{margin-top:10px;color:var(--muted)}
@@ -83,58 +77,62 @@ body{
         <img src="../screenshots/icon.webp" alt="Munjez"/>
         <span>Munjez</span>
       </a>
-      <a class="back" href="../">Back to home</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button id="lang-toggle" type="button">AR</button>
+        <a class="back" href="../" data-i18n="back">Back to home</a>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>Support Center</h1>
-      <p>Need help with Munjez? Use one of the support channels below, then check quick fixes and FAQ.</p>
+      <h1 data-i18n="sp-title">Support Center</h1>
+      <p data-i18n="sp-desc">Need help with Munjez? Use one of the support channels below, then check quick fixes and FAQ.</p>
     </section>
 
     <section class="grid">
       <article class="card">
-        <h2>Contact options</h2>
-        <p>Choose the fastest way based on your request.</p>
+        <h2 data-i18n="sp-contact-title">Contact options</h2>
+        <p data-i18n="sp-contact-desc">Choose the fastest way based on your request.</p>
         <div class="actions">
-          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues/new" target="_blank" rel="noopener noreferrer">Report a bug</a>
-          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues" target="_blank" rel="noopener noreferrer">View all issues</a>
-          <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer">Email support</a>
+          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues/new" target="_blank" rel="noopener noreferrer" data-i18n="sp-btn-bug">Report a bug</a>
+          <a class="btn" href="https://github.com/Osama2214/munjez-releases/issues" target="_blank" rel="noopener noreferrer" data-i18n="sp-btn-issues">View all issues</a>
+          <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer" data-i18n="sp-btn-email">Email support</a>
         </div>
       </article>
 
       <article class="card">
-        <h2>Before contacting support</h2>
+        <h2 data-i18n="sp-tips-title">Before contacting support</h2>
         <ul class="list">
-          <li>Install the latest version and test again.</li>
-          <li>Include your Windows version and what happened step by step.</li>
-          <li>Add a screenshot or short video when possible.</li>
-          <li>Mention whether the issue is always reproducible or random.</li>
+          <li data-i18n="sp-tip1">Install the latest version and test again.</li>
+          <li data-i18n="sp-tip2">Include your Windows version and what happened step by step.</li>
+          <li data-i18n="sp-tip3">Add a screenshot or short video when possible.</li>
+          <li data-i18n="sp-tip4">Mention whether the issue is always reproducible or random.</li>
         </ul>
       </article>
     </section>
 
     <section class="faq">
-      <h2>Quick FAQ</h2>
+      <h2 data-i18n="sp-faq">Quick FAQ</h2>
       <div class="q">
-        <h3>Does Munjez require an internet connection?</h3>
-        <p>No. Munjez is designed to be offline-first and works locally on your device.</p>
+        <h3 data-i18n="sp-q1">Does Munjez require an internet connection?</h3>
+        <p data-i18n="sp-a1">No. Munjez is designed to be offline-first and works locally on your device.</p>
       </div>
       <div class="q">
-        <h3>How can I suggest a new feature?</h3>
-        <p>Open a GitHub issue and describe the feature, why it helps, and how you expect it to work.</p>
+        <h3 data-i18n="sp-q2">How can I suggest a new feature?</h3>
+        <p data-i18n="sp-a2">Open a GitHub issue and describe the feature, why it helps, and how you expect it to work.</p>
       </div>
       <div class="q">
-        <h3>How long does a response usually take?</h3>
-        <p>Response times vary, but tickets with clear reproduction steps and media are handled faster.</p>
+        <h3 data-i18n="sp-q3">How long does a response usually take?</h3>
+        <p data-i18n="sp-a3">Response times vary, but tickets with clear reproduction steps and media are handled faster.</p>
       </div>
       <div class="q">
-        <h3>Why does Windows show a security warning when I install Munjez?</h3>
-        <p>Munjez is not yet signed with a paid code-signing certificate, so Windows SmartScreen flags it as an unrecognized app. This is normal for independent apps and does <strong>not</strong> mean the app is harmful. To proceed, click <strong>More info</strong> then <strong>Run anyway</strong>. If the file is fully blocked, right-click it → <strong>Properties</strong> → check <strong>Unblock</strong> → <strong>OK</strong>. Full step-by-step instructions are on the <a href="../windows-install/" style="color:var(--accent);text-decoration:none">installation guide page</a>.</p>
+        <h3 data-i18n="sp-q4">Why does Windows show a security warning when I install Munjez?</h3>
+        <p data-i18n="sp-a4">Munjez is not yet signed with a paid code-signing certificate, so Windows SmartScreen flags it as an unrecognized app. This is normal for independent apps and does <strong>not</strong> mean the app is harmful. To proceed, click <strong>More info</strong> then <strong>Run anyway</strong>. If the file is fully blocked, right-click it → <strong>Properties</strong> → check <strong>Unblock</strong> → <strong>OK</strong>. Full step-by-step instructions are on the <a href="../windows-install/" style="color:var(--accent);text-decoration:none">installation guide page</a>.</p>
       </div>
     </section>
   </main>
+<script src="../lang.js"></script>
 </body>
 </html>
 

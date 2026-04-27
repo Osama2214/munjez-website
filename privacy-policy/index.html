@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Privacy Policy | Munjez</title>
 <meta name="description" content="Read the Munjez privacy policy. Learn how we handle your data in the free desktop app for task management and productivity."/>
@@ -32,18 +33,14 @@ body{
   color:var(--text);line-height:1.7;
 }
 .wrap{max-width:940px;margin:0 auto;padding:34px 20px 72px}
-.top{
-  position:sticky;top:0;z-index:10;background:rgba(7,12,24,.86);
-  backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8);
-}
-.top-in{max-width:940px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:800}
+.top{position:sticky;top:0;z-index:10;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
+.top-in{height:62px;padding:0 48px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.3px}
 .brand img{width:30px;height:30px;border-radius:8px}
-.back{
-  text-decoration:none;color:#fff;background:var(--primary);border:1px solid var(--primary);
-  padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:.2s;
-}
+.back{display:inline-flex;align-items:center;text-decoration:none;color:#fff;background:var(--primary);border:1.5px solid var(--primary);height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;transition:.2s;white-space:nowrap}
 .back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
 .hero{padding:42px 0 26px}
 .hero h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-1.4px;line-height:1.08}
 .hero p{margin-top:10px;color:var(--muted)}
@@ -70,58 +67,62 @@ body{
         <img src="../screenshots/icon.webp" alt="Munjez"/>
         <span>Munjez</span>
       </a>
-      <a class="back" href="../">Back to home</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button id="lang-toggle" type="button">AR</button>
+        <a class="back" href="../" data-i18n="back">Back to home</a>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>Privacy Policy</h1>
-      <p>Last updated: April 19, 2026</p>
+      <h1 data-i18n="pp-title">Privacy Policy</h1>
+      <p data-i18n="pp-updated">Last updated: April 19, 2026</p>
     </section>
 
     <section class="card">
       <div class="sec">
-        <h2>Overview</h2>
-        <p>Munjez is an offline-first desktop app focused on productivity. We designed it to keep your data local whenever possible.</p>
+        <h2 data-i18n="pp-overview-h">Overview</h2>
+        <p data-i18n="pp-overview-p">Munjez is an offline-first desktop app focused on productivity. We designed it to keep your data local whenever possible.</p>
       </div>
 
       <div class="sec">
-        <h2>Data We Collect</h2>
-        <p>We do not require account creation to use Munjez, and we do not collect personal data from inside the app by default.</p>
+        <h2 data-i18n="pp-data-h">Data We Collect</h2>
+        <p data-i18n="pp-data-p">We do not require account creation to use Munjez, and we do not collect personal data from inside the app by default.</p>
       </div>
 
       <div class="sec">
-        <h2>Local Data Storage</h2>
-        <p>Your tasks, habits, and app settings are stored locally on your device. You are responsible for managing backups and device security.</p>
+        <h2 data-i18n="pp-local-h">Local Data Storage</h2>
+        <p data-i18n="pp-local-p">Your tasks, habits, and app settings are stored locally on your device. You are responsible for managing backups and device security.</p>
       </div>
 
       <div class="sec">
-        <h2>Crash Reports and Diagnostics</h2>
-        <p>Munjez does not automatically send analytics or diagnostics unless clearly stated in a future release note and explicitly enabled by you.</p>
+        <h2 data-i18n="pp-crash-h">Crash Reports and Diagnostics</h2>
+        <p data-i18n="pp-crash-p">Munjez does not automatically send analytics or diagnostics unless clearly stated in a future release note and explicitly enabled by you.</p>
       </div>
 
       <div class="sec">
-        <h2>Third-Party Links</h2>
-        <p>Our website and app may include links to third-party websites (such as GitHub). Their privacy practices are governed by their own policies.</p>
+        <h2 data-i18n="pp-third-h">Third-Party Links</h2>
+        <p data-i18n="pp-third-p">Our website and app may include links to third-party websites (such as GitHub). Their privacy practices are governed by their own policies.</p>
       </div>
 
       <div class="sec">
-        <h2>Children's Privacy</h2>
-        <p>Munjez is not directed to children under 13, and we do not knowingly collect personal information from children.</p>
+        <h2 data-i18n="pp-children-h">Children's Privacy</h2>
+        <p data-i18n="pp-children-p">Munjez is not directed to children under 13, and we do not knowingly collect personal information from children.</p>
       </div>
 
       <div class="sec">
-        <h2>Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date.</p>
+        <h2 data-i18n="pp-changes-h">Changes to This Policy</h2>
+        <p data-i18n="pp-changes-p">We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date.</p>
       </div>
 
       <div class="sec">
-        <h2>Contact</h2>
-        <p>For privacy questions, contact us at <a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer">munjezsupport@gmail.com</a>.</p>
+        <h2 data-i18n="pp-contact-h">Contact</h2>
+        <p data-i18n="pp-contact-p">For privacy questions, contact us at <a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com" target="_blank" rel="noopener noreferrer">munjezsupport@gmail.com</a>.</p>
       </div>
     </section>
   </main>
+<script src="../lang.js"></script>
 </body>
 </html>
 
