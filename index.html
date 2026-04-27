@@ -59,6 +59,9 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;user-select:none}
+html[dir="rtl"] body{font-size:135%;line-height:1.9}
+html[dir="rtl"] .hero h1{line-height:1.45;letter-spacing:-1px;padding-top:16px}
+html[dir="rtl"] .ttl{line-height:1.35}
 
 /* ── CANVAS ── */
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
@@ -461,8 +464,9 @@ nav ul a:hover{color:var(--text)}
 }
 .dl-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
 .dl-sec h2{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-3px;margin-bottom:18px;line-height:1}
-[dir="rtl"] .dl-sec h2{line-height:1.25;letter-spacing:0}
+[dir="rtl"] .dl-sec h2{line-height:1.2;letter-spacing:0;padding-top:20px}
 .dl-sec h2 span{background:linear-gradient(135deg,#a78bfa,#7c3aed);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+[dir="rtl"] .dl-sec h2 span{display:inline-block;padding-top:0.2em}
 .dl-sec>.dl-inner>p{font-size:17px;color:var(--muted);margin-bottom:44px;line-height:1.7}
 .dl-actions{
   max-width:360px;margin:0 auto;
@@ -503,7 +507,8 @@ nav ul a:hover{color:var(--text)}
   font-weight:800;font-size:16px;letter-spacing:-.3px;line-height:1;
   color:#fff;
 }
-.dl-count-label-text{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0;text-transform:none}
+.dl-count-label-text{font-size:14px;color:var(--muted);font-weight:500;letter-spacing:0;text-transform:none;font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+#dl-count-num{font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
 .dl-count-dot{
   width:6px;height:6px;border-radius:50%;background:#10b981;
   animation:blink 2.2s infinite;flex-shrink:0;margin-bottom:1px;
