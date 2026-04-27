@@ -438,10 +438,10 @@
       var l = document.createElement('link');
       l.id = 'ar-font';
       l.rel = 'stylesheet';
-      l.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap';
+      l.href = 'https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap';
       document.head.appendChild(l);
     }
-    document.body.style.fontFamily = '"Cairo", system-ui, sans-serif';
+    document.body.style.fontFamily = '"Almarai", system-ui, sans-serif';
   }
 
   function toggle() {
