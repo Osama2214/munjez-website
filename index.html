@@ -672,6 +672,12 @@ footer{
   .footer-wrap{flex-direction:column;align-items:center;text-align:center;gap:10px}
   .footer-nav{gap:14px}
 }
+@media(max-width:500px){
+  nav{padding:0 14px;gap:8px}
+  .nav-dl span[data-i18n]{display:none}
+  .nav-dl{padding:0 10px;min-width:36px;justify-content:center}
+  #lang-toggle{padding:0 10px;min-width:36px}
+}
 @media (prefers-reduced-motion: reduce){
   #particles,.mouse-glow{display:none}
   *,*::before,*::after{
