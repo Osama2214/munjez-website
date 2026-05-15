@@ -384,6 +384,21 @@
       'pp-changes-p': 'قد نحدِّث هذه السياسة من وقت لآخر. ستنعكس أي تغييرات على هذه الصفحة مع تحديث التاريخ.',
       'pp-contact-h': 'تواصل معنا',
       'pp-contact-p': 'لأي استفسار يتعلق بالخصوصية، تواصل معنا على <a class=\"mail\" href=\"https://mail.google.com/mail/?view=cm&fs=1&to=munjezsupport@gmail.com\" target=\"_blank\" rel=\"noopener noreferrer\">munjezsupport@gmail.com</a>.',
+      /* ── Theme Names ── */
+      'theme-dark': 'الثيم الداكن',
+      'theme-midnight': 'ثيم منتصف الليل',
+      'theme-ocean': 'ثيم المحيط',
+      'theme-lilac': 'الثيم البنفسجي',
+      'theme-iris': 'ثيم الزهور',
+      'theme-coast': 'الثيم الساحلي',
+      'theme-light': 'الثيم الفاتح',
+      'theme-blush': 'ثيم الوردي الناعم',
+      'theme-rose': 'ثيم الورد',
+      'theme-olive': 'ثيم الزيتوني',
+      'theme-earth': 'الثيم الترابي',
+      'theme-cocoa': 'ثيم الكاكاو',
+      'theme-mint': 'ثيم النعناع',
+      'theme-ember': 'الثيم الناري',
       /* ── Uninstall Feedback ── */
       'uf-title': 'تقييم إلغاء التثبيت',
       'uf-desc': 'نأسف لمغادرتك. تقييمك يساعدنا على تحسين Munjez في الإصدارات القادمة.',
@@ -427,6 +442,32 @@
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
       var v = t(el.getAttribute('data-i18n-ph'));
       if (v) el.placeholder = v;
+    });
+    // Translate theme names
+    var themeKeyMap = {
+      'Dark Theme': 'theme-dark',
+      'Midnight Theme': 'theme-midnight',
+      'Ocean Theme': 'theme-ocean',
+      'Lilac Theme': 'theme-lilac',
+      'Iris Theme': 'theme-iris',
+      'Coast Theme': 'theme-coast',
+      'Light Theme': 'theme-light',
+      'Blush Theme': 'theme-blush',
+      'Rose Theme': 'theme-rose',
+      'Olive Theme': 'theme-olive',
+      'Earth Theme': 'theme-earth',
+      'Cocoa Theme': 'theme-cocoa',
+      'Mint Theme': 'theme-mint',
+      'Ember Theme': 'theme-ember'
+    };
+    document.querySelectorAll('.theme-name').forEach(function(el) {
+      var orig = el.getAttribute('data-theme-en') || el.textContent.trim();
+      if (!el.getAttribute('data-theme-en')) el.setAttribute('data-theme-en', orig);
+      var key = themeKeyMap[orig];
+      if (key) {
+        var translated = T[lang] && T[lang][key];
+        el.textContent = translated ? translated : orig;
+      }
     });
     if (isAr) { loadArabicFont(); } else { document.body.style.fontFamily = ''; }
     var btn = document.getElementById('lang-toggle');
