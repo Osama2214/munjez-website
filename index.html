@@ -271,6 +271,7 @@ nav ul a:hover{color:var(--text)}
 .habits-ic{display:block;width:24px;height:24px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .hourglass-ic{display:block;width:24px;height:24px;background:currentColor;-webkit-mask-image:url('screenshots/hourglass.png');mask-image:url('screenshots/hourglass.png');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .tab-habits-ic{display:block;width:15px;height:15px;background:currentColor;-webkit-mask-image:url('screenshots/habits-icon-mask.webp');mask-image:url('screenshots/habits-icon-mask.webp');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.tab-countdown-ic{display:block;width:15px;height:15px;background:currentColor;-webkit-mask-image:url('screenshots/hourglass.png');mask-image:url('screenshots/hourglass.png');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
 .feat-card h3{font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-.3px}
 .feat-card p{font-size:14px;color:var(--muted);line-height:1.7}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
@@ -283,15 +284,25 @@ nav ul a:hover{color:var(--text)}
 .tag:hover{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.4)}
 
 /* ── TABS ── */
-.tabs-row{display:flex;gap:7px;margin-top:40px;flex-wrap:wrap}
+.tabs-wrap{position:relative;margin-top:40px}
+.tabs-wrap .tabs-fade{display:none;position:absolute;top:0;bottom:6px;width:48px;pointer-events:none;z-index:2}
+.tabs-wrap .tabs-fade.end{right:0;background:linear-gradient(to right,transparent,var(--bg))}
+.tabs-wrap .tabs-fade.start{left:0;background:linear-gradient(to left,transparent,var(--bg))}
+.tabs-arrow{display:none;position:absolute;top:50%;transform:translateY(calc(-50% - 3px));z-index:3;width:30px;height:30px;border-radius:50%;border:none;background:transparent;color:var(--text);font-size:16px;cursor:pointer;align-items:center;justify-content:center;opacity:.85;transition:opacity .2s}
+.tabs-arrow:hover{opacity:1}
+.tabs-arrow.end{right:0}
+.tabs-arrow.start{left:0}
+.tabs-wrap .tabs-fade.show{display:block}.tabs-arrow.show{display:flex}
+.tabs-row{display:flex;gap:7px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:6px}
+.tabs-row::-webkit-scrollbar{display:none}
 .tab{
   padding:9px 18px;border-radius:9px;
   border:1px solid var(--border);background:transparent;
   color:var(--muted);font-size:13px;font-weight:600;
   cursor:pointer;transition:all .2s;font-family:inherit;
-  display:flex;align-items:center;gap:7px;
+  display:flex;align-items:center;gap:7px;flex-shrink:0;white-space:nowrap;
 }
-.tab.on{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 0 20px rgba(124,58,237,.4)}
+.tab.on{background:var(--primary);border-color:var(--primary);color:#fff}
 .tab:hover:not(.on){border-color:var(--border-h);color:var(--text)}
 .tab-panel{display:none;margin-top:24px;animation:up .35s ease}
 .tab-panel.on{display:block}
@@ -799,7 +810,7 @@ footer{
     </div>
 
     <div class="feat-card fu">
-      <div class="fi r"><svg width="22" height="22" viewBox="-1.07 -1.07 55.82 55.82" fill="currentColor" stroke="currentColor" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><path d="M42.819,10.169l-0.004-0.003c-0.017-0.012-0.038-0.018-0.055-0.029c0.044-0.601-0.221-1.181-0.751-1.52c-2.574-1.65-7.554-4.059-12.487-2.083V2.786C29.522,1.25,28.409,0,27.041,0h-2.223c-1.369,0-2.482,1.25-2.482,2.786v4.105c-2.224-0.396-7.069-0.788-11.725,1.993c-0.706,0.42-0.996,1.255-0.705,2.028c0.029,0.079,0.083,0.138,0.122,0.209c-0.102,0.027-0.208,0.05-0.309,0.077c-0.236,0.063-0.462,0.18-0.658,0.341c-5.508,4.583-8.667,11.117-8.667,17.925c0,13.352,11.863,24.214,26.446,24.214s26.446-10.862,26.446-24.214C53.286,21.826,49.471,14.793,42.819,10.169z M22.332,8.928c0.491,0.103,0.997-0.021,1.387-0.34c0.393-0.319,0.617-0.794,0.617-1.301V2.786c0-0.442,0.26-0.786,0.482-0.786h2.223c0.223,0,0.481,0.344,0.481,0.786v4.249c0,0.57,0.286,1.095,0.766,1.403c0.481,0.31,1.08,0.353,1.602,0.113c3.655-1.671,7.521-0.249,9.994,1.124c-2.332-0.03-4.23,0.155-5.684,0.513c-0.658,0.161-1.147,0.697-1.246,1.366c-0.101,0.685,0.222,1.354,0.821,1.708c1.454,0.855,2.406,1.815,3.038,2.758c0.455,0.679,0.748,1.349,0.92,1.964c-2.191-1.794-4.648-2.453-6.332-2.689c-0.561-0.079-1.037-0.11-1.388-0.122c-0.46-0.015-0.896,0.154-1.226,0.478c-0.327,0.321-0.511,0.77-0.504,1.231c0.08,5.136-1.695,8.581-2.727,10.14c-0.985-2.088-1.289-6.58-1.234-10.271c0.014-0.852-0.621-1.577-1.479-1.688c-0.257-0.033-0.517-0.049-0.778-0.049c-0.05,0-0.101,0.009-0.15,0.011c-0.136,0.003-0.273,0.018-0.41,0.029c-0.206,0.017-0.412,0.037-0.619,0.072c-0.134,0.022-0.268,0.051-0.402,0.08c-0.213,0.046-0.425,0.098-0.637,0.159c-0.129,0.037-0.257,0.077-0.385,0.12c-0.219,0.073-0.436,0.152-0.653,0.239c-0.122,0.049-0.243,0.097-0.364,0.15c-0.222,0.097-0.442,0.2-0.66,0.309c-0.114,0.056-0.228,0.111-0.341,0.17c-0.225,0.118-0.445,0.243-0.665,0.371c-0.103,0.06-0.206,0.116-0.308,0.178c-0.239,0.145-0.471,0.295-0.701,0.447c-0.075,0.05-0.153,0.097-0.227,0.147c-0.303,0.205-0.598,0.414-0.883,0.625c0.358-0.649,0.74-1.227,1.129-1.747c0.021-0.028,0.041-0.06,0.061-0.087c0.409-0.539,0.824-1.01,1.228-1.419c0.002-0.002,0.004-0.004,0.006-0.006c0.533-0.54,1.038-0.961,1.483-1.295c0.064-0.048,0.132-0.103,0.193-0.147c0.036-0.026,0.065-0.044,0.1-0.069c0.123-0.087,0.245-0.172,0.353-0.243c0.524-0.343,0.812-0.943,0.747-1.568c-0.063-0.626-0.466-1.158-1.051-1.389c-0.051-0.02-0.114-0.03-0.167-0.049c-0.22-0.078-0.455-0.147-0.703-0.208c-0.152-0.038-0.306-0.074-0.468-0.104c-0.023-0.004-0.043-0.011-0.067-0.015c-0.015-0.003-0.029,0.001-0.044-0.001c-1.141-0.2-2.487-0.23-4.056-0.062C17.176,8.148,20.805,8.612,22.332,8.928z M26.839,51.679c-13.479,0-24.446-9.965-24.446-22.214c0-6.195,2.881-12.153,7.899-16.349c2.157-0.574,4.478-1.034,6.829-1.368c0.079,0.014,0.166,0.022,0.242,0.038c0.063,0.013,0.128,0.025,0.188,0.039c-0.09,0.065-0.19,0.147-0.285,0.219c-0.104,0.08-0.203,0.152-0.312,0.24c-0.095,0.077-0.196,0.169-0.294,0.252c-0.121,0.103-0.238,0.198-0.363,0.311c-0.118,0.107-0.24,0.231-0.361,0.348c-0.111,0.107-0.219,0.205-0.332,0.32c-0.202,0.206-0.406,0.433-0.61,0.666c-0.034,0.039-0.067,0.071-0.101,0.11c-0.958,1.114-1.92,2.535-2.699,4.312c-0.313,0.717-0.104,1.517,0.521,1.989c0.624,0.472,1.481,0.454,2.084-0.042c1.709-1.407,4.902-3.703,7.521-3.53c-0.026,2.813,0.123,8.915,1.795,11.519c0.3,0.467,0.811,0.756,1.363,0.772c0.017,0,0.033,0,0.05,0c0.534,0,1.037-0.255,1.354-0.69c1.037-1.425,3.413-5.356,3.405-11.434c1.461,0.096,4.432,0.587,6.794,2.894c0.516,0.503,1.266,0.622,1.907,0.301c0.648-0.322,1.009-0.995,0.918-1.716c-0.058-0.455-0.161-0.955-0.324-1.479c-0.007-0.023-0.011-0.044-0.018-0.068c-0.154-0.483-0.374-0.988-0.652-1.499c-0.038-0.071-0.066-0.14-0.107-0.211c-0.125-0.217-0.278-0.435-0.43-0.652c-0.053-0.076-0.094-0.152-0.15-0.228c-0.13-0.174-0.288-0.347-0.437-0.52c-0.102-0.119-0.189-0.239-0.3-0.357c-0.13-0.138-0.29-0.273-0.434-0.409c-0.158-0.15-0.302-0.302-0.477-0.45c-0.151-0.127-0.334-0.249-0.499-0.374c-0.199-0.151-0.383-0.305-0.603-0.452c0.5-0.086,1.124-0.164,1.884-0.219c0.03-0.002,0.061-0.004,0.092-0.006c0.15-0.01,0.307-0.019,0.467-0.027c0.086-0.004,0.173-0.008,0.262-0.012c0.124-0.005,0.249-0.01,0.379-0.014c0.158-0.005,0.321-0.008,0.488-0.01c0.077-0.001,0.153-0.003,0.232-0.004c0.305-0.003,0.628-0.001,0.963,0.004l0.359,0.032c0.296,0.04,0.593,0.075,0.89,0.111l0.248,0.029c6.068,4.245,9.547,10.66,9.547,17.611C51.286,41.714,40.319,51.679,26.839,51.679z"/></svg></div>
+      <div class="fi r"><svg width="22" height="22" viewBox="-1.07 -1.07 55.82 55.82" fill="currentColor" stroke="currentColor" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><path d="M42.819,10.169l-0.004-0.003c-0.017-0.012-0.038-0.018-0.055-0.029c0.044-0.601-0.221-1.181-0.751-1.52c-2.574-1.65-7.554-4.059-12.487-2.083V2.786C29.522,1.25,28.409,0,27.041,0h-2.223c-1.369,0-2.482,1.25-2.482,2.786v4.105c-2.224-0.396-7.069-0.788-11.725,1.993c-0.706,0.42-0.996,1.255-0.705,2.028c0.029,0.079,0.083,0.138,0.122,0.209c-0.102,0.027-0.208,0.05-0.309,0.077c-0.236,0.063-0.462,0.18-0.658,0.341c-5.508,4.583-8.667,11.117-8.667,17.925c0,13.352,11.863,24.214,26.446,24.214s26.446-10.862,26.446-24.214C53.286,21.826,49.471,14.793,42.819,10.169z M22.332,8.928c0.491,0.103,0.997-0.021,1.387-0.34c0.393-0.319,0.617-0.794,0.617-1.301V2.786c0-0.442,0.26-0.786,0.482-0.786h2.223c0.223,0,0.481,0.344,0.481,0.786v4.249c0,0.57,0.286,1.095,0.766,1.403c0.481,0.31,1.08,0.353,1.602,0.113c3.655-1.671,7.521-0.249,9.994,1.124c-2.332-0.03-4.23,0.155-5.684,0.513c-0.658,0.161-1.147,0.697-1.246,1.366c-0.101,0.685,0.222,1.354,0.821,1.708c1.454,0.855,2.406,1.815,3.038,2.758c0.455,0.679,0.748,1.349,0.92,1.964c-2.191-1.794-4.648-2.453-6.332-2.689c-0.561-0.079-1.037-0.11-1.388-0.122c-0.46-0.015-0.896,0.154-1.226,0.478c-0.327,0.321-0.511,0.77-0.504,1.231c.08,5.136-1.695,8.581-2.727,10.14c-0.985-2.088-1.289-6.58-1.234-10.271c0.014-0.852-0.621-1.577-1.479-1.688c-0.257-0.033-0.517-0.049-0.778-0.049c-0.05,0-0.101,0.009-0.15,0.011c-0.136,0.003-0.273,0.018-0.41,0.029c-0.206,0.017-0.412,0.037-0.619,0.072c-0.134,0.022-0.268,0.051-0.402,0.08c-0.213,0.046-0.425,0.098-0.637,0.159c-0.129,0.037-0.257,0.077-0.385,0.12c-0.219,0.073-0.436,0.152-0.653,0.239c-0.122,0.049-0.243,0.097-0.364,0.15c-0.222,0.097-0.442,0.2-0.66,0.309c-0.114,0.056-0.228,0.111-0.341,0.17c-0.225,0.118-0.445,0.243-0.665,0.371c-0.103,0.06-0.206,0.116-0.308,0.178c-0.239,0.145-0.471,0.295-0.701,0.447c-0.075,0.05-0.153,0.097-0.227,0.147c-0.303,0.205-0.598,0.414-0.883,0.625c0.358-0.649,0.74-1.227,1.129-1.747c0.021-0.028,0.041-0.06,0.061-0.087c0.409-0.539,0.824-1.01,1.228-1.419c0.002-0.002,0.004-0.004,0.006-0.006c0.533-0.54,1.038-0.961,1.483-1.295c0.064-0.048,0.132-0.103,0.193-0.147c0.036-0.026,0.065-0.044,0.1-0.069c0.123-0.087,0.245-0.172,0.353-0.243c0.524-0.343,0.812-0.943,0.747-1.568c-0.063-0.626-0.466-1.158-1.051-1.389c-0.051-0.02-0.114-0.03-0.167-0.049c-0.22-0.078-0.455-0.147-0.703-0.208c-0.152-0.038-0.306-0.074-0.468-0.104c-0.023-0.004-0.043-0.011-0.067-0.015c-0.015-0.003-0.029,0.001-0.044-0.001c-1.141-0.2-2.487-0.23-4.056-0.062C17.176,8.148,20.805,8.612,22.332,8.928z M26.839,51.679c-13.479,0-24.446-9.965-24.446-22.214c0-6.195,2.881-12.153,7.899-16.349c2.157-0.574,4.478-1.034,6.829-1.368c0.079,0.014,0.166,0.022,0.242,0.038c0.063,0.013,0.128,0.025,0.188,0.039c-0.09,0.065-0.19,0.147-0.285,0.219c-0.104,0.08-0.203,0.152-0.312,0.24c-0.095,0.077-0.196,0.169-0.294,0.252c-0.121,0.103-0.238,0.198-0.363,0.311c-0.118,0.107-0.24,0.231-0.361,0.348c-0.111,0.107-0.219,0.205-0.332,0.32c-0.202,0.206-0.406,0.433-0.61,0.666c-0.034,0.039-0.067,0.071-0.101,0.11c-0.958,1.114-1.92,2.535-2.699,4.312c-0.313,0.717-0.104,1.517,0.521,1.989c0.624,0.472,1.481,0.454,2.084-0.042c1.709-1.407,4.902-3.703,7.521-3.53c-0.026,2.813,0.123,8.915,1.795,11.519c0.3,0.467,0.811,0.756,1.363,0.772c0.017,0,0.033,0,0.05,0c0.534,0,1.037-0.255,1.354-0.69c1.037-1.425,3.413-5.356,3.405-11.434c1.461,0.096,4.432,0.587,6.794,2.894c0.516,0.503,1.266,0.622,1.907,0.301c0.648-0.322,1.009-0.995,0.918-1.716c-0.058-0.455-0.161-0.955-0.324-1.479c-0.007-0.023-0.011-0.044-0.018-0.068c-0.154-0.483-0.374-0.988-0.652-1.499c-0.038-0.071-0.066-0.14-0.107-0.211c-0.125-0.217-0.278-0.435-0.43-0.652c-0.053-0.076-0.094-0.152-0.15-0.228c-0.13-0.174-0.288-0.347-0.437-0.52c-0.102-0.119-0.189-0.239-0.3-0.357c-0.13-0.138-0.29-0.273-0.434-0.409c-0.158-0.15-0.302-0.302-0.477-0.45c-0.151-0.127-0.334-0.249-0.499-0.374c-0.199-0.151-0.383-0.305-0.603-0.452c0.5-0.086,1.124-0.164,1.884-0.219c0.03-0.002,0.061-0.004,0.092-0.006c0.15-0.01,0.307-0.019,0.467-0.027c0.086-0.004,0.173-0.008,0.262-0.012c0.124-0.005,0.249-0.01,0.379-0.014c0.158-0.005,0.321-0.008,0.488-0.01c0.077-0.001,0.153-0.003,0.232-0.004c0.305-0.003,0.628-0.001,0.963,0.004l0.359,0.032c0.296,0.04,0.593,0.075,0.89,0.111l0.248,0.029c6.068,4.245,9.547,10.66,9.547,17.611C51.286,41.714,40.319,51.679,26.839,51.679z"/></svg></div>
       <h3 data-i18n="feat-focus-title">Focus Mode (Pomodoro)</h3>
       <p data-i18n="feat-focus-desc">Stay productive with timed focus sessions and breaks. Color-coded phases keep you in the right mindset — red for focus, green for short breaks, orange for long breaks.</p>
       <div class="tags"><span class="tag" data-i18n="tag-pomodoro">Pomodoro Timer</span><span class="tag" data-i18n="tag-color-phases">Color Phases</span><span class="tag" data-i18n="tag-flip-clock">Flip Clock Widget</span></div>
@@ -834,7 +845,7 @@ footer{
     </div>
 
     <div class="feat-card fu">
-      <div class="fi k"><svg width="22" height="22" viewBox="-1 -1 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="29" height="29" rx="7" stroke="currentColor" stroke-width="1.68" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.68 8.49L17 12.12a.74.74 0 0 0 .65.5l3.69.15a.76.76 0 0 1 .42 1.35l-2.9 2.39a.78.78 0 0 0-.25.8l1 3.72a.73.73 0 0 1-1.09.84L15.4 19.72a.69.69 0 0 0-.8 0l-3.08 2.15a.73.73 0 0 1-1.09-.84l1-3.72a.78.78 0 0 0-.25-.8l-2.9-2.39a.76.76 0 0 1 .42-1.35l3.69-.15a.74.74 0 0 0 .65-.5l1.28-3.63a.72.72 0 0 1 1.36 0Z" fill="currentColor" stroke="currentColor" stroke-width="1.68" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fi k"><svg width="24" height="24" viewBox="-1 -1 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="29" height="29" rx="7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.68 8.49L17 12.12a.74.74 0 0 0 .65.5l3.69.15a.76.76 0 0 1 .42 1.35l-2.9 2.39a.78.78 0 0 0-.25.8l1 3.72a.73.73 0 0 1-1.09.84L15.4 19.72a.69.69 0 0 0-.8 0l-3.08 2.15a.73.73 0 0 1-1.09-.84l1-3.72a.78.78 0 0 0-.25-.8l-2.9-2.39a.76.76 0 0 1 .42-1.35l3.69-.15a.74.74 0 0 0 .65-.5l1.28-3.63a.72.72 0 0 1 1.36 0Z" fill="currentColor" stroke="currentColor" stroke-width="1.68" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <h3 data-i18n="feat-memories-title">Memories &amp; Journal</h3>
       <p data-i18n="feat-memories-desc">Capture life moments with photo-based journaling. Tag, search, and revisit your memories organized by date with time elapsed tracking.</p>
       <div class="tags"><span class="tag" data-i18n="tag-photo-journal">Photo Journal</span><span class="tag" data-i18n="tag-date-tracking">Date Tracking</span><span class="tag" data-i18n="tag-search">Search</span></div>
@@ -871,6 +882,11 @@ footer{
     <h2 class="ttl fu" data-i18n="ss-title">See it in action</h2>
     <p class="desc fu" data-i18n="ss-desc">Explore every feature through real screenshots of the app.</p>
 
+    <div class="tabs-wrap">
+    <div class="tabs-fade end show"></div>
+    <div class="tabs-fade start"></div>
+    <button class="tabs-arrow end show" onclick="var d=document.documentElement.dir==='rtl'?-150:150;document.querySelector('.tabs-row').scrollBy({left:d,behavior:'smooth'})" aria-label="Scroll right">&#8250;</button>
+    <button class="tabs-arrow start" onclick="var d=document.documentElement.dir==='rtl'?150:-150;document.querySelector('.tabs-row').scrollBy({left:d,behavior:'smooth'})" aria-label="Scroll left">&#8249;</button>
     <div class="tabs-row">
       <button class="tab on" onclick="swTab(this,'tasks')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -880,9 +896,13 @@ footer{
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span data-i18n="tab-cal">Calendar</span>
       </button>
-      <button class="tab" onclick="swTab(this,'habits')">
-        <span class="tab-habits-ic"></span>
-        <span data-i18n="tab-habits">Habits</span>
+      <button class="tab" onclick="swTab(this,'notes')">
+        <svg width="13" height="13" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="16" height="18" rx="3"/><line x1="8" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="8" y1="15" x2="11" y2="15"/></svg>
+        <span data-i18n="tab-notes">Notes</span>
+      </button>
+      <button class="tab" onclick="swTab(this,'whiteboard')">
+        <svg width="14" height="14" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="18" height="14" rx="3"/><polyline points="7 21 11 17 15 21"/></svg>
+        <span data-i18n="tab-whiteboard">Whiteboard</span>
       </button>
       <button class="tab" onclick="swTab(this,'focus')">
         <svg width="13" height="13" viewBox="-1.07 -1.07 55.82 55.82" fill="currentColor" stroke="currentColor" stroke-width="2.5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><path d="M42.819,10.169l-0.004-0.003c-0.017-0.012-0.038-0.018-0.055-0.029c0.044-0.601-0.221-1.181-0.751-1.52c-2.574-1.65-7.554-4.059-12.487-2.083V2.786C29.522,1.25,28.409,0,27.041,0h-2.223c-1.369,0-2.482,1.25-2.482,2.786v4.105c-2.224-0.396-7.069-0.788-11.725,1.993c-0.706,0.42-0.996,1.255-0.705,2.028c0.029,0.079,0.083,0.138,0.122,0.209c-0.102,0.027-0.208,0.05-0.309,0.077c-0.236,0.063-0.462,0.18-0.658,0.341c-5.508,4.583-8.667,11.117-8.667,17.925c0,13.352,11.863,24.214,26.446,24.214s26.446-10.862,26.446-24.214C53.286,21.826,49.471,14.793,42.819,10.169z M22.332,8.928c0.491,0.103,0.997-0.021,1.387-0.34c0.393-0.319,0.617-0.794,0.617-1.301V2.786c0-0.442,0.26-0.786,0.482-0.786h2.223c0.223,0,0.481,0.344,0.481,0.786v4.249c0,0.57,0.286,1.095,0.766,1.403c0.481,0.31,1.08,0.353,1.602,0.113c3.655-1.671,7.521-0.249,9.994,1.124c-2.332-0.03-4.23,0.155-5.684,0.513c-0.658,0.161-1.147,0.697-1.246,1.366c-0.101,0.685,0.222,1.354,0.821,1.708c1.454,0.855,2.406,1.815,3.038,2.758c0.455,0.679,0.748,1.349,0.92,1.964c-2.191-1.794-4.648-2.453-6.332-2.689c-0.561-0.079-1.037-0.11-1.388-0.122c-0.46-0.015-0.896,0.154-1.226,0.478c-0.327,0.321-0.511,0.77-0.504,1.231c0.08,5.136-1.695,8.581-2.727,10.14c-0.985-2.088-1.289-6.58-1.234-10.271c0.014-0.852-0.621-1.577-1.479-1.688c-0.257-0.033-0.517-0.049-0.778-0.049c-0.05,0-0.101,0.009-0.15,0.011c-0.136,0.003-0.273,0.018-0.41,0.029c-0.206,0.017-0.412,0.037-0.619,0.072c-0.134,0.022-0.268,0.051-0.402,0.08c-0.213,0.046-0.425,0.098-0.637,0.159c-0.129,0.037-0.257,0.077-0.385,0.12c-0.219,0.073-0.436,0.152-0.653,0.239c-0.122,0.049-0.243,0.097-0.364,0.15c-0.222,0.097-0.442,0.2-0.66,0.309c-0.114,0.056-0.228,0.111-0.341,0.17c-0.225,0.118-0.445,0.243-0.665,0.371c-0.103,0.06-0.206,0.116-0.308,0.178c-0.239,0.145-0.471,0.295-0.701,0.447c-0.075,0.05-0.153,0.097-0.227,0.147c-0.303,0.205-0.598,0.414-0.883,0.625c0.358-0.649,0.74-1.227,1.129-1.747c0.021-0.028,0.041-0.06,0.061-0.087c0.409-0.539,0.824-1.01,1.228-1.419c0.002-0.002,0.004-0.004,0.006-0.006c0.533-0.54,1.038-0.961,1.483-1.295c0.064-0.048,0.132-0.103,0.193-0.147c0.036-0.026,0.065-0.044,0.1-0.069c0.123-0.087,0.245-0.172,0.353-0.243c0.524-0.343,0.812-0.943,0.747-1.568c-0.063-0.626-0.466-1.158-1.051-1.389c-0.051-0.02-0.114-0.03-0.167-0.049c-0.22-0.078-0.455-0.147-0.703-0.208c-0.152-0.038-0.306-0.074-0.468-0.104c-0.023-0.004-0.043-0.011-0.067-0.015c-0.015-0.003-0.029,0.001-0.044-0.001c-1.141-0.2-2.487-0.23-4.056-0.062C17.176,8.148,20.805,8.612,22.332,8.928z M26.839,51.679c-13.479,0-24.446-9.965-24.446-22.214c0-6.195,2.881-12.153,7.899-16.349c2.157-0.574,4.478-1.034,6.829-1.368c0.079,0.014,0.166,0.022,0.242,0.038c0.063,0.013,0.128,0.025,0.188,0.039c-0.09,0.065-0.19,0.147-0.285,0.219c-0.104,0.08-0.203,0.152-0.312,0.24c-0.095,0.077-0.196,0.169-0.294,0.252c-0.121,0.103-0.238,0.198-0.363,0.311c-0.118,0.107-0.24,0.231-0.361,0.348c-0.111,0.107-0.219,0.205-0.332,0.32c-0.202,0.206-0.406,0.433-0.61,0.666c-0.034,0.039-0.067,0.071-0.101,0.11c-0.958,1.114-1.92,2.535-2.699,4.312c-0.313,0.717-0.104,1.517,0.521,1.989c0.624,0.472,1.481,0.454,2.084-0.042c1.709-1.407,4.902-3.703,7.521-3.53c-0.026,2.813,0.123,8.915,1.795,11.519c0.3,0.467,0.811,0.756,1.363,0.772c0.017,0,0.033,0,0.05,0c0.534,0,1.037-0.255,1.354-0.69c1.037-1.425,3.413-5.356,3.405-11.434c1.461,0.096,4.432,0.587,6.794,2.894c0.516,0.503,1.266,0.622,1.907,0.301c0.648-0.322,1.009-0.995,0.918-1.716c-0.058-0.455-0.161-0.955-0.324-1.479c-0.007-0.023-0.011-0.044-0.018-0.068c-0.154-0.483-0.374-0.988-0.652-1.499c-0.038-0.071-0.066-0.14-0.107-0.211c-0.125-0.217-0.278-0.435-0.43-0.652c-0.053-0.076-0.094-0.152-0.15-0.228c-0.13-0.174-0.288-0.347-0.437-0.52c-0.102-0.119-0.189-0.239-0.3-0.357c-0.13-0.138-0.29-0.273-0.434-0.409c-0.158-0.15-0.302-0.302-0.477-0.45c-0.151-0.127-0.334-0.249-0.499-0.374c-0.199-0.151-0.383-0.305-0.603-0.452c0.5-0.086,1.124-0.164,1.884-0.219c0.03-0.002,0.061-0.004,0.092-0.006c0.15-0.01,0.307-0.019,0.467-0.027c0.086-0.004,0.173-0.008,0.262-0.012c0.124-0.005,0.249-0.01,0.379-0.014c0.158-0.005,0.321-0.008,0.488-0.01c0.077-0.001,0.153-0.003,0.232-0.004c0.305-0.003,0.628-0.001,0.963,0.004l0.359,0.032c0.296,0.04,0.593,0.075,0.89,0.111l0.248,0.029c6.068,4.245,9.547,10.66,9.547,17.611C51.286,41.714,40.319,51.679,26.839,51.679z"/></svg>
@@ -892,6 +912,19 @@ footer{
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14 15"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
         <span data-i18n="tab-stopwatch">Stopwatch</span>
       </button>
+      <button class="tab" onclick="swTab(this,'habits')">
+        <span class="tab-habits-ic"></span>
+        <span data-i18n="tab-habits">Habits</span>
+      </button>
+      <button class="tab" onclick="swTab(this,'countdown')">
+        <span class="tab-countdown-ic"></span>
+        <span data-i18n="tab-countdown">Countdown</span>
+      </button>
+      <button class="tab" onclick="swTab(this,'memories')">
+        <svg width="13" height="13" viewBox="-1 -1 32 32" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="0.5" y="0.5" width="29" height="29" rx="7" fill="none" stroke-width="2"/><path d="M15.68 8.49L17 12.12a.74.74 0 0 0 .65.5l3.69.15a.76.76 0 0 1 .42 1.35l-2.9 2.39a.78.78 0 0 0-.25.8l1 3.72a.73.73 0 0 1-1.09.84L15.4 19.72a.69.69 0 0 0-.8 0l-3.08 2.15a.73.73 0 0 1-1.09-.84l1-3.72a.78.78 0 0 0-.25-.8l-2.9-2.39a.76.76 0 0 1 .42-1.35l3.69-.15a.74.74 0 0 0 .65-.5l1.28-3.63a.72.72 0 0 1 1.36 0Z"/></svg>
+        <span data-i18n="tab-memories">Memories</span>
+      </button>
+    </div>
     </div>
 
     <div class="tab-panel on" id="p-tasks">
@@ -1010,6 +1043,67 @@ footer{
         </div>
       </div>
     </div>
+
+    <div class="tab-panel" id="p-notes">
+      <div class="carousel" data-idx="0">
+        <div class="car-row">
+          <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
+          <div class="car-imgs">
+            <img class="car-img on" src="screenshots/notes/notes-01.webp" alt="Munjez notes — grid view"/>
+          </div>
+          <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
+        </div>
+        <div class="car-dots">
+          <button class="car-dot on" onclick="carGo(this,0)"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p-memories">
+      <div class="carousel" data-idx="0">
+        <div class="car-row">
+          <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
+          <div class="car-imgs">
+            <img class="car-img on" src="screenshots/memories/memories-01.webp" alt="Munjez memories — journal view"/>
+          </div>
+          <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
+        </div>
+        <div class="car-dots">
+          <button class="car-dot on" onclick="carGo(this,0)"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p-whiteboard">
+      <div class="carousel" data-idx="0">
+        <div class="car-row">
+          <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
+          <div class="car-imgs">
+            <img class="car-img on" src="screenshots/whiteboard/whiteboard-01.webp" alt="Munjez whiteboard — infinite canvas"/>
+          </div>
+          <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
+        </div>
+        <div class="car-dots">
+          <button class="car-dot on" onclick="carGo(this,0)"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p-countdown">
+      <div class="carousel" data-idx="0">
+        <div class="car-row">
+          <button class="car-btn" onclick="carNav(this,-1)">&#8249;</button>
+          <div class="car-imgs">
+            <img class="car-img on" src="screenshots/countdown/countdown-01.webp" alt="Munjez countdown — timer view"/>
+          </div>
+          <button class="car-btn" onclick="carNav(this,1)">&#8250;</button>
+        </div>
+        <div class="car-dots">
+          <button class="car-dot on" onclick="carGo(this,0)"></button>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>
@@ -1642,7 +1736,27 @@ function swTab(btn,id){
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('on')});
   btn.classList.add('on');
   document.getElementById('p-'+id).classList.add('on');
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
 }
+(function(){
+  var row=document.querySelector('.tabs-row');if(!row)return;
+  var fadeEnd=row.parentElement.querySelector('.tabs-fade.end');
+  var fadeStart=row.parentElement.querySelector('.tabs-fade.start');
+  var arrEnd=row.parentElement.querySelector('.tabs-arrow.end');
+  var arrStart=row.parentElement.querySelector('.tabs-arrow.start');
+  function upd(){
+    var sl=row.scrollLeft,max=row.scrollWidth-row.clientWidth;
+    if(document.documentElement.dir==='rtl'){sl=-sl;}
+    var atStart=sl<5,atEnd=sl>max-5;
+    fadeEnd.classList.toggle('show',!atEnd);
+    fadeStart.classList.toggle('show',!atStart);
+    arrEnd.classList.toggle('show',!atEnd);
+    arrStart.classList.toggle('show',!atStart);
+  }
+  row.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
+})();
 // ── CAROUSEL ──
 function carNav(btn,dir){
   var rtl=document.documentElement.dir==='rtl';

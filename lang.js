@@ -70,6 +70,11 @@
       'tab-habits': 'Habits',
       'tab-focus': 'Focus',
       'tab-stopwatch': 'Stopwatch',
+      'tab-notes': 'Notes',
+      'tab-memories': 'Memories',
+      'tab-whiteboard': 'Whiteboard',
+      'tab-countdown': 'Countdown',
+      'tab-widgets': 'Widgets',
       /* ── Focus section ── */
       'focus-label': 'Focus Mode',
       'focus-title': 'Every phase has<br>its own energy',
@@ -289,6 +294,11 @@
       'tab-habits': 'العادات',
       'tab-focus': 'التركيز',
       'tab-stopwatch': 'ساعة الإيقاف',
+      'tab-notes': 'الملاحظات',
+      'tab-memories': 'الذكريات',
+      'tab-whiteboard': 'السبورة',
+      'tab-countdown': 'العد التنازلي',
+      'tab-widgets': 'الودجات',
       /* ── Focus section ── */
       'focus-label': 'وضع التركيز',
       'focus-title': 'لكل مرحلة<br>طاقتها الخاصة',
