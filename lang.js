@@ -22,6 +22,7 @@
       'nav-themes': 'Themes',
       'nav-support': 'Support',
       'nav-download': 'Download',
+      'nav-developer': 'Developer',
       'nav-dl': '',
       /* ── Hero ── */
       'hero-badge': 'Free App for Windows, Linux & Android',
@@ -291,6 +292,7 @@
       'nav-themes': 'السمات',
       'nav-support': 'الدعم',
       'nav-download': 'تنزيل',
+      'nav-developer': 'المطور',
       'nav-dl': '',
       /* ── Hero ── */
       'hero-badge': 'تطبيق مجاني — ‏Windows‏ & ‏Linux‏ & ‏Android',
