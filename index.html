@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#7c3aed"/>
 <meta name="application-name" content="Munjez"/>
 <link rel="icon" type="image/webp" href="screenshots/icon.webp"/>
-<link rel="manifest" href="/site.webmanifest"/>
+<link rel="manifest" href="site.webmanifest"/>
 <link rel="canonical" href="https://munjez-website.vercel.app/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://munjez-website.vercel.app/"/>
@@ -593,7 +593,7 @@ nav ul a:hover{color:var(--text)}
 footer{
   position:relative;z-index:2;background:var(--surface);
   border-top:1px solid var(--border);padding:0 48px;height:48px;
-  display:flex;align-items:center;
+  display:flex;align-items:center;direction:ltr;
 }
 .footer-wrap{
   width:100%;
@@ -819,11 +819,11 @@ footer{
   .stat{border-right:none;border-bottom:1px solid var(--border);justify-content:center}
   .stat:last-child{border-bottom:none}
   .support-actions{grid-template-columns:1fr}
-  footer{height:auto;padding:16px 14px}
-  .footer-wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:0;flex-wrap:nowrap}
-  .footer-brand{font-size:11px}
-  .footer-nav{gap:16px}
-  .footer-link{font-size:11px}
+  footer{height:auto;padding:12px 10px}
+  .footer-wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:4px;flex-wrap:nowrap}
+  .footer-brand{font-size:10px}
+  .footer-nav{gap:8px}
+  .footer-link{font-size:10px}
   .dl-sec{padding:80px 18px 60px}
   .dl-sec h2{font-size:clamp(28px,9vw,44px)}
   .dl-sec>.dl-inner>p{font-size:14px;margin-bottom:28px}
