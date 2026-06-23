@@ -231,13 +231,16 @@ function renderTrouble(items, ver){
   });
 }
 
-function init(ver){
+function init(ver, directUrl){
   var params=new URLSearchParams(window.location.search);
   var fmt=(params.get('format')||'deb').toLowerCase();
   var data=FORMAT_DATA[fmt]||FORMAT_DATA.deb;
-  var filename=data.filename(ver);
-  var tag='v'+ver;
-  var url=RELEASE_BASE+'/download/'+tag+'/'+filename;
+  var url = directUrl;
+  if(!url){
+    var filename=data.filename(ver);
+    var tag='v'+ver;
+    url=RELEASE_BASE+'/download/'+tag+'/'+filename;
+  }
 
   document.getElementById('fmt-label').textContent=data.label;
   document.getElementById('dl-btn').onclick=function(){window.location.href=url;};
@@ -252,13 +255,45 @@ function init(ver){
 // lang
 var s=document.createElement('script');s.src='../lang.js';document.head.appendChild(s);
 
-fetch(API_URL,{cache:'no-store'})
-  .then(function(r){return r.ok?r.json():null;})
-  .then(function(json){
-    var ver=json&&json.tag_name?json.tag_name.replace(/^v/,''):'latest';
-    init(ver);
-  })
-  .catch(function(){init('latest');});
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fmt=(params.get('format')||'deb').toLowerCase();
+  if(fmt!=='deb' && fmt!=='rpm' && fmt!=='appimage') fmt='deb';
+
+  fetch('https://api.github.com/repos/Osama2214/munjez-releases/releases',{cache:'default'})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(releases){
+      if(!releases||!releases.length){
+        init('latest');
+        return;
+      }
+      var matchedRelease=null;
+      var matchedAsset=null;
+      var extRegex=new RegExp('\\.' + fmt + '$', 'i');
+
+      for(var i=0;i<releases.length;i++){
+        var assets=releases[i].assets||[];
+        for(var j=0;j<assets.length;j++){
+          if(assets[j].name && extRegex.test(assets[j].name)){
+            matchedRelease=releases[i];
+            matchedAsset=assets[j];
+            break;
+          }
+        }
+        if(matchedAsset)break;
+      }
+
+      if(matchedRelease && matchedAsset){
+        var ver=matchedRelease.tag_name.replace(/^v/,'');
+        init(ver, matchedAsset.browser_download_url);
+      } else {
+        init('latest');
+      }
+    })
+    .catch(function(){
+      init('latest');
+    });
+})();
 </script>
 </body>
 </html>
