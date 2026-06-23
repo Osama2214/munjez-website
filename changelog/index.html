@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Changelog | Munjez</title>
+<meta name="description" content="See what's new in Munjez — release history, new features, improvements, and bug fixes."/>
+<link rel="icon" type="image/png" href="../screenshots/icon.webp"/>
+<link rel="canonical" href="https://munjez-website.vercel.app/changelog/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://munjez-website.vercel.app/changelog/"/>
+<meta property="og:title" content="Changelog | Munjez"/>
+<meta property="og:description" content="See what's new in Munjez — release history, new features, improvements, and bug fixes."/>
+<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/icon.webp"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Changelog | Munjez"/>
+<meta name="twitter:description" content="See what's new in Munjez — release history, new features, improvements, and bug fixes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#070c18;--surface:#0c1223;--card:#101827;--card-h:#141f32;--border:#1a2d4a;
+  --primary:#7c3aed;--primary-h:#6d28d9;--text:#e2e8f0;--muted:#93a3ba;--accent:#a78bfa;
+  --green:#10b981;--orange:#f59e0b;--blue:#3b82f6;--red:#ef4444;
+}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(124,58,237,.2),transparent 70%),var(--bg);
+  color:var(--text);line-height:1.7;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+main{flex:1}
+.top{position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
+.top-in{height:52px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
+.logo img{width:30px;height:30px;border-radius:8px}
+.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:32px;padding:0 16px;border-radius:7px;font-size:12px;font-weight:700;transition:.2s;white-space:nowrap}
+.back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:32px;padding:0 12px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
+.wrap{max-width:780px;margin:0 auto;padding:48px 20px 80px}
+.hero{margin-bottom:36px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.1;letter-spacing:-1.4px;margin-bottom:8px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:15px}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--primary),rgba(124,58,237,.15))}
+.release{position:relative;margin-bottom:32px}
+.release:last-child{margin-bottom:0}
+.dot{position:absolute;left:-28px;top:6px;width:16px;height:16px;border-radius:50%;border:2.5px solid var(--primary);background:var(--bg)}
+.release.major .dot{background:var(--primary);box-shadow:0 0 12px rgba(124,58,237,.5)}
+.release-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.ver{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.date{font-size:12px;color:var(--muted);font-weight:500}
+.tag{font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.tag-major{background:rgba(124,58,237,.2);color:var(--accent)}
+.tag-latest{background:rgba(16,185,129,.15);color:var(--green)}
+.changes{display:flex;flex-direction:column;gap:6px}
+.change{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--muted);line-height:1.6}
+.change-icon{flex-shrink:0;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:3px}
+.ci-new{background:rgba(16,185,129,.15);color:var(--green)}
+.ci-improve{background:rgba(59,130,246,.15);color:var(--blue)}
+.ci-fix{background:rgba(239,68,68,.15);color:var(--red)}
+.ci-perf{background:rgba(245,158,11,.15);color:var(--orange)}
+.gh-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;margin-top:8px;transition:color .2s}
+.gh-link:hover{color:#c4b5fd}
+.gh-link svg{width:14px;height:14px}
+.footer-note{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);text-align:center}
+.footer-note p{color:var(--muted);font-size:13px}
+.footer-note a{color:var(--accent);text-decoration:none}
+.footer-note a:hover{text-decoration:underline}
+html[dir="rtl"] .timeline{padding-left:0;padding-right:28px}
+html[dir="rtl"] .timeline::before{left:auto;right:7px}
+html[dir="rtl"] .dot{left:auto;right:-28px}
+@media(max-width:500px){
+  .top-in{padding:0 14px}
+  .timeline{padding-left:24px}
+  .dot{left:-24px;width:14px;height:14px}
+  .ver{font-size:17px}
+  html[dir="rtl"] .timeline{padding-left:0;padding-right:24px}
+  html[dir="rtl"] .dot{left:auto;right:-24px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="../">
+      <img src="../screenshots/icon.webp" alt="Munjez"/>
+      <span>Munjez</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="lang-toggle" type="button">AR</button>
+      <a class="back" href="../" data-i18n="back">Back to home</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 data-i18n="cl-title">Change<span>log</span></h1>
+    <p data-i18n="cl-desc">A history of updates, new features, and improvements in Munjez.</p>
+  </section>
+
+  <div class="timeline">
+
+    <!-- v2.0.1 -->
+    <div class="release">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v2.0.1</span>
+        <span class="tag tag-latest">Latest</span>
+        <span class="date">June 22, 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-fix">&#10005;</span> Fixed Windows installer compatibility issues</div>
+        <div class="change"><span class="change-icon ci-fix">&#10005;</span> Fixed update check reliability on slow connections</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Improved stability and minor UI polish</div>
+      </div>
+      <a class="gh-link" href="https://github.com/Osama2214/munjez-releases/releases/tag/v2.0.1" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- v2.0.0 -->
+    <div class="release major">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v2.0.0</span>
+        <span class="tag tag-major">Major</span>
+        <span class="date">June 12, 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Android support — Munjez is now available as an APK</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Redesigned Settings page with organized sections</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Custom keyboard shortcuts with macro support</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> iCal import support for Calendar events</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Habits analytics dashboard with streak insights</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Calendar drag engine for event scheduling</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Major Focus Mode improvements — better session tracking and widget</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Enhanced White Noise mixer with more sounds</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Countdown page redesign with better UX</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Comprehensive Hijri calendar improvements</div>
+        <div class="change"><span class="change-icon ci-perf">&#9670;</span> Major performance and quality improvements across all features</div>
+        <div class="change"><span class="change-icon ci-perf">&#9670;</span> Upgraded to Tauri v2 — faster startup and smaller bundle</div>
+      </div>
+      <a class="gh-link" href="https://github.com/Osama2214/munjez-releases/releases/tag/v2.0.0" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- v1.0.91 – v1.0.98 -->
+    <div class="release">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v1.0.91 – v1.0.98</span>
+        <span class="date">May 16 – 25, 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Whiteboard collaboration overlay</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Improved task quick-add with better input handling</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Calendar view refinements and event overlap handling</div>
+        <div class="change"><span class="change-icon ci-fix">&#10005;</span> Multiple stability fixes and edge case handling</div>
+        <div class="change"><span class="change-icon ci-perf">&#9670;</span> Reduced memory usage in large task lists</div>
+      </div>
+    </div>
+
+    <!-- v1.0.80 – v1.0.90 -->
+    <div class="release">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v1.0.80 – v1.0.90</span>
+        <span class="date">May 10 – 16, 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Desktop widgets for Habits, Calendar, and Countdown</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> System tray menu with quick actions</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Theme engine improvements with more color options</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Better widget settings and customization</div>
+        <div class="change"><span class="change-icon ci-fix">&#10005;</span> Fixed widget positioning on multi-monitor setups</div>
+      </div>
+    </div>
+
+    <!-- v1.0.65 – v1.0.79 -->
+    <div class="release">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v1.0.65 – v1.0.79</span>
+        <span class="date">April 18 – May 10, 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Stopwatch with lap recording</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Countdown timers with multiple presets</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Floating focus widget (always-on-top)</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Notes editor enhancements</div>
+        <div class="change"><span class="change-icon ci-improve">&#9650;</span> Linux support (AppImage, DEB, RPM packages)</div>
+        <div class="change"><span class="change-icon ci-fix">&#10005;</span> Various bug fixes and UI consistency improvements</div>
+      </div>
+    </div>
+
+    <!-- v1.0.43 – v1.0.64 -->
+    <div class="release">
+      <div class="dot"></div>
+      <div class="release-head">
+        <span class="ver">v1.0.43 – v1.0.64</span>
+        <span class="date">April 2026</span>
+      </div>
+      <div class="changes">
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Whiteboard with drawing tools</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Notes with rich text editing</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Calendar with Hijri support and multiple views</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Focus Mode (Pomodoro) with color-coded phases</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Habit tracker with streak tracking</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> White noise and ambient sound library</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Theme system with multiple built-in themes</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Arabic language support (RTL)</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Task management with folders, priorities, and recurring tasks</div>
+        <div class="change"><span class="change-icon ci-new">&#10010;</span> Microsoft Store listing</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <p data-i18n="cl-footer">For the complete list of releases and downloads, visit <a href="https://github.com/Osama2214/munjez-releases/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>.</p>
+  </div>
+</main>
+
+<script src="../lang.js"></script>
+</body>
+</html>

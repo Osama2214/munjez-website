@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<script>(function(){var l=localStorage.getItem('munjez-lang');if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl';}})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Page Not Found | Munjez</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" type="image/png" href="/screenshots/icon.webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#070c18;--surface:#0c1223;--card:#101827;--border:#1a2d4a;
+  --primary:#7c3aed;--primary-h:#6d28d9;--text:#e2e8f0;--muted:#93a3ba;--accent:#a78bfa;
+}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);line-height:1.7;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+  overflow:hidden;
+}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.mouse-glow{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(124,58,237,.07),transparent 40%);
+}
+.top{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
+.top-in{height:52px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
+.logo img{width:30px;height:30px;border-radius:8px}
+.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:32px;padding:0 16px;border-radius:7px;font-size:12px;font-weight:700;transition:.2s;white-space:nowrap}
+.back:hover{background:var(--primary-h);border-color:var(--primary-h)}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:32px;padding:0 12px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
+.center{
+  position:relative;z-index:2;
+  flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;
+}
+.glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(124,58,237,.22) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 90%,rgba(99,102,241,.09) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 10% 80%,rgba(168,85,247,.08) 0%,transparent 55%);
+}
+.center::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:28px 28px;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 0%,transparent 100%);
+}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:float-orb 8s ease-in-out infinite}
+.orb1{width:400px;height:400px;background:rgba(124,58,237,.12);top:-100px;left:-100px;animation-delay:0s}
+.orb2{width:300px;height:300px;background:rgba(99,102,241,.1);bottom:-80px;right:-80px;animation-delay:-3s}
+.orb3{width:200px;height:200px;background:rgba(168,85,247,.08);top:40%;left:70%;animation-delay:-5s}
+@keyframes float-orb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.05)}}
+.content{position:relative;z-index:3;max-width:480px}
+.code{font-size:clamp(80px,20vw,160px);font-weight:900;letter-spacing:-6px;line-height:1;background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+.content h1{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
+.content p{color:var(--muted);font-size:15px;margin-bottom:28px}
+.home-btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;text-decoration:none;padding:12px 28px;border-radius:11px;font-size:14px;font-weight:700;transition:all .2s;box-shadow:0 4px 24px rgba(124,58,237,.15)}
+.home-btn:hover{background:var(--primary-h);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,58,237,.3)}
+.home-btn svg{width:16px;height:16px}
+@media(max-width:500px){
+  .top-in{padding:0 14px}
+  .orb1{width:200px;height:200px}
+  .orb2{width:150px;height:150px}
+  .orb3{width:100px;height:100px}
+  #particles,.mouse-glow{display:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="mouse-glow"></div>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="/">
+      <img src="/screenshots/icon.webp" alt="Munjez"/>
+      <span>Munjez</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="lang-toggle" type="button">AR</button>
+      <a class="back" href="/" data-i18n="back">Back to home</a>
+    </div>
+  </div>
+</header>
+
+<main class="center">
+  <div class="glow"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="content">
+    <div class="code">404</div>
+    <h1 data-i18n="404-title">Page Not Found</h1>
+    <p data-i18n="404-desc">The page you're looking for doesn't exist or has been moved.</p>
+    <a class="home-btn" href="/" data-i18n="404-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Back to Home
+    </a>
+  </div>
+</main>
+
+<script>
+// Particles
+(function(){
+  var c=document.getElementById('particles');
+  if(!c)return;
+  var ctx=c.getContext('2d');
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion||!ctx){c.style.display='none';return;}
+  var W,H,pts=[];
+  var animId=null,isVisible=true;
+  var dpr=Math.min(window.devicePixelRatio||1,1.5);
+  function resize(){W=innerWidth;H=innerHeight;c.width=Math.floor(W*dpr);c.height=Math.floor(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+  resize();
+  var maxPts=(W<900?40:80);
+  window.addEventListener('resize',resize,{passive:true});
+  for(var i=0;i<maxPts;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5});
+  function draw(){
+    if(!isVisible)return;
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(167,139,250,.35)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle='rgba(124,58,237,'+(1-dist/120)*.12+')';
+          ctx.lineWidth=.5;ctx.stroke();
+        }
+      }
+    }
+    animId=requestAnimationFrame(draw);
+  }
+  document.addEventListener('visibilitychange',function(){
+    isVisible=!document.hidden;
+    if(isVisible&&!animId)draw();
+    if(!isVisible&&animId){cancelAnimationFrame(animId);animId=null}
+  });
+  draw();
+})();
+
+// Mouse glow
+(function(){
+  var g=document.querySelector('.mouse-glow');
+  if(!g)return;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion||('ontouchstart' in window)){g.style.display='none';return;}
+  var raf=0,mx=window.innerWidth/2,my=window.innerHeight/2;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(!raf)raf=requestAnimationFrame(function(){g.style.background='radial-gradient(600px circle at '+mx+'px '+my+'px,rgba(124,58,237,.07),transparent 40%)';raf=0})},{passive:true});
+})();
+</script>
+<script src="/lang.js"></script>
+</body>
+</html>

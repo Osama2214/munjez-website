@@ -16,12 +16,12 @@
 <meta property="og:url" content="https://munjez-website.vercel.app/"/>
 <meta property="og:title" content="Munjez — Free Desktop App for Tasks, Focus &amp; Habits"/>
 <meta property="og:description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, notes, whiteboard, desktop widgets, and more. Download free today."/>
-<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
+<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/icon.webp"/>
 <meta property="og:site_name" content="Munjez"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Munjez — Free Desktop App for Tasks, Focus &amp; Habits"/>
 <meta name="twitter:description" content="Munjez is a free Windows &amp; Linux desktop app for task management, focus sessions, habit tracking, notes, whiteboard, desktop widgets, and more. Download free today."/>
-<meta name="twitter:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
+<meta name="twitter:image" content="https://munjez-website.vercel.app/screenshots/icon.webp"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,7 +49,7 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/></noscript>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --bg:#070c18;--surface:#0c1223;--card:#101827;--card-h:#141f32;
   --border:#1a2d4a;--border-h:rgba(124,58,237,.5);
@@ -79,7 +79,7 @@ html[dir="rtl"] .ttl{line-height:1.35}
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
-  height:62px;padding:0 48px;
+  height:52px;padding:0 48px;
   display:flex;align-items:center;justify-content:space-between;
   background:rgba(7,12,24,.85);
   backdrop-filter:blur(24px);
@@ -93,14 +93,13 @@ nav ul a:hover{color:var(--text)}
 .nav-dl{
   display:inline-flex;align-items:center;gap:7px;
   background:var(--primary);color:#fff;text-decoration:none;
-  height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 0 20px rgba(124,58,237,.3);
+  height:32px;padding:0 14px;border-radius:7px;font-size:12px;font-weight:600;
+  transition:all .2s;white-space:nowrap;
 }
-.nav-dl:hover{background:var(--primary-h);transform:translateY(-1px);box-shadow:0 0 32px rgba(124,58,237,.5)}
+.nav-dl:hover{background:var(--primary-h);transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,58,237,.35)}
 #lang-toggle{
   background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;
-  height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;
+  height:32px;padding:0 12px;border-radius:7px;font-size:12px;font-weight:700;
   cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;
   white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;
   min-width:42px;line-height:1;
@@ -171,7 +170,7 @@ nav ul a:hover{color:var(--text)}
 .hero-tagline strong{color:var(--text);font-weight:600}
 
 .cta-row{
-  display:flex;align-items:center;gap:14px;
+  display:flex;align-items:center;gap:18px;
   justify-content:center;flex-wrap:wrap;
   animation:fade-up .9s ease both;animation-delay:.7s;
 }
@@ -282,6 +281,17 @@ nav ul a:hover{color:var(--text)}
   transition:background .2s,border-color .2s;
 }
 .tag:hover{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.4)}
+.feat-show-more{
+  display:none;margin:20px auto 0;
+  background:transparent;border:1px solid rgba(124,58,237,.3);
+  color:var(--accent);padding:10px 28px;border-radius:10px;
+  font-size:14px;font-weight:600;cursor:pointer;
+  align-items:center;gap:8px;transition:all .3s;font-family:inherit;
+}
+.feat-show-more svg{transition:transform .3s}
+.feat-show-more:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.5)}
+.feat-show-more.open{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.4);color:#c4b5fd}
+.feat-show-more.open .feat-show-arrow{transform:rotate(180deg)}
 
 /* ── TABS ── */
 .tabs-wrap{position:relative;margin-top:40px}
@@ -456,8 +466,10 @@ nav ul a:hover{color:var(--text)}
 /* ── DOWNLOAD ── */
 .dl-sec{
   position:relative;z-index:2;overflow:hidden;
-  padding:140px 40px;text-align:center;
+  padding:40px 40px;text-align:center;
   border-top:1px solid var(--border);
+  min-height:100vh;min-height:100dvh;
+  display:flex;align-items:center;justify-content:center;
 }
 .dl-sec::before{
   content:'';position:absolute;inset:0;
@@ -474,16 +486,17 @@ nav ul a:hover{color:var(--text)}
   mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 0%,transparent 100%);
   pointer-events:none;
 }
-.dl-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.dl-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .dl-sec h2{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-3px;margin-bottom:18px;line-height:1}
 [dir="rtl"] .dl-sec h2{line-height:1.2;letter-spacing:0;padding-top:20px}
 .dl-sec h2 span{background:linear-gradient(135deg,#a78bfa,#7c3aed);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 [dir="rtl"] .dl-sec h2 span{display:inline-block;padding-top:0.2em}
-.dl-sec>.dl-inner>p{font-size:17px;color:var(--muted);margin-bottom:44px;line-height:1.7}
+.dl-sec>.dl-inner>p{font-size:17px;color:var(--muted);margin-bottom:50px;line-height:1.7}
 .dl-actions{
-  max-width:360px;margin:0 auto;
-  display:grid;gap:12px;
+  max-width:100%;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
 }
+@media(max-width:560px){.dl-actions{grid-template-columns:1fr}}
 .dl-btn{
   display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
   background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;text-decoration:none;
@@ -504,6 +517,56 @@ nav ul a:hover{color:var(--text)}
   box-shadow:none;color:var(--text);cursor:not-allowed;pointer-events:none;opacity:.9;
 }
 .dl-btn.dl-disabled:hover{transform:none;box-shadow:none}
+.platform-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(99,102,241,.08));
+  border:1.5px solid rgba(124,58,237,.35);
+  color:#fff;text-decoration:none;padding:16px 34px;border-radius:14px;
+  font-size:16px;font-weight:700;transition:all .3s;white-space:nowrap;
+  box-shadow:0 4px 24px rgba(124,58,237,.15);
+}
+.platform-btn:hover{background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(99,102,241,.18));border-color:rgba(124,58,237,.6);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,58,237,.3)}
+.platform-btn .platform-icon{flex-shrink:0;opacity:.9}
+.platform-btn:hover .platform-icon{opacity:1}
+.dropdown-arrow{transition:transform .25s;opacity:.6;margin-left:2px}
+.platform-dropdown{position:relative}
+.platform-dropdown .platform-btn{cursor:pointer}
+.platform-dropdown-menu{
+  position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(6px);
+  min-width:240px;background:rgba(15,10,30,.95);border:1.5px solid rgba(124,58,237,.35);
+  border-radius:14px;padding:6px;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;z-index:100;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);backdrop-filter:blur(16px);
+}
+.platform-dropdown:hover .platform-dropdown-menu,
+.platform-dropdown:focus-within .platform-dropdown-menu{
+  opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);
+}
+.platform-dropdown:hover .dropdown-arrow{transform:rotate(180deg);opacity:1}
+.platform-dropdown-menu a{
+  display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;
+  color:#fff;text-decoration:none;font-size:14px;font-weight:600;
+  transition:background .2s;white-space:nowrap;
+}
+.platform-dropdown-menu a:hover{background:rgba(124,58,237,.2)}
+.platform-dropdown-menu a svg,.platform-dropdown-menu a img{flex-shrink:0;opacity:.8;width:18px;height:18px}
+.platform-dropdown-menu a:hover svg,.platform-dropdown-menu a:hover img{opacity:1}
+.dropdown-soon{opacity:.5;cursor:default!important;pointer-events:none}
+.dropdown-soon:hover{background:transparent!important}
+.soon-badge{
+  margin-left:auto;font-size:10px;font-weight:700;text-transform:uppercase;
+  background:rgba(124,58,237,.3);color:var(--accent);padding:2px 8px;border-radius:6px;
+  letter-spacing:.5px;
+}
+.dl-actions .platform-btn{
+  width:100%;flex-direction:column;justify-content:center;
+  padding:36px 16px;border-radius:16px;font-size:16px;font-weight:700;gap:12px;
+  background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(99,102,241,.06));
+  border:1.5px solid rgba(124,58,237,.25);
+  box-shadow:0 4px 20px rgba(124,58,237,.1);
+}
+.dl-actions .platform-btn:hover{background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(99,102,241,.12));border-color:rgba(124,58,237,.5);box-shadow:0 8px 40px rgba(124,58,237,.25)}
+.dl-actions .platform-btn .platform-icon{width:40px;height:40px}
 .dl-meta{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap}
 .dl-meta span{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
 .dl-meta span svg{color:var(--green)}
@@ -529,7 +592,7 @@ nav ul a:hover{color:var(--text)}
 /* FOOTER */
 footer{
   position:relative;z-index:2;background:var(--surface);
-  border-top:1px solid var(--border);padding:0 48px;height:62px;
+  border-top:1px solid var(--border);padding:0 48px;height:48px;
   display:flex;align-items:center;
 }
 .footer-wrap{
@@ -559,6 +622,24 @@ footer{
   transition:color .2s;
 }
 .footer-link:hover{color:var(--text)}
+/* ── DEVELOPER SECTION ── */
+.dev-sec{position:relative;z-index:2;padding:80px 48px;text-align:center}
+.dev-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(124,58,237,.08),transparent 70%);pointer-events:none}
+.dev-inner{position:relative;max-width:520px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 36px 36px;backdrop-filter:blur(8px)}
+.dev-inner::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);border-radius:2px}
+.dev-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:20px}
+.dev-avatar{width:110px;height:110px;border-radius:50%;border:3px solid rgba(124,58,237,.45);margin:0 auto 18px;overflow:hidden;box-shadow:0 0 32px rgba(124,58,237,.2),0 0 80px rgba(124,58,237,.06);position:relative}
+.dev-avatar::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,rgba(124,58,237,.3),transparent 40%,transparent 60%,rgba(167,139,250,.3));animation:avatar-ring 6s linear infinite;z-index:-1}
+@keyframes avatar-ring{to{transform:rotate(360deg)}}
+.dev-avatar img{width:100%;height:100%;object-fit:cover}
+.dev-name{font-size:24px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
+.dev-role{font-size:14px;color:var(--accent);margin-bottom:8px;font-weight:600}
+.dev-bio{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:22px}
+.dev-links{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.dev-link{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);color:var(--muted);transition:all .25s;text-decoration:none}
+.dev-link:hover{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.5);color:#fff;transform:translateY(-3px);box-shadow:0 8px 24px rgba(124,58,237,.15)}
+.dev-link svg{width:18px;height:18px}
+@media(max-width:500px){.dev-sec{padding:56px 16px}.dev-inner{padding:32px 20px 28px}.dev-avatar{width:90px;height:90px}.dev-name{font-size:20px}}
 /* SCROLL ANIM */
 .fu{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .fu.vis{opacity:1;transform:none}
@@ -699,20 +780,95 @@ footer{
   .theme-grid{grid-template-columns:repeat(2,1fr)}
   .support-wrap{grid-template-columns:1fr}
   .support-actions{grid-template-columns:1fr 1fr;max-width:100%}
+  .hero{padding:100px 24px 60px;min-height:100vh;min-height:100dvh}
+  .hero h1{font-size:clamp(48px,12vw,80px);letter-spacing:-2px}
+  .hero-sub{font-size:clamp(16px,3vw,20px)}
+  .hero-tagline{font-size:clamp(14px,2.5vw,17px);margin:20px auto 32px}
+  .cta-row{gap:12px}
+  .platform-btn{padding:14px 24px;font-size:14px;gap:10px}
+  .dl-sec{padding:100px 24px 80px}
+  .dl-sec h2{font-size:clamp(32px,8vw,56px);letter-spacing:-2px}
+  .dl-sec>.dl-inner>p{font-size:15px;margin-bottom:36px}
+  .dl-actions{gap:12px}
+  .dl-actions .platform-btn{padding:24px 14px;font-size:14px}
+  .dl-actions .platform-btn .platform-icon{width:32px;height:32px}
+  .car-imgs{width:90%}
+  .car-btn{width:36px;height:36px;font-size:18px;border-radius:10px}
+  .car-btn:first-child{left:calc(2% - 18px)}
+  .car-btn:last-child{right:calc(2% - 18px)}
 }
 @media(max-width:620px){
+  .hero{padding:80px 18px 48px;min-height:100vh;min-height:100dvh}
+  .feat-grid{gap:10px;margin-top:32px}
+  .feat-card{padding:16px 18px}
+  .fi{width:40px;height:40px;border-radius:10px;margin-bottom:12px}
+  .feat-card h3{font-size:15px;margin-bottom:6px}
+  .feat-card p{font-size:13px;line-height:1.6}
+  .tags{margin-top:10px;gap:4px}
+  .tag{font-size:10px;padding:2px 7px}
+  .feat-grid .feat-card:nth-child(n+4){display:none}
+  .feat-grid.expanded .feat-card:nth-child(n+4){display:block}
+  .feat-show-more{display:block!important}
+  .hero h1{font-size:clamp(40px,14vw,64px);letter-spacing:-1.5px}
+  .hero-tagline{font-size:14px;margin:16px auto 28px;max-width:340px}
+  .cta-row{gap:10px}
+  .platform-btn{padding:12px 20px;font-size:13px;border-radius:12px}
+  .platform-dropdown-menu{min-width:200px;padding:5px}
+  .platform-dropdown-menu a{padding:10px 14px;font-size:13px;gap:10px}
+  .stats{flex-direction:column;align-items:stretch}
+  .stat{border-right:none;border-bottom:1px solid var(--border);justify-content:center}
+  .stat:last-child{border-bottom:none}
   .support-actions{grid-template-columns:1fr}
-  footer{height:auto;padding:24px 20px}
-  .footer-wrap{flex-direction:column;align-items:center;text-align:center;gap:14px}
-  .footer-brand{font-size:14px}
-  .footer-nav{gap:20px}
-  .footer-link{font-size:14px}
+  footer{height:auto;padding:16px 14px}
+  .footer-wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:0;flex-wrap:nowrap}
+  .footer-brand{font-size:11px}
+  .footer-nav{gap:16px}
+  .footer-link{font-size:11px}
+  .dl-sec{padding:80px 18px 60px}
+  .dl-sec h2{font-size:clamp(28px,9vw,44px)}
+  .dl-sec>.dl-inner>p{font-size:14px;margin-bottom:28px}
+  .dl-actions .platform-btn{padding:20px 12px;font-size:13px;gap:10px}
+  .dl-actions .platform-btn .platform-icon{width:28px;height:28px}
+  .dl-meta{gap:14px}
+  .dl-meta span{font-size:12px}
+  .car-imgs{width:96%}
+  .car-btn:first-child{left:-4px}
+  .car-btn:last-child{right:-4px}
+  .focus-foot{padding:12px 14px;min-height:80px}
+  .focus-foot h3{font-size:13px}
+  .focus-foot p{font-size:11.5px}
+  .ttl{font-size:clamp(24px,5vw,36px)}
+  .desc{font-size:15px}
+  .sec{padding:48px 16px}
+  .support-card{padding:20px}
+  .support-card h3{font-size:18px}
+  .support-card p{font-size:13px}
+  .theme-card{padding:10px;min-height:72px}
+  .theme-name{font-size:11px}
 }
 @media(max-width:500px){
   nav{padding:0 14px;gap:8px}
   .nav-dl span[data-i18n]{display:none}
   .nav-dl{padding:0 10px;min-width:36px;justify-content:center}
   #lang-toggle{padding:0 10px;min-width:36px}
+  .hero{padding:72px 14px 40px;min-height:100vh;min-height:100dvh}
+  .cta-row{flex-direction:column;align-items:stretch;gap:10px}
+  .platform-btn{justify-content:center;padding:14px 20px;font-size:14px;width:100%}
+  .platform-dropdown{width:100%}
+  .platform-dropdown-menu{position:static!important;transform:none!important;left:auto!important;top:auto!important;width:100%;min-width:auto;opacity:0;pointer-events:none;max-height:0;padding:0!important;overflow:hidden;border:none!important;box-shadow:none;transition:opacity .2s,max-height .3s,padding .2s;margin-top:0;border-radius:0 0 12px 12px;background:rgba(15,10,30,.95);backdrop-filter:blur(16px);z-index:1}
+  .platform-dropdown:hover .platform-dropdown-menu,
+  .platform-dropdown:focus-within .platform-dropdown-menu{opacity:0;pointer-events:none;max-height:0;padding:0!important;border:none!important;margin-top:0}
+  .platform-dropdown.open .platform-dropdown-menu{opacity:1;pointer-events:auto;max-height:300px;padding:6px!important;border:1.5px solid rgba(124,58,237,.3)!important;margin-top:8px;border-radius:12px}
+  .platform-btn{border-radius:12px}
+  .platform-dropdown:hover .platform-btn,
+  .platform-dropdown:focus-within .platform-btn{border-radius:12px;transform:none}
+  .platform-dropdown.open .platform-btn{border-radius:12px;transform:none}
+  .dl-actions{grid-template-columns:1fr}
+  .dl-actions .platform-btn{padding:20px 16px;flex-direction:row;gap:12px;font-size:15px}
+  .dl-actions .platform-btn .platform-icon{width:24px;height:24px}
+  .orb1{width:200px;height:200px}
+  .orb2{width:150px;height:150px}
+  .orb3{width:100px;height:100px}
 }
 @media (prefers-reduced-motion: reduce){
   #particles,.mouse-glow{display:none}
@@ -723,6 +879,15 @@ footer{
     scroll-behavior:auto !important;
   }
 }
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
 </style>
 </head>
 <body>
@@ -745,7 +910,7 @@ footer{
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
     <button id="lang-toggle" type="button">AR</button>
-    <a class="nav-dl" id="nav-smart-download" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="https://github.com/Osama2214/munjez-releases/releases/latest">
+    <a class="nav-dl" id="nav-smart-download" href="windows-install/" data-win-url="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe" data-linux-url="https://github.com/Osama2214/munjez-releases/releases/latest">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span data-i18n="nav-dl"></span>
     </a>
@@ -760,36 +925,73 @@ footer{
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
 
-  <div class="badge"><span class="badge-dot"></span> <span data-i18n="hero-badge">Free Desktop App for Windows &amp; Linux</span></div>
   <h1><span class="grad">Munjez</span></h1>
   <p class="hero-sub" data-i18n="hero-sub">Your Ultimate Productivity App</p>
   <p class="hero-tagline" data-i18n="hero-tagline">
-    Tasks, habits, focus sessions, notes, whiteboard, and desktop widgets — all in one <strong>beautiful, offline-first</strong> desktop app.
-    Built for people who want to get things done.
+    Tasks, habits, focus sessions, notes, whiteboard, and widgets — all in one <strong>beautiful, offline-first</strong> app.
   </p>
   <div class="cta-row">
-    <a class="btn-main" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span data-i18n="hero-win">Download for Windows</span>
-    </a>
-    <a class="btn-main" id="hero-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span data-i18n="hero-linux">Download for Linux</span>
-    </a>
-  </div>
-  <div style="display:flex;justify-content:center;margin-top:20px">
-    <div class="dl-count-wrap fu" id="dl-count-wrap" style="display:none">
-      <span class="dl-count-dot"></span>
-      <div class="dl-count-body">
-        <span class="dl-count-label-text" data-i18n="dl-count-label">downloads so far</span>
-        <span id="dl-count-num">0</span>
+    <div class="platform-dropdown">
+      <button class="platform-btn" type="button">
+        <img class="platform-icon" src="icons/windows.svg" alt="Windows" width="20" height="20">
+        <span data-i18n="hero-win">Windows</span>
+        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+      </button>
+      <div class="platform-dropdown-menu">
+        <a href="https://apps.microsoft.com/detail/9P950SV0W6L4" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 9.6v4.2H7.2V9.6h4.2zm0 9.6V15H7.2v4.2h4.2zm5.4-9.6v4.2h-4.2V9.6h4.2zm0 9.6V15h-4.2v4.2h4.2zM7.2 5.4V2.7c0-1.16.94-2.1 2.1-2.1h5.4c1.16 0 2.1.94 2.1 2.1v2.7h6.3a.9.9 0 0 1 .9.9v13.8a3.3 3.3 0 0 1-3.3 3.3H3.3A3.3 3.3 0 0 1 0 20.1V6.3a.9.9 0 0 1 .9-.9h6.3zM9 2.7v2.7h6V2.7a.3.3 0 0 0-.3-.3H9.3a.3.3 0 0 0-.3.3zM1.8 20.1a1.5 1.5 0 0 0 1.5 1.5h17.4a1.5 1.5 0 0 0 1.5-1.5V7.2H1.8v12.9z"/></svg>
+          <span data-i18n="win-store">Microsoft Store</span>
+        </a>
+        <a href="windows-install/">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          <span data-i18n="win-direct">Direct Download</span>
+        </a>
+      </div>
+    </div>
+    <div class="platform-dropdown">
+      <button class="platform-btn" type="button">
+        <img class="platform-icon" src="icons/linux.svg" alt="Linux" width="20" height="20">
+        <span data-i18n="hero-linux">Linux</span>
+        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+      </button>
+      <div class="platform-dropdown-menu">
+        <a href="linux-install/?format=appimage">
+          <img src="icons/linux.svg" alt="" width="18" height="18">
+          <span>AppImage</span>
+        </a>
+        <a href="linux-install/?format=deb">
+          <img src="icons/linux.svg" alt="" width="18" height="18">
+          <span>DEB</span>
+        </a>
+        <a href="linux-install/?format=rpm">
+          <img src="icons/linux.svg" alt="" width="18" height="18">
+          <span>RPM</span>
+        </a>
+      </div>
+    </div>
+    <div class="platform-dropdown">
+      <button class="platform-btn" type="button">
+        <img class="platform-icon" src="icons/android.svg" alt="Android" width="20" height="20">
+        <span data-i18n="hero-android">Android</span>
+        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+      </button>
+      <div class="platform-dropdown-menu">
+        <a href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg>
+          <span data-i18n="android-apk">Download APK</span>
+        </a>
+        <a class="dropdown-soon" href="#" onclick="return false">
+          <img src="icons/googleplay.svg" alt="Google Play" width="18" height="18">
+          <span data-i18n="android-gplay">Google Play</span>
+          <span class="soon-badge" data-i18n="coming-soon">(Soon)</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section class="sec" id="features">
+<section class="sec reveal" id="features">
   <div class="label" data-i18n="feat-label">Features</div>
   <h2 class="ttl" data-i18n="feat-title">Everything you need<br>to stay productive</h2>
   <p class="desc" data-i18n="feat-desc">11 powerful tools packed into one fast, beautiful desktop app — from tasks and habits to notes, whiteboard, and floating widgets.</p>
@@ -872,12 +1074,16 @@ footer{
       <div class="tags"><span class="tag" data-i18n="tag-floating">Floating</span><span class="tag" data-i18n="tag-always-on-top">Always on Top</span><span class="tag" data-i18n="tag-11-widgets">11+ Widgets</span></div>
     </div>
 
+  <button class="feat-show-more" onclick="var g=document.querySelector('.feat-grid');g.classList.toggle('expanded');var ex=g.classList.contains('expanded');var ar=window.LANG&&window.LANG.lang()==='ar';this.querySelector('span').textContent=ex?(ar?'عرض أقل':'Show less'):(ar?'عرض المزيد':'Show more');this.classList.toggle('open',ex)">
+    <span>Show more</span>
+    <svg class="feat-show-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
   </div>
 </section>
 
 <!-- SCREENSHOTS -->
 <div class="sec-alt">
-  <div class="sec" id="screenshots">
+  <div class="sec reveal" id="screenshots">
     <div class="label" data-i18n="ss-label">Screenshots</div>
     <h2 class="ttl fu" data-i18n="ss-title">See it in action</h2>
     <p class="desc fu" data-i18n="ss-desc">Explore every feature through real screenshots of the app.</p>
@@ -1157,7 +1363,7 @@ footer{
 
 <!-- THEMES -->
 <div class="sec-alt">
-  <div class="sec" id="themes">
+  <div class="sec reveal" id="themes">
     <div class="label" data-i18n="themes-label">Themes</div>
     <h2 class="ttl fu" data-i18n="themes-title">Make it yours</h2>
     <p class="desc fu" data-i18n="themes-desc">Switch between beautiful color themes to match your mood and workflow.</p>
@@ -1187,7 +1393,7 @@ footer{
 
 <!-- SUPPORT -->
 <div class="sec-alt">
-  <section class="sec" id="support">
+  <section class="sec reveal" id="support">
     <div class="label" data-i18n="sup-label">Support</div>
     <h2 class="ttl fu" data-i18n="sup-title">Need help?<br>We've got you</h2>
     <p class="desc fu" data-i18n="sup-desc">Report issues, ask for features, or reach out for help getting Munjez running smoothly.</p>
@@ -1218,20 +1424,66 @@ footer{
 
 <!-- DOWNLOAD -->
 <div class="dl-sec" id="download">
-  <div class="dl-inner">
+  <div class="dl-inner reveal">
     <h2 class="fu" data-i18n="dl-title">Ready to get<br><span>things done?</span></h2>
     <p class="fu" data-i18n="dl-desc">Free, fast, and completely offline. No account. No subscription. Just you and your goals.</p>
     <div class="dl-actions">
-      <a class="dl-btn fu" href="https://github.com/Osama2214/munjez-releases/releases/latest/download/Munjez_Installer.exe">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-i18n="dl-win">Download for Windows</span>
-        <small data-i18n="dl-win-sub">Windows 10 / 11</small>
-      </a>
-      <a class="dl-btn fu" id="section-linux-download" href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-i18n="dl-linux">Download for Linux</span>
-        <small data-i18n="dl-linux-sub">AppImage · DEB · RPM</small>
-      </a>
+      <div class="platform-dropdown fu">
+        <button class="platform-btn" type="button">
+          <img class="platform-icon" src="icons/windows.svg" alt="Windows" width="28" height="28">
+          <span data-i18n="dl-win">Windows</span>
+          <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+        </button>
+        <div class="platform-dropdown-menu">
+          <a href="https://apps.microsoft.com/detail/9P950SV0W6L4" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 9.6v4.2H7.2V9.6h4.2zm0 9.6V15H7.2v4.2h4.2zm5.4-9.6v4.2h-4.2V9.6h4.2zm0 9.6V15h-4.2v4.2h4.2zM7.2 5.4V2.7c0-1.16.94-2.1 2.1-2.1h5.4c1.16 0 2.1.94 2.1 2.1v2.7h6.3a.9.9 0 0 1 .9.9v13.8a3.3 3.3 0 0 1-3.3 3.3H3.3A3.3 3.3 0 0 1 0 20.1V6.3a.9.9 0 0 1 .9-.9h6.3zM9 2.7v2.7h6V2.7a.3.3 0 0 0-.3-.3H9.3a.3.3 0 0 0-.3.3zM1.8 20.1a1.5 1.5 0 0 0 1.5 1.5h17.4a1.5 1.5 0 0 0 1.5-1.5V7.2H1.8v12.9z"/></svg>
+            <span data-i18n="win-store">Microsoft Store</span>
+          </a>
+          <a href="windows-install/">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+            <span data-i18n="win-direct">Direct Download</span>
+          </a>
+        </div>
+      </div>
+      <div class="platform-dropdown fu">
+        <button class="platform-btn" type="button">
+          <img class="platform-icon" src="icons/linux.svg" alt="Linux" width="28" height="28">
+          <span data-i18n="dl-linux">Linux</span>
+          <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+        </button>
+        <div class="platform-dropdown-menu">
+          <a href="linux-install/?format=appimage">
+            <img src="icons/linux.svg" alt="" width="18" height="18">
+            <span>AppImage</span>
+          </a>
+          <a href="linux-install/?format=deb">
+            <img src="icons/linux.svg" alt="" width="18" height="18">
+            <span>DEB</span>
+          </a>
+          <a href="linux-install/?format=rpm">
+            <img src="icons/linux.svg" alt="" width="18" height="18">
+            <span>RPM</span>
+          </a>
+        </div>
+      </div>
+      <div class="platform-dropdown fu">
+        <button class="platform-btn" type="button">
+          <img class="platform-icon" src="icons/android.svg" alt="Android" width="28" height="28">
+          <span data-i18n="dl-android">Android</span>
+          <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M2 4l3 3 3-3"/></svg>
+        </button>
+        <div class="platform-dropdown-menu">
+          <a href="https://github.com/Osama2214/munjez-releases/releases/latest" target="_blank" rel="noopener noreferrer">
+            <img src="icons/android.svg" alt="APK" width="18" height="18">
+            <span data-i18n="android-apk">Download APK</span>
+          </a>
+          <a class="dropdown-soon" href="#" onclick="return false">
+            <img src="icons/googleplay.svg" alt="Google Play" width="18" height="18">
+            <span data-i18n="android-gplay">Google Play</span>
+            <span class="soon-badge" data-i18n="coming-soon">(Soon)</span>
+          </a>
+        </div>
+      </div>
     </div>
     <div class="dl-meta fu">
       <span>
@@ -1252,12 +1504,39 @@ footer{
 
 </main>
 
+<section class="dev-sec reveal">
+  <div class="dev-inner">
+    <p class="dev-label" data-i18n="dev-label">Meet the Developer</p>
+    <div class="dev-avatar">
+      <img src="screenshots/IMG-20241004-WA0212.jpg" alt="Osama Ahmed"/>
+    </div>
+    <h2 class="dev-name" data-i18n="dev-name">Osama Ahmed</h2>
+    <p class="dev-role" data-i18n="dev-role">Developer & Creator of Munjez</p>
+    <p class="dev-bio" data-i18n="dev-bio">Passionate about building tools that help people get things done. Munjez started as a personal project and grew into a full productivity suite — designed, built, and maintained by one developer.</p>
+    <div class="dev-links">
+      <a class="dev-link" href="https://github.com/Osama2214" target="_blank" rel="noopener noreferrer" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a class="dev-link" href="https://www.linkedin.com/in/osama-ahmed-67127222a" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a class="dev-link" href="https://x.com/9RxCnkrz3T7LH4U" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a class="dev-link" href="https://osama-portfolio-eight.vercel.app/" target="_blank" rel="noopener noreferrer" title="Portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-wrap">
     <p class="footer-brand">Made with <span class="footer-heart">&hearts;</span> by <a href="https://github.com/Osama2214" target="_blank">Osama</a></p>
     <div class="footer-nav">
       <a class="footer-link" href="privacy-policy/" data-i18n="footer-privacy">Privacy Policy</a>
       <a class="footer-link" href="support/" data-i18n="footer-support">Support Center</a>
+      <a class="footer-link" href="changelog/" data-i18n="footer-changelog">Changelog</a>
     </div>
   </div>
 </footer>
@@ -1305,6 +1584,23 @@ footer{
       try{img.fetchPriority='low';}catch(_){}
     }
   }
+})();
+
+// ── MOBILE DROPDOWN TOGGLE ──
+(function(){
+  if(!window.matchMedia('(max-width:500px)').matches)return;
+  document.querySelectorAll('.platform-dropdown .platform-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var dd=btn.closest('.platform-dropdown');
+      var wasOpen=dd.classList.contains('open');
+      document.querySelectorAll('.platform-dropdown.open').forEach(function(d){d.classList.remove('open')});
+      if(!wasOpen)dd.classList.add('open');
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.platform-dropdown.open').forEach(function(d){d.classList.remove('open')});
+  });
 })();
 
 // ── PARTICLES ──
@@ -1563,52 +1859,64 @@ footer{
 
   var ua=(navigator.userAgent||'').toLowerCase();
   var isWindows=ua.indexOf('windows')!==-1;
-  var isLinux=(ua.indexOf('linux')!==-1||ua.indexOf('x11')!==-1)&&ua.indexOf('android')===-1;
-  // Helper: set the nav-dl span text (used by lang.js via data-i18n) and store
-  // the platform key so the MutationObserver-driven langchange event can update it.
+  var isAndroid=ua.indexOf('android')!==-1;
+  var isLinux=(ua.indexOf('linux')!==-1||ua.indexOf('x11')!==-1)&&!isAndroid;
   var navSpan=btn.querySelector('[data-i18n="nav-dl"]');
 
-  function setNavText(winText, linuxText, otherText){
-    // Store translations on the span so langchange can update later
+  function setNavText(winText, linuxText, androidText, otherText){
     if(navSpan){
-      navSpan.dataset.navWin   = winText;
-      navSpan.dataset.navLinux = linuxText;
-      navSpan.dataset.navOther = otherText;
+      navSpan.dataset.navWin=winText;
+      navSpan.dataset.navLinux=linuxText;
+      navSpan.dataset.navAndroid=androidText;
+      navSpan.dataset.navOther=otherText;
     }
     document.addEventListener('langchange',function(){
       if(!navSpan)return;
       var ar=window.LANG&&window.LANG.lang()==='ar';
-      if(isWindows)      navSpan.textContent=ar?navSpan.dataset.navWin  :'Download for Windows';
-      else if(isLinux)   navSpan.textContent=ar?navSpan.dataset.navLinux:'Download for Linux';
-      else               navSpan.textContent=ar?navSpan.dataset.navOther:'Choose Your Platform';
+      if(isWindows)       navSpan.textContent=ar?navSpan.dataset.navWin:'Download for Windows';
+      else if(isLinux)    navSpan.textContent=ar?navSpan.dataset.navLinux:'Download for Linux';
+      else if(isAndroid)  navSpan.textContent=ar?navSpan.dataset.navAndroid:'Download for Android';
+      else                navSpan.textContent=ar?navSpan.dataset.navOther:'Choose Your Platform';
     });
   }
 
   var isAr=window.LANG&&window.LANG.lang()==='ar';
+  var txts=['تنزيل لـ Windows','تنزيل لـ Linux','تنزيل لـ Android','اختر منصتك'];
+
   if(isWindows){
     btn.href='windows-install/';
     btn.title='Download Windows version';
-    if(navSpan) navSpan.textContent=isAr?'تنزيل لـ Windows':'Download for Windows';
-    setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
+    if(navSpan) navSpan.textContent=isAr?txts[0]:'Download for Windows';
+    setNavText(txts[0],txts[1],txts[2],txts[3]);
+    return;
+  }
+
+  if(isAndroid){
+    btn.href='https://github.com/Osama2214/munjez-releases/releases/latest';
+    btn.target='_blank';
+    btn.rel='noopener noreferrer';
+    btn.title='Download Android APK';
+    if(navSpan) navSpan.textContent=isAr?txts[2]:'Download for Android';
+    setNavText(txts[0],txts[1],txts[2],txts[3]);
     return;
   }
 
   if(isLinux){
     btn.href='#';
     btn.title='Download Linux version';
-    if(navSpan) navSpan.textContent=isAr?'تنزيل لـ Linux':'Download for Linux';
+    if(navSpan) navSpan.textContent=isAr?txts[1]:'Download for Linux';
     btn.addEventListener('click',function(e){
       e.preventDefault();
       linuxModalOpen();
     });
-    setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
+    setNavText(txts[0],txts[1],txts[2],txts[3]);
     return;
   }
 
   btn.href='#download';
   btn.title='Open download section';
-  if(navSpan) navSpan.textContent=isAr?'اختر منصتك':'Choose Your Platform';
-  setNavText('تنزيل لـ Windows','تنزيل لـ Linux','اختر منصتك');
+  if(navSpan) navSpan.textContent=isAr?txts[3]:'Choose Your Platform';
+  setNavText(txts[0],txts[1],txts[2],txts[3]);
 })();
 function animCount(el){
   var target=+el.dataset.count,suffix=el.dataset.suffix||'',dur=1400,start=null;
@@ -1982,5 +2290,21 @@ function lbClose(){document.getElementById('lb').classList.remove('on');}
     </div>
   </div>
 </div>
+<script>
+// ── SCROLL REVEAL ──
+(function(){
+  var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+  if(!els.length)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){el.classList.add('visible')});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
+    });
+  },{threshold:0.12});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>

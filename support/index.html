@@ -12,17 +12,17 @@
 <meta property="og:url" content="https://munjez-website.vercel.app/support/"/>
 <meta property="og:title" content="Support Center | Munjez"/>
 <meta property="og:description" content="Get help with Munjez — troubleshooting steps, FAQ, and contact options for the free desktop productivity app."/>
-<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
+<meta property="og:image" content="https://munjez-website.vercel.app/screenshots/icon.webp"/>
 <meta property="og:site_name" content="Munjez"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Support Center | Munjez"/>
 <meta name="twitter:description" content="Get help with Munjez — troubleshooting steps, FAQ, and contact options for the free desktop productivity app."/>
-<meta name="twitter:image" content="https://munjez-website.vercel.app/screenshots/task/task-01.png"/>
+<meta name="twitter:image" content="https://munjez-website.vercel.app/screenshots/icon.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --bg:#070c18;--surface:#0c1223;--card:#101827;--card-h:#141f32;--border:#1a2d4a;
   --primary:#7c3aed;--primary-h:#6d28d9;--text:#e2e8f0;--muted:#93a3ba;--accent:#a78bfa;
@@ -35,12 +35,12 @@ body{
   color:var(--text);line-height:1.7;
 }
 .top{position:sticky;top:0;z-index:20;background:rgba(7,12,24,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,45,74,.8)}
-.top-in{height:62px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
+.top-in{height:52px;padding:0 48px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800;font-size:17px;letter-spacing:-.3px}
 .logo img{width:30px;height:30px;border-radius:8px}
-.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:36px;padding:0 18px;border-radius:8px;font-size:13px;font-weight:700;transition:.2s;white-space:nowrap}
+.back{display:inline-flex;align-items:center;text-decoration:none;background:var(--primary);border:1.5px solid var(--primary);color:#fff;height:32px;padding:0 16px;border-radius:7px;font-size:12px;font-weight:700;transition:.2s;white-space:nowrap}
 .back:hover{background:var(--primary-h);border-color:var(--primary-h)}
-#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
+#lang-toggle{background:transparent;border:1.5px solid rgba(124,58,237,.5);color:#a78bfa;height:32px;padding:0 12px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-width:42px;line-height:1}
 #lang-toggle:hover{background:rgba(124,58,237,.15);border-color:#7c3aed;color:#fff}
 .wrap{max-width:1080px;margin:0 auto;padding:34px 20px 70px}
 .hero h1{font-size:clamp(36px,5.5vw,56px);line-height:1.04;letter-spacing:-1.4px}
@@ -122,19 +122,51 @@ body{
       <h2 data-i18n="sp-faq">Quick FAQ</h2>
       <div class="q">
         <h3 data-i18n="sp-q1">Does Munjez require an internet connection?</h3>
-        <p data-i18n="sp-a1">No. Munjez is designed to be offline-first and works locally on your device.</p>
+        <p data-i18n="sp-a1">Munjez is designed to be offline-first and works locally on your device. However, it connects to the internet for two things: checking for app updates, and downloading additional ambient sounds (only one default sound per category is included — the rest are downloaded on demand). Once downloaded, everything works fully offline.</p>
       </div>
       <div class="q">
-        <h3 data-i18n="sp-q2">How can I suggest a new feature?</h3>
-        <p data-i18n="sp-a2">Open a GitHub issue and describe the feature, why it helps, and how you expect it to work.</p>
+        <h3 data-i18n="sp-q2">Where is my data stored?</h3>
+        <p data-i18n="sp-a2">All your data is stored locally in a SQLite database on your device. Nothing is synced to the cloud. On Windows, the data folder is located at <code style="color:var(--accent);font-size:13px;background:rgba(124,58,237,.15);padding:2px 6px;border-radius:4px">%LOCALAPPDATA%\com.osama.dev\Munjez</code>.</p>
       </div>
       <div class="q">
-        <h3 data-i18n="sp-q3">How long does a response usually take?</h3>
-        <p data-i18n="sp-a3">Response times vary, but tickets with clear reproduction steps and media are handled faster.</p>
+        <h3 data-i18n="sp-q3">Will I lose my data if I update the app?</h3>
+        <p data-i18n="sp-a3">No. Updates preserve your data automatically. The app creates a backup before any update to make sure nothing is lost.</p>
       </div>
       <div class="q">
         <h3 data-i18n="sp-q4">Why does Windows show a security warning when I install Munjez?</h3>
-        <p data-i18n="sp-a4">Munjez is not yet signed with a paid code-signing certificate, so Windows SmartScreen flags it as an unrecognized app. This is normal for independent apps and does <strong>not</strong> mean the app is harmful. To proceed, click <strong>More info</strong> then <strong>Run anyway</strong>. If the file is fully blocked, right-click it → <strong>Properties</strong> → check <strong>Unblock</strong> → <strong>OK</strong>. Full step-by-step instructions are on the <a href="../windows-install/" style="color:var(--accent);text-decoration:none">installation guide page</a>.</p>
+        <p data-i18n="sp-a4">Munjez is not yet signed with a paid code-signing certificate, so Windows SmartScreen flags it as an unrecognized app. This is normal for independent apps and does <strong>not</strong> mean the app is harmful. To proceed, click <strong>More info</strong> then <strong>Run anyway</strong>. Full step-by-step instructions are on the <a href="../windows-install/" style="color:var(--accent);text-decoration:none">installation guide page</a>.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q5">Which platforms does Munjez support?</h3>
+        <p data-i18n="sp-a5">Munjez is available on Windows (10/11), Linux (AppImage, DEB, RPM), and Android (APK). It is also listed on the Microsoft Store.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q6">Does Munjez support Arabic and Hijri calendar?</h3>
+        <p data-i18n="sp-a6">Yes. Munjez has full Arabic language support with right-to-left layout and a built-in Hijri calendar with all calendar views (Year, Month, Week, Day).</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q7">What are desktop widgets and how do I use them?</h3>
+        <p data-i18n="sp-a7">Munjez offers floating desktop widgets for focus timer, habits, calendar, countdown, and more. You can access them from the widget menu or the system tray. Widgets stay on top of other windows so you can track your progress while working.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q8">Can I customize keyboard shortcuts?</h3>
+        <p data-i18n="sp-a8">Yes. Munjez supports custom keyboard shortcuts with macros — you can bind key combinations to perform multiple actions in sequence.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q9">How does the Focus Mode (Pomodoro) work?</h3>
+        <p data-i18n="sp-a9">Focus Mode uses the Pomodoro technique with customizable work and break durations. It includes color-coded phases (red for focus, green for short breaks, orange for long breaks), desktop notifications, and an optional floating widget.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q10">Does Munjez have white noise or ambient sounds?</h3>
+        <p data-i18n="sp-a10">Yes. Munjez includes a library of ambient sounds (rain, café, nature, and more) that you can mix together to create your ideal focus environment.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q11">How can I suggest a new feature?</h3>
+        <p data-i18n="sp-a11">Open a GitHub issue and describe the feature, why it helps, and how you expect it to work.</p>
+      </div>
+      <div class="q">
+        <h3 data-i18n="sp-q12">How long does a support response usually take?</h3>
+        <p data-i18n="sp-a12">Response times vary, but tickets with clear reproduction steps and screenshots are handled faster.</p>
       </div>
     </section>
   </main>
