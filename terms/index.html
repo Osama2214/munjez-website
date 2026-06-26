@@ -83,7 +83,7 @@ body{
   <main class="wrap">
     <section class="hero">
       <h1 data-i18n="tos-title">Terms of Service</h1>
-      <p data-i18n="tos-updated">Last updated: June 26, 2026</p>
+      <p data-i18n="tos-updated">Last updated: June 27, 2026</p>
     </section>
 
     <section class="card">
@@ -104,12 +104,12 @@ body{
 
       <div class="sec">
         <h2 data-i18n="tos-account-h">Account &amp; Sign-In</h2>
-        <p data-i18n="tos-account-p">Munjez does not require an account to use its core features — all your data is stored locally on your device. Optional sign-in (via Google, GitHub, or other providers) may be offered for features like cloud sync or cross-device access. By signing in, you authorize Munjez to access basic profile information from your chosen provider solely for authentication purposes.</p>
+        <p data-i18n="tos-account-p">Munjez does not require an account to use its core features — all your data is stored locally on your device. Optional sign-in (via Google or email/password through Firebase Authentication) is available for features like cloud sync and cross-device access. By signing in, you authorize Munjez to access basic profile information from your chosen provider solely for authentication and sync purposes. You can delete your account and all associated cloud data at any time from the app settings.</p>
       </div>
 
       <div class="sec">
         <h2 data-i18n="tos-data-h">Your Data</h2>
-        <p data-i18n="tos-data-p">Your tasks, habits, notes, and other content belong to you. Munjez does not claim ownership over your data. All data is stored locally on your device. You are solely responsible for backing up your data. We are not liable for any data loss resulting from device failure, app uninstallation, or operating system changes.</p>
+        <p data-i18n="tos-data-p">Your tasks, habits, notes, and other content belong to you. Munjez does not claim ownership over your data. All data is stored locally on your device in a SQLite database. When you sign in, you may enable cloud sync, which stores a copy of your data on Firebase servers to allow cross-device access. You are solely responsible for backing up your data. We are not liable for any data loss resulting from device failure, app uninstallation, operating system changes, or cloud service disruptions.</p>
       </div>
 
       <div class="sec">
@@ -144,8 +144,13 @@ body{
       </div>
 
       <div class="sec">
+        <h2 data-i18n="tos-collab-h">Collaboration Features</h2>
+        <p data-i18n="tos-collab-p">The Whiteboard feature allows real-time collaboration with other users. When you join a collaborative session, your drawing actions are shared with other participants. You are responsible for the content you create and share during collaborative sessions. Do not share sensitive or confidential information through collaboration features.</p>
+      </div>
+
+      <div class="sec">
         <h2 data-i18n="tos-thirdparty-h">Third-Party Services</h2>
-        <p data-i18n="tos-thirdparty-p">Munjez uses GitHub for update delivery. Sign-in features use Firebase Authentication. These are governed by their own terms and privacy policies. We are not responsible for the practices of these third-party services.</p>
+        <p data-i18n="tos-thirdparty-p">Munjez relies on the following third-party services: GitHub for update delivery, Firebase (Authentication, Firestore, and Storage) for sign-in and cloud sync, and the Aladhan API for Hijri calendar data. These services are governed by their own terms and privacy policies. We are not responsible for the practices or availability of these third-party services.</p>
       </div>
 
       <div class="sec">

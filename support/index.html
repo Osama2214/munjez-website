@@ -111,7 +111,7 @@ body{
         <h2 data-i18n="sp-tips-title">Before contacting support</h2>
         <ul class="list">
           <li data-i18n="sp-tip1">Install the latest version and test again.</li>
-          <li data-i18n="sp-tip2">Include your Windows version and what happened step by step.</li>
+          <li data-i18n="sp-tip2">Include your OS version and what happened step by step.</li>
           <li data-i18n="sp-tip3">Add a screenshot or short video when possible.</li>
           <li data-i18n="sp-tip4">Mention whether the issue is always reproducible or random.</li>
         </ul>
@@ -122,11 +122,11 @@ body{
       <h2 data-i18n="sp-faq">Quick FAQ</h2>
       <div class="q">
         <h3 data-i18n="sp-q1">Does Munjez require an internet connection?</h3>
-        <p data-i18n="sp-a1">Munjez is designed to be offline-first and works locally on your device. However, it connects to the internet for two things: checking for app updates, and downloading additional ambient sounds (only one default sound per category is included — the rest are downloaded on demand). Once downloaded, everything works fully offline.</p>
+        <p data-i18n="sp-a1">Munjez is designed to be offline-first and works locally on your device. However, it connects to the internet for: checking for app updates, downloading additional ambient sounds on demand, authentication and cloud sync via Firebase (when signed in), fetching Hijri calendar and prayer time data via the Aladhan API, and real-time whiteboard collaboration. All core features work fully offline without signing in.</p>
       </div>
       <div class="q">
         <h3 data-i18n="sp-q2">Where is my data stored?</h3>
-        <p data-i18n="sp-a2">All your data is stored locally in a SQLite database on your device. Nothing is synced to the cloud. On Windows, the data folder is located at <code style="color:var(--accent);font-size:13px;background:rgba(124,58,237,.15);padding:2px 6px;border-radius:4px">%LOCALAPPDATA%\com.osama.dev\Munjez</code>.</p>
+        <p data-i18n="sp-a2">All your data is stored locally in a SQLite database on your device. When you sign in, you can optionally enable cloud sync via Firebase, which stores a copy of your data on the cloud for cross-device access. On Windows, the local data folder is located at <code style="color:var(--accent);font-size:13px;background:rgba(124,58,237,.15);padding:2px 6px;border-radius:4px">%LOCALAPPDATA%\com.osama.dev\Munjez</code>.</p>
       </div>
       <div class="q">
         <h3 data-i18n="sp-q3">Will I lose my data if I update the app?</h3>
