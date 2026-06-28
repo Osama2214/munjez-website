@@ -229,7 +229,7 @@
       'sp-a12': 'Response times vary, but tickets with clear reproduction steps and screenshots are handled faster.',
       /* ── Privacy Policy ── */
       'pp-title': 'Privacy Policy',
-      'pp-updated': 'Last updated: June 27, 2026',
+      'pp-updated': 'Last updated: June 28, 2026',
       'pp-overview-h': 'Overview',
       'pp-overview-p': 'Munjez is an offline-first productivity app available on Windows, Linux, and Android. It includes task management, habit tracking, calendar, notes, whiteboard, focus timer (Pomodoro), stopwatch, countdown, and customizable desktop widgets. We designed it to keep your data local whenever possible, with optional cloud features available when you choose to sign in.',
       'pp-data-h': 'Data We Collect',
@@ -302,7 +302,7 @@
       'uf-done': 'Thanks for your feedback. We appreciate your time.',
       /* ── Terms of Service ── */
       'tos-title': 'Terms of Service',
-      'tos-updated': 'Last updated: June 27, 2026',
+      'tos-updated': 'Last updated: June 28, 2026',
       'tos-acceptance-h': 'Acceptance of Terms',
       'tos-acceptance-p': 'By downloading, installing, or using Munjez, you agree to be bound by these Terms of Service. If you do not agree, please do not use the app. These terms apply to all versions of Munjez, including Windows, Linux, and Android.',
       'tos-description-h': 'About Munjez',
@@ -561,7 +561,7 @@
       'sp-a12': 'تتفاوت أوقات الرد، لكن التذاكر ذات الخطوات التفصيلية ولقطات الشاشة تُعالَج بشكل أسرع.',
       /* ── Privacy Policy ── */
       'pp-title': 'سياسة الخصوصية',
-      'pp-updated': 'آخر تحديث: 27 يونيو 2026',
+      'pp-updated': 'آخر تحديث: 28 يونيو 2026',
       'pp-overview-h': 'نظرة عامة',
       'pp-overview-p': 'Munjez تطبيق إنتاجية يعمل بلا إنترنت ومتاح على Windows وLinux وAndroid. يشمل إدارة المهام، تتبع العادات، التقويم، الملاحظات، السبورة البيضاء، مؤقت التركيز (بومودورو)، ساعة الإيقاف، العد التنازلي، وودجات سطح المكتب. صممناه ليبقي بياناتك محلية على جهازك قدر الإمكان، مع ميزات سحابية اختيارية عند تسجيل الدخول.',
       'pp-data-h': 'البيانات التي نجمعها',
@@ -649,7 +649,7 @@
       'uf-done': 'شكراً على تقييمك. نقدّر وقتك.',
       /* ── شروط الاستخدام ── */
       'tos-title': 'شروط الاستخدام',
-      'tos-updated': 'آخر تحديث: 27 يونيو 2026',
+      'tos-updated': 'آخر تحديث: 28 يونيو 2026',
       'tos-acceptance-h': 'قبول الشروط',
       'tos-acceptance-p': 'بتنزيلك أو تثبيتك أو استخدامك لـ Munjez، فإنك توافق على الالتزام بشروط الاستخدام هذه. إذا كنت لا توافق، يُرجى عدم استخدام التطبيق. تنطبق هذه الشروط على جميع إصدارات Munjez بما فيها Windows وLinux وAndroid.',
       'tos-description-h': 'عن Munjez',
