@@ -4,6 +4,8 @@ Thumbs.db
 desktop.ini
 .idea/
 .vscode/
+.claude/
+.agents/
 
 # Logs
 *.log
@@ -20,4 +22,3 @@ yarn-error.log*
 dist/
 build/
 .cache/
-
