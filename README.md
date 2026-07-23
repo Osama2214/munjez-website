@@ -93,5 +93,6 @@ This project is deployed directly on **Vercel** for optimal speed and global ava
 ## ✍️ Author & Maintainer
 
 * **Osama Ahmed** (Osama2214)
+* Portfolio: [osama-portfolio-six.vercel.app](https://osama-portfolio-six.vercel.app/)
 * GitHub Profile: [@Osama2214](https://github.com/Osama2214)
 * Main Application Repository: [munjez-releases](https://github.com/Osama2214/munjez-releases)
