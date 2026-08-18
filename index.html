@@ -617,13 +617,22 @@ footer{
 .footer-brand a{color:var(--accent);text-decoration:none;transition:color .2s}
 .footer-brand a:hover{color:#c4b5fd}
 .footer-nav{
-  display:flex;align-items:center;gap:18px;
+  display:flex;align-items:center;gap:18px;flex-shrink:0;
 }
 .footer-link{
   color:var(--muted);text-decoration:none;font-size:13.5px;
   transition:color .2s;
 }
 .footer-link:hover{color:var(--text)}
+.footer-left{
+  display:flex;align-items:center;gap:10px;min-width:0;
+}
+.footer-copy{
+  font-size:13.5px;color:var(--muted);opacity:.7;line-height:1.3;white-space:nowrap;
+}
+.footer-copy::after{
+  content:'\00b7';margin-left:10px;opacity:.6;
+}
 /* SCROLL ANIM */
 .fu{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .fu.vis{opacity:1;transform:none}
@@ -804,10 +813,13 @@ footer{
   .stat:last-child{border-bottom:none}
   .support-actions{grid-template-columns:1fr}
   footer{height:auto;padding:12px 10px}
-  .footer-wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:4px;flex-wrap:nowrap}
-  .footer-brand{font-size:10px}
-  .footer-nav{gap:8px}
+  .footer-wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:4px;flex-wrap:wrap}
+  .footer-left{display:contents}
+  .footer-brand{font-size:10px;order:1}
+  .footer-nav{gap:8px;order:2}
   .footer-link{font-size:10px}
+  .footer-copy{order:3;flex:0 0 100%;text-align:center;font-size:10px;white-space:normal;margin-top:8px}
+  .footer-copy::after{content:none}
   .dl-sec{padding:80px 18px 60px}
   .dl-sec h2{font-size:clamp(28px,9vw,44px)}
   .dl-sec>.dl-inner>p{font-size:14px;margin-bottom:28px}
@@ -1499,7 +1511,10 @@ footer{
 
 <footer>
   <div class="footer-wrap">
-    <p class="footer-brand">Made with <span class="footer-heart">&hearts;</span> by <a href="https://github.com/Osama2214" target="_blank">Osama</a></p>
+    <div class="footer-left">
+      <p class="footer-copy">&copy; <span class="copy-year">2026</span> <span data-i18n="footer-copyright">Munjez. All rights reserved.</span></p>
+      <p class="footer-brand">Made with <span class="footer-heart">&hearts;</span> by <a href="https://github.com/Osama2214" target="_blank">Osama</a></p>
+    </div>
     <div class="footer-nav">
       <a class="footer-link" href="privacy-policy/" data-i18n="footer-privacy">Privacy Policy</a>
       <a class="footer-link" href="support/" data-i18n="footer-support">Support Center</a>
@@ -1507,6 +1522,7 @@ footer{
     </div>
   </div>
 </footer>
+<script>document.querySelectorAll('.copy-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 
 <script src="lang.js"></script>
 <script>

@@ -142,6 +142,15 @@ main{flex:1}
   </div>
 </main>
 
+<style>
+.site-copy{border-top:1px solid var(--border);background:var(--surface);padding:18px 20px;text-align:center}
+.site-copy p{margin:0;font-size:12.5px;color:var(--muted);opacity:.7;line-height:1.5}
+</style>
+<footer class="site-copy">
+  <p>&copy; <span class="copy-year">2026</span> <span data-i18n="footer-copyright">Munjez. All rights reserved.</span></p>
+</footer>
+<script>document.querySelectorAll('.copy-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+
 <script>
 var RELEASE_BASE='https://github.com/Osama2214/munjez-releases/releases';
 var API_URL='https://api.github.com/repos/Osama2214/munjez-releases/releases/latest';

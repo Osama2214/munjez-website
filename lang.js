@@ -141,6 +141,7 @@
       'footer-privacy': 'Privacy Policy',
       'footer-support': 'Support Center',
       'footer-changelog': 'Changelog',
+      'footer-copyright': 'Munjez. All rights reserved.',
       /* ── Windows install ── */
       'win-dl-started': 'Your download has started!',
       'win-hero-title': 'Installing <span>Munjez</span> on Windows',
@@ -468,6 +469,7 @@
       'footer-privacy': 'سياسة الخصوصية',
       'footer-support': 'مركز الدعم',
       'footer-changelog': 'سجل التحديثات',
+      'footer-copyright': 'منجز. جميع الحقوق محفوظة.',
       /* ── Windows install ── */
       'win-dl-started': 'بدأ التنزيل!',
       'win-hero-title': 'تثبيت <span>Munjez</span> على Windows',
