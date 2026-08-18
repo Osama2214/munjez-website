@@ -22,7 +22,6 @@
       'nav-themes': 'Themes',
       'nav-support': 'Support',
       'nav-download': 'Download',
-      'nav-developer': 'Developer',
       'nav-dl': '',
       /* ── Hero ── */
       'hero-badge': 'Free App for Windows, Linux & Android',
@@ -142,10 +141,6 @@
       'footer-privacy': 'Privacy Policy',
       'footer-support': 'Support Center',
       'footer-changelog': 'Changelog',
-      'dev-label': 'Meet the Developer',
-      'dev-name': 'Osama Ahmed',
-      'dev-role': 'Developer & Creator of Munjez',
-      'dev-bio': 'Passionate about building tools that help people get things done. Munjez started as a personal project and grew into a full productivity suite — designed, built, and maintained by one developer.',
       /* ── Windows install ── */
       'win-dl-started': 'Your download has started!',
       'win-hero-title': 'Installing <span>Munjez</span> on Windows',
@@ -354,7 +349,6 @@
       'nav-themes': 'السمات',
       'nav-support': 'الدعم',
       'nav-download': 'تنزيل',
-      'nav-developer': 'المطور',
       'nav-dl': '',
       /* ── Hero ── */
       'hero-badge': 'تطبيق مجاني — ‏Windows‏ & ‏Linux‏ & ‏Android',
@@ -474,10 +468,6 @@
       'footer-privacy': 'سياسة الخصوصية',
       'footer-support': 'مركز الدعم',
       'footer-changelog': 'سجل التحديثات',
-      'dev-label': 'تعرّف على المطوّر',
-      'dev-name': 'أسامة أحمد',
-      'dev-role': 'مطوّر وصانع منجز',
-      'dev-bio': 'شغوف ببناء أدوات تساعد الناس على الإنجاز. منجز بدأ كمشروع شخصي وتحوّل لتطبيق إنتاجية متكامل — مصمَّم ومبني بالكامل بواسطة مطوّر واحد.',
       /* ── Windows install ── */
       'win-dl-started': 'بدأ التنزيل!',
       'win-hero-title': 'تثبيت <span>Munjez</span> على Windows',
